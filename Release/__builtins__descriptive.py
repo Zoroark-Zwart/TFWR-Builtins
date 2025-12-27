@@ -9,7 +9,7 @@ from builtins import (bool as _bool, int as _int, float as _float, str as _str,
 					  range as _range,
 					  tuple as _tuple, list as _list, set as _set, dict as _dict)
 
-# Section: Imports
+
 
 
 
@@ -93,7 +93,6 @@ class Items:
 # Basic Types and Collections
 # -------------------------------------------------------------------------------
 
-# Section: Types
 
 
 
@@ -102,7 +101,6 @@ class Items:
 # Crop Management
 # -------------------------------------------------------------------------------
 
-# Section: Crops
 
 
 
@@ -111,7 +109,6 @@ class Items:
 # Movement
 # -------------------------------------------------------------------------------
 
-# Section: Crops
 
 
 
@@ -120,7 +117,6 @@ class Items:
 # Senses
 # -------------------------------------------------------------------------------
 
-# Section: Senses
 
 
 
@@ -129,7 +125,6 @@ class Items:
 # Megafarm
 # -------------------------------------------------------------------------------
 
-# Section: Megafarm
 
 
 
@@ -138,7 +133,6 @@ class Items:
 # Debug
 # -------------------------------------------------------------------------------
 
-# Section: Debug
 
 
 
@@ -147,7 +141,6 @@ class Items:
 # Auto Unlock
 # -------------------------------------------------------------------------------
 
-# Section: AutoUnlock
 
 
 
@@ -156,7 +149,6 @@ class Items:
 # Math
 # -------------------------------------------------------------------------------
 
-# Section: Math
 
 
 
@@ -165,7 +157,6 @@ class Items:
 # Utility
 # -------------------------------------------------------------------------------
 
-# Section: Utility
 
 
 
@@ -174,4 +165,5 @@ class Items:
 # Miscelaneous
 # -------------------------------------------------------------------------------
 
-# Section: Miscelaneous
+
+

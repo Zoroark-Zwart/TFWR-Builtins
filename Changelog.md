@@ -1,3 +1,24 @@
+# Dec 27/25 Update 1
+
+- Renamed Changelog.md to CHANGELOG.md
+- Added TODO.md and some tasks
+- Added Release folder and changed Template/BuiltinsBuilder.Compile to ouput to Release
+- Changed Template/BuiltinsBuilder.AddContributionsSection to be a bit more direct but still non-destructive
+- Refactored some variable names to help make them clearer
+- Changed Template/BuiltinsBuilder.Compile to not output sections tags unless it has content for it
+- Changed Template/BuiltinsBuilder.Compile so that it now returns the output contents
+- Changed Template/BuiltinsBuilder.Compile to add newline padding after a section
+- Changed Template/Template.py to remove some newlines to account for the automatic insertion of new lines from section padding
+- Changed Template/BuiltinsBuilder.MergeGroupings to return the merged content
+- Changed Template/BuiltinsBuilder.MergeGroupings to result Changed Template/BuiltinsBuilder.Groups to an empty dict
+- Added Template/Descriptive.py as continuation of the Minimal template
+- Added Template/BuiltinsBuilder setter and getters for name and version to allow renaming of template names and versions during continance files
+- Added Template/BuiltinsBuilder.Manager.TYPE_GROUPING types for code, docstring, and merged
+- Updated Template/BuiltinsBuilder.Manager fields to be marked as private intention
+- Separated Template/BuiltinsBuilder.Manager.Groupings types into more comprehensible code type and docstring type
+- Changed Template/BuiltinsBuilder.Manager.TYPE_GROUPING_CODE to include a dictionary based on section name (ie Items, Hats, etc.)
+- Added and reworked Template/BuiltinsBuilder constants to help with formatting decisions
+
 # Dec 26/25 Update 4
 
 - Starting from this update the date has been corrected

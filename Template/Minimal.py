@@ -1,16 +1,19 @@
 import BuiltinsBuilder
 
-BuiltinsMinimal = BuiltinsBuilder.Manager("__builtins__minimal", "Minimal")
+BuiltinsManager: BuiltinsBuilder.Manager = BuiltinsBuilder.Manager("__builtins__minimal", "Minimal")
 
-BuiltinsMinimal.AddGroupingCode("Enums")
-BuiltinsMinimal.AddGroupingDocstring("Enums")
+BuiltinsManager.AddGroupingCode("Enums")
+BuiltinsManager.AddGroupingDocstring("Enums")
 
-# print(BuiltinsMinimal.Groupings)
+# print(BuiltinsManager._Manager__Groupings)
 
-BuiltinsMinimal.MergeGroupings()
+if __name__ == "__main__":
+    BuiltinsManager.MergeGroupings()
 
-# for grouping in BuiltinsMinimal.MergedContent:
-#     for line in BuiltinsMinimal.MergedContent[grouping]:
-#         print(line)
+    # print(BuiltinsManager._Manager__MergedContent)
 
-BuiltinsMinimal.Compile(True)
+    # for grouping in BuiltinsManager._Manager__MergedContent:
+    #     for line in BuiltinsManager._Manager__MergedContent[grouping]:
+    #         print(line)
+
+    BuiltinsManager.Compile(True)
