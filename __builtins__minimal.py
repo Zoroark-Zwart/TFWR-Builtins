@@ -19,72 +19,72 @@ from builtins import (bool as _bool, int as _int, float as _float, str as _str,
 
 # -------------------------------------------------------------------------------
 class Item:
-	"""
-	A member of the Items Class
-	"""
-	...
+    """
+    A member of the Items Class
+    """
+    ...
 
 
 class Items:
-	Bone: Item
-	"""
-	The bones of an ancient creature.
-	"""
+    Bone: Item
+    """
+    The bones of an ancient creature.
+    """
 
-	Cactus: Item
-	"""
-	Obtained by harvesting sorted cacti.
-	"""
+    Cactus: Item
+    """
+    Obtained by harvesting sorted cacti.
+    """
 
-	Carrot: Item
-	"""
-	Obtained by harvesting carrots.
-	"""
+    Carrot: Item
+    """
+    Obtained by harvesting carrots.
+    """
 
-	Fertilizer: Item
-	"""
-	Call `use_item(Items.Fertilizer)` to instantly remove 2s from the plants remaining grow time.
-	"""
+    Fertilizer: Item
+    """
+    Call `use_item(Items.Fertilizer)` to instantly remove 2s from the plants remaining grow time.
+    """
 
-	Gold: Item
-	"""
-	Found in treasure chests in mazes.
-	"""
+    Gold: Item
+    """
+    Found in treasure chests in mazes.
+    """
 
-	Hay: Item
-	"""
-	Obtained by cutting grass.
-	"""
+    Hay: Item
+    """
+    Obtained by cutting grass.
+    """
 
-	Piggy: Item
-	"""
-	This item has been removed from the game but remains as a nostalgia trophy.
-	"""
+    Piggy: Item
+    """
+    This item has been removed from the game but remains as a nostalgia trophy.
+    """
 
-	Power: Item
-	"""
-	Obtained by harvesting sunflowers. The drone automatically uses this to move twice as fast.
-	"""
+    Power: Item
+    """
+    Obtained by harvesting sunflowers. The drone automatically uses this to move twice as fast.
+    """
 
-	Pumpkin: Item
-	"""
-	Obtained by harvesting pumpkins.
-	"""
+    Pumpkin: Item
+    """
+    Obtained by harvesting pumpkins.
+    """
 
-	Water: Item
-	"""
-	Used to water the ground by calling `use_item(Items.Water)`.
-	"""
+    Water: Item
+    """
+    Used to water the ground by calling `use_item(Items.Water)`.
+    """
 
-	Weird_Substance: Item
-	"""
-	Call `use_item(Items.Weird_Substance)` on a bush to grow a maze, or on other plants to toggle their infection status.
-	"""
+    Weird_Substance: Item
+    """
+    Call `use_item(Items.Weird_Substance)` on a bush to grow a maze, or on other plants to toggle their infection status.
+    """
 
-	Wood: Item
-	"""
-	Obtained from bushes and trees.
-	"""
+    Wood: Item
+    """
+    Obtained from bushes and trees.
+    """
 
 
 

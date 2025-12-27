@@ -3,8 +3,8 @@ import pathlib
 
 CODE = "Code"
 DOCSTRING = "Docstring"
-DOCSTRING_COMMENT_BEGIN = '\t"""\n\t'
-DOCSTRING_COMMENT_END = '\n\t"""\n'
+DOCSTRING_COMMENT_BEGIN = '"""\n'
+DOCSTRING_COMMENT_END = '"""\n'
 
 TAG_SECTION = "# Section: "
 TAG_DOCSTRING = "# Docstring: "
@@ -133,7 +133,10 @@ class Manager:
             for codesection in GroupCode:
                 for codeline in codesection:
                     if codeline.find(TAG_DOCSTRING) > -1:
-                        MergedContentSection.append(DOCSTRING_COMMENT_BEGIN + GroupDocstring[codeline.strip()[len(TAG_DOCSTRING):]] + DOCSTRING_COMMENT_END)
+                        Padding = codeline[:codeline.find("#")]
+                        MergedContentSection.append(Padding + DOCSTRING_COMMENT_BEGIN +
+                                                    Padding + GroupDocstring[codeline.strip()[len(TAG_DOCSTRING):]] +
+                                                    "\n" + Padding + DOCSTRING_COMMENT_END)
                     else:
                         MergedContentSection.append(codeline)
 
@@ -169,6 +172,7 @@ class Manager:
         with open(CurrentFile + ".py", "a") as FileOutput:
             for templateline in TemplateContent:
                 if templateline.find(TAG_SECTION) > -1:
+                    # print(templateline[len(TAG_SECTION):])
                     Grouping = templateline[len(TAG_SECTION):].strip("\n").strip()
                     if Grouping in self.MergedContent:
                         for codeline in self.MergedContent[Grouping]:

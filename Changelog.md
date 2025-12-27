@@ -1,3 +1,7 @@
+# Dec 25/25 Update 3
+
+- Changed padding in BuiltinsBuilder.MergeGroupings to use relative padding parsed from the provided code file
+
 # Dec 25/25 Update 2
 
 - Fixed a docstring tag type for Item in Template/Items.py
