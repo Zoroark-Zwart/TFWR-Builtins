@@ -183,27 +183,27 @@ class Manager:
 
         TemplateContent = AddContributionsSection(TemplateContent)
 
-        ReleasesDirectory = pathlib.Path("Release")
+        ReleaseDirectory = pathlib.Path("Release")
 
         if replacefile:
-            CurrentFileBuffer = ReleasesDirectory.joinpath(CurrentFileName + ".py")
+            CurrentFileBuffer = ReleaseDirectory.joinpath(CurrentFileName + ".py")
 
             if CurrentFileBuffer.exists():
                 CurrentFileBuffer.unlink()
         else:
             FileCounter = None
 
-            if ReleasesDirectory.joinpath(CurrentFileName + ".py").exists():
+            if ReleaseDirectory.joinpath(CurrentFileName + ".py").exists():
                 FileCounter = 1
 
-                while ReleasesDirectory.joinpath(CurrentFileName + f" ({FileCounter}).py").exists():
+                while ReleaseDirectory.joinpath(CurrentFileName + f" ({FileCounter}).py").exists():
                     FileCounter = FileCounter + 1
 
             if FileCounter:
                 CurrentFileName = CurrentFileName + f" ({FileCounter})"
 
 
-        with open(ReleasesDirectory.joinpath(CurrentFileName + ".py"), "a") as FileOutput:
+        with open(ReleaseDirectory.joinpath(CurrentFileName + ".py"), "a") as FileOutput:
             for templateline in TemplateContent:
                 if templateline.find(TAG_SECTION) > -1:
                     Grouping = templateline[len(TAG_SECTION):].strip("\n").strip()
@@ -216,7 +216,7 @@ class Manager:
                 else:
                     FileOutput.write(templateline)
 
-        with open(ReleasesDirectory.joinpath(CurrentFileName + ".py"), "r") as FileOutput:
+        with open(ReleaseDirectory.joinpath(CurrentFileName + ".py"), "r") as FileOutput:
             OutputContent = FileOutput.read()
 
         return OutputContent

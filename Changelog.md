@@ -1,3 +1,7 @@
+# Dec 28/25 Update 1
+
+- Refactored some variable names to help make them clearer
+
 # Dec 27/25 Update 1
 
 - Renamed Changelog.md to CHANGELOG.md
