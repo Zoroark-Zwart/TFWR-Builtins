@@ -1,3 +1,18 @@
+# Feb 24/26 Update 1
+
+- Added all Code and Docstring files for a complete Minimal build
+- Added some additions and fixes that aren't present in the current official builtins file
+- Changed range() so that it now has 3 different overloads and appropriate commment
+- Changed the wording of some example usages to avoid using comments inside of the examples. Instead, made those examples all print something and added an "Output" section
+- Added dummy default class overrides for dict, list, and set to help in the future. More should follow
+- Added alias names for primitive types to avoid collisions in the future
+- Adjusted spawn_drone to accept a callable with no arguments
+- Adjusted Template/BuiltinsBuilder.Manager.\_\_ParserDocstring to output a list of the contents instead of a string. Also added content compliation detection to safely allow newlines inside of the content itself
+- Adjusted Template/BuiltinsBuilder.Manager.MergeGroupings to now accept a list for docstring content and adding appropriate padding to each new line
+- Reworked spacing in Template/Template.py
+- Added overload support to Template/Template.py
+- Added Tests/TypingRecognition.py to help test functionality. Should expand this
+
 # Dec 28/25 Update 1
 
 - Refactored some variable names to help make them clearer

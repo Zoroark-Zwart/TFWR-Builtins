@@ -15,6 +15,8 @@ LABEL_DOCSTRING_INNER = "## "
 SECTION_DIVIDER = "# -------------------------------------------------------------------------------"
 SECTION_PADDING = "\n\n"
 
+SECTION_SUB_DIVIDER = "# --------------------------------------------------"
+
 CATEGORY_PADDING = "\n\n"
 
 def AddContributionsSection(templatecontent: list[str],
@@ -123,7 +125,8 @@ class Manager:
         ParsedContent = dict()
 
         for file in groupfiles:
-            SectionContent = ""
+            SectionContent = list()
+            ContentCompilingFlag = False
 
             with open(file) as FileParse:
                 BlockName = ""
@@ -131,12 +134,22 @@ class Manager:
                 for line in FileParse:
                     if line.find("#") > - 1:
                         if BlockName:
-                            ParsedContent[BlockName] = SectionContent
-                            SectionContent = ""
+                            ParsedContent[BlockName] = SectionContent[:-1] # Remove last blank line from markdown
+                            SectionContent = list()
+                            ContentCompilingFlag = False
 
                         BlockName = line.strip("#").strip()
                     else:
-                        SectionContent = SectionContent + line.strip("\n")
+                        # Treat blank lines as inside of the actual comment body as valid content
+                        if ContentCompilingFlag:
+                            if line != "\n":
+                                SectionContent.append(line.strip("\n"))
+                            else:
+                                SectionContent.append("")
+
+                        # Remove first blank line from markdown
+                        if not ContentCompilingFlag and line == "\n":
+                            ContentCompilingFlag = True
 
                 ParsedContent[BlockName] = SectionContent
 
@@ -161,11 +174,19 @@ class Manager:
                 for codeline in GroupCode[codesection]:
                     if codeline.find(TAG_DOCSTRING) > -1:
                         Padding = codeline[:codeline.find("#")]
-                        MergedContentSection.append(Padding + DOCSTRING_COMMENT_BEGIN +
-                                                    Padding + GroupDocstring[codeline.strip()[len(TAG_DOCSTRING):]] +
-                                                    "\n" + Padding + DOCSTRING_COMMENT_END)
+
+                        SectionComment = Padding + DOCSTRING_COMMENT_BEGIN
+
+                        for docline in GroupDocstring[codeline.strip()[len(TAG_DOCSTRING):]]:
+                            SectionComment = SectionComment + Padding + docline + "\n"
+
+                        SectionComment = SectionComment + Padding + DOCSTRING_COMMENT_END
+
+                        MergedContentSection.append(SectionComment)
                     else:
                         MergedContentSection.append(codeline)
+
+                MergedContentSection.append("\n\n")
 
         self.__Groupings = dict()
 

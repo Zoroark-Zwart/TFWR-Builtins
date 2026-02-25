@@ -3,8 +3,8 @@
 
 # Section: Contributions
 
-from typing import Any
-from collections.abc import Iterable
+from typing import Any, overload
+from collections.abc import Iterable, Callable
 from builtins import (bool as _bool, int as _int, float as _float, str as _str,
 					  range as _range,
 					  tuple as _tuple, list as _list, set as _set, dict as _dict)
@@ -18,13 +18,11 @@ from builtins import (bool as _bool, int as _int, float as _float, str as _str,
 
 # Section: Enums
 
-
 # -------------------------------------------------------------------------------
 # Basic Types and Collections
 # -------------------------------------------------------------------------------
 
 # Section: Types
-
 
 # -------------------------------------------------------------------------------
 # Crop Management
@@ -32,13 +30,11 @@ from builtins import (bool as _bool, int as _int, float as _float, str as _str,
 
 # Section: Crops
 
-
 # -------------------------------------------------------------------------------
 # Movement
 # -------------------------------------------------------------------------------
 
-# Section: Crops
-
+# Section: Movement
 
 # -------------------------------------------------------------------------------
 # Senses
@@ -46,13 +42,11 @@ from builtins import (bool as _bool, int as _int, float as _float, str as _str,
 
 # Section: Senses
 
-
 # -------------------------------------------------------------------------------
 # Megafarm
 # -------------------------------------------------------------------------------
 
 # Section: Megafarm
-
 
 # -------------------------------------------------------------------------------
 # Debug
@@ -60,13 +54,11 @@ from builtins import (bool as _bool, int as _int, float as _float, str as _str,
 
 # Section: Debug
 
-
 # -------------------------------------------------------------------------------
 # Auto Unlock
 # -------------------------------------------------------------------------------
 
-# Section: AutoUnlock
-
+# Section: Unlock
 
 # -------------------------------------------------------------------------------
 # Math
@@ -74,13 +66,11 @@ from builtins import (bool as _bool, int as _int, float as _float, str as _str,
 
 # Section: Math
 
-
 # -------------------------------------------------------------------------------
 # Utility
 # -------------------------------------------------------------------------------
 
 # Section: Utility
-
 
 # -------------------------------------------------------------------------------
 # Miscelaneous
