@@ -1,0 +1,19 @@
+{
+	"exclude": [
+		// Defaults
+		"**/node_modules", // to avoid pylance error
+		"**/__pycache__",
+		"**/.*",
+
+		// Project
+		"Minimal/Code",
+		"Descriptive/Code",
+		"Complex/Code",
+		"WIP" // Hidden working folder and excluded through .gitignore
+	],
+
+	// "typeCheckingMode": "strict",
+	"typeCheckingMode": "standard"
+	// "typeCheckingMode": "basic",
+	// "typeCheckingMode": "off",
+}

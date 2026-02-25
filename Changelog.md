@@ -1,3 +1,9 @@
+# Feb 24/26 Update 2
+
+- Added pyrightconfig.json to help with typing error reduction and to help change modes for future use. Especially useful for test scripts.
+- Renamed Tests/TypingRecognition.py to Tests/TypingRecognition_Minimal.py
+- - Added a bit more test coverages
+
 # Feb 24/26 Update 1
 
 - Added all Code and Docstring files for a complete Minimal build
