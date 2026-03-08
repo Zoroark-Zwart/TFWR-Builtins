@@ -62,3 +62,9 @@ TestDict2 = dict({1:1,2:2,3:3})
 TestDict2.pop(1)
 
 pop(TestDict2, 1)
+
+append(list([1]), 2)
+append([1], 2)
+
+list({1})
+list(list([1]))

@@ -1,6 +1,6 @@
 # -------------------------------------------------------------------------------
 type IterableCollections = (
-	dict | list | set | _tuple | _str |
+	_dict | _list | _set | _tuple | _str |
 	Entities | Grounds | Hats | Items | Leaderboard | Unlocks
 )
 
