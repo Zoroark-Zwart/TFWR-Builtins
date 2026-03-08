@@ -1,5 +1,5 @@
 # -------------------------------------------------------------------------------
-def get_cost(thing: Entity | Item | Unlock, level: _int | None = None) -> dict[Item, _float] | None:
+def get_cost(thing: Entity | Item | Unlock, level: _int | None = None) -> dict[Item, _int] | None:
 	# Docstring: get_cost
 	...
 

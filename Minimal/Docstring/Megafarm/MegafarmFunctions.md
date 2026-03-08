@@ -1,8 +1,8 @@
 # spawn_drone
 
-Spawns a new drone in the same position as the drone that ran the `spawn_drone(callback)` command. The new drone then begins executing the specified `callback` function. After it is done, it will disappear automatically.
+Spawns a new drone in the same position as the drone that ran `spawn_drone(task)`. The new drone then begins executing the specified `task` function. After it is done, it will disappear automatically.
 
-returns the handle of the new drone or `None` if all drones are already spawned.
+returns the a `Drone` object for the new drone or `None` if all drones are already spawned.
 
 takes `200` ticks to execute if a drone was spawned, `1` otherwise.
 
@@ -21,11 +21,12 @@ while True:
 
 # wait_for
 
-Waits until the given drone terminates.
+Waits until the given `drone` terminates.
 
-returns the return value of the function that the drone was running.
+returns the return value of the function that the `drone` was running.
 
-takes `1` tick to execute if the awaited drone is already done.
+takes `1 + remaining task ticks` remaining in the given drone's task function.
+takes `1` tick to execute if the awaited `drone` is already done.
 
 example:
 
@@ -42,7 +43,7 @@ print(wait_for(handle))
 
 # has_finished
 
-Checks if the given drone has finished.
+Checks if the given 1drone1 has finished.
 
 returns `True` if the drone has finished, `False` otherwise.
 
@@ -59,6 +60,8 @@ result = wait_for(drone)
 
 # max_drones
 
+Gets the maximum number of drones available on the farm.
+
 returns the maximum number of drones that you can have in the farm.
 
 takes `1` tick to execute.
@@ -72,6 +75,8 @@ while num_drones() < max_drones():
 ```
 
 # num_drones
+
+Gets the current number of drones running a task on the farm.
 
 returns the number of drones currently in the farm.
 

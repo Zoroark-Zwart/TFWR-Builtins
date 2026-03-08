@@ -3,12 +3,6 @@
 
 # Section: Contributions
 
-from typing import Self, Any, overload
-from collections.abc import Iterable, Callable
-from builtins import (bool as _bool, int as _int, float as _float, str as _str,
-					  range as _range,
-					  tuple as _tuple, list as _list, set as _set, dict as _dict)
-
 # Section: Imports
 
 

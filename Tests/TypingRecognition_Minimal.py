@@ -68,3 +68,50 @@ append([1], 2)
 
 list({1})
 list(list([1]))
+
+from builtins import (bool as _bool, int as _int, float as _float, str as _str,
+					  range as _range,
+					  tuple as _tuple, list as _list, set as _set, dict as _dict)
+
+from typing import Sequence
+
+class CustomList[Any](_list[Any]):
+	def __setitem__(self, key, value):
+		return super().__setitem__(key, value)
+	def __iadd__(self, value):
+		return super().__iadd__(value)
+	def __add__(self, value):
+		return super().__add__(value)
+
+
+
+TesterAny: Any = 1
+TesterCustomList: CustomList[int] = CustomList()
+TesterCustomList = [1] # Don't think this is possible to address?
+
+
+TesterList: list[Any] = list()
+TesterList = [1] # Don't think this is possible to address?
+
+def HelloDrone():
+    ...
+
+def HelloDroneArgument(hello):
+    ...
+
+DroneHandle: Drone = spawn_drone(HelloDrone) # Proper usage
+DroneHandle: Drone = spawn_drone(HelloDroneArgument) # Wrong type error due to function paramters
+has_finished(DroneHandle) # Proper usage
+has_finished(1) # Wront type error
+wait_for(DroneHandle) # Proper usage
+wait_for("a") # Wront type error
+
+
+simulate("Hi", {Unlocks.Cactus: 1}, {Items.Power: 1000}, {}, 1, 250)
+
+MyList: list[int] = list()
+
+remove(MyList, 1)
+insert(MyList, 1, 1)
+
+print(list([1]))

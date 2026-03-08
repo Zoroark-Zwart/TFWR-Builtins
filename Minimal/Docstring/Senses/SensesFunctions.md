@@ -48,6 +48,7 @@ if get_water() < 0.5:
 Find out how much of `item` you currently have.
 
 returns the number of `item` currently in your inventory.
+`Items.Power` may return a number as float
 
 takes `1` tick to execute.
 

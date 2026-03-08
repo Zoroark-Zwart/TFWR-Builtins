@@ -1,6 +1,6 @@
 # -------------------------------------------------------------------------------
-def add(get_set: _set[Any], object: Any):
-	# Docstring: append
+def add(given_set: _set[Any], object: Any):
+	# Docstring: add
 	...
 
 # --------------------------------------------------
@@ -9,7 +9,7 @@ def append(given_list: _list[Any], object: Any):
 	...
 
 # --------------------------------------------------
-def insert(given_list: _list[Any], object: Any):
+def insert(given_list: _list[Any], index: _int, object: Any):
 	# Docstring: insert
 	...
 
