@@ -62,7 +62,3 @@ TestDict2 = dict({1:1,2:2,3:3})
 TestDict2.pop(1)
 
 pop(TestDict2, 1)
-MyList = list([1])
-append(MyList, 1)
-
-MyList.append(1)

@@ -657,8 +657,7 @@ class Unlocks:
 
 # -------------------------------------------------------------------------------
 type IterableCollections = (
-	dict[Any, Any] | list[Any] | set[Any] |
-	_dict[Any, Any] | _list[Any] | _set[Any] | _tuple[Any] | _str |
+	dict | list | set | _tuple | _str |
 	Entities | Grounds | Hats | Items | Leaderboard | Unlocks
 )
 
@@ -675,7 +674,7 @@ class dict[key: Any, value: Any](_dict):
 	takes `1` tick to execute if no input is given.
 	"""
 
-	def __init__(self: Self, input: dict | _dict | None = None) -> None:
+	def __init__(self: Self, input: dict | None = None) -> None:
 		...
 
 	def len(self: Self) -> _int:
@@ -941,7 +940,7 @@ class set[key: Any](_set):
 	...
 
 # -------------------------------------------------------------------------------
-def add(get_set: set[Any], object: Any):
+def add(get_set: set, object: Any):
 	"""
 	Add `object` to the end of a list provided as `given_list`.
 
@@ -964,7 +963,7 @@ def add(get_set: set[Any], object: Any):
 	...
 
 # --------------------------------------------------
-def append(given_list: list[Any], object: Any):
+def append(given_list: list, object: Any):
 	"""
 	Add `object` to the end of a list provided as `given_list`.
 
@@ -987,7 +986,7 @@ def append(given_list: list[Any], object: Any):
 	...
 
 # --------------------------------------------------
-def insert(given_list: list[Any], object: Any):
+def insert(given_list: list, object: Any):
 	"""
 	Add a `object` to the specified `index` to a list provided as `given_list`.
 
@@ -1010,7 +1009,7 @@ def insert(given_list: list[Any], object: Any):
 	...
 
 # --------------------------------------------------
-def len(object : _str | dict[Any, Any] | list[Any] | set[Any] | _tuple) -> _int:
+def len(object : _str | dict | list | set | _tuple) -> _int:
 	"""
 	Returns the number of items in the dict, list, set or str provided as `collection`.
 
@@ -1035,7 +1034,7 @@ def len(object : _str | dict[Any, Any] | list[Any] | set[Any] | _tuple) -> _int:
 	...
 
 # --------------------------------------------------
-def pop(collection: dict[Any, Any] | list[Any], object: Any):
+def pop(collection: dict | list, object: Any):
 	"""
 	Remove the element corresponding to the `key` in a dict or list provided as `collection`. If it is a list and no `key` is specified removes the last element in the list.
 
@@ -1142,7 +1141,7 @@ def range(start: _float, stop: _float, step: _float) -> _range:  # type: ignore
 	...
 
 # --------------------------------------------------
-def remove(collection: list[Any] | set[Any], object: Any):
+def remove(collection: list | set, object: Any):
 	"""
 	Remove the element corresponding to the `object` in a list or set provided as `collection`.
 

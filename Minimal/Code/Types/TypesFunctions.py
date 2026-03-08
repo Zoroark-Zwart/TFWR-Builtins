@@ -1,25 +1,25 @@
 # -------------------------------------------------------------------------------
-def add(get_set: set[Any], object: Any):
+def add(get_set: set, object: Any):
 	# Docstring: append
 	...
 
 # --------------------------------------------------
-def append(given_list: list[Any], object: Any):
+def append(given_list: list, object: Any):
 	# Docstring: append
 	...
 
 # --------------------------------------------------
-def insert(given_list: list[Any], object: Any):
+def insert(given_list: list, object: Any):
 	# Docstring: insert
 	...
 
 # --------------------------------------------------
-def len(object : _str | dict[Any, Any] | list[Any] | set[Any] | _tuple) -> _int:
+def len(object : _str | dict | list | set | _tuple) -> _int:
 	# Docstring: len
 	...
 
 # --------------------------------------------------
-def pop(collection: dict[Any, Any] | list[Any], object: Any):
+def pop(collection: dict | list, object: Any):
 	# Docstring: pop
 	...
 
@@ -40,7 +40,7 @@ def range(start: _float, stop: _float, step: _float) -> _range:  # type: ignore
 	...
 
 # --------------------------------------------------
-def remove(collection: list[Any] | set[Any], object: Any):
+def remove(collection: list | set, object: Any):
 	# Docstring: remove
 	...
 
