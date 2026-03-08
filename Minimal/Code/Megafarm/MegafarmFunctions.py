@@ -1,5 +1,5 @@
 # -------------------------------------------------------------------------------
-def spawn_drone(callback: Callable[[], Any]) -> Any:
+def spawn_drone(task: Callable[[], Any]) -> Any:
 	# Docstring: spawn_drone
 	...
 
