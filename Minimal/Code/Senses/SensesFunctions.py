@@ -17,7 +17,7 @@ def get_water() -> _float:
 
 
 # --------------------------------------------------
-def num_items(item: Item) -> _float:
+def num_items(item: Item) -> _int | _float:
 	# Docstring: num_items
 	...
 

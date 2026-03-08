@@ -1,3 +1,17 @@
+# Mar 8/26 Update 1
+
+- Added some experimentation for custom classes and Any type to Tests/TypingRecognition_Minimal.py
+- Type classes type paramter refinements in Minimal/Code/Types/TypeClasses.py
+- Corrected paramenter of add in Minimal/Code/Types/TypeFunctions.py
+- Corrected index and object paramters for insert in Minimal/Code/Types/TypeClasses.py and Minimal/Docstring/Types/TypeFunctions.py
+- Added custom Any type that only includes Python builtin basic and collection types and game builtin types
+- Added Minimal/Code/Megafarm/MegafarmClasses.py and Minimal/Docstring/Megafarm/MegafarmClasses.md
+- Added Drone type to Minimal and updated/ammended Megafarm Docstrings
+- Fixed return type of has_finished to a bool
+- Updated simulate function signature
+- Renamed IterableCollections to AnyInterable in Minimal/Code/Types/TypeClasses.py
+- Added a dedicated Template/Imports.py file for imports and changed template to match
+
 # Mar 7/26 Update 1
 
 - Changed tick cost for get_time in Minimal

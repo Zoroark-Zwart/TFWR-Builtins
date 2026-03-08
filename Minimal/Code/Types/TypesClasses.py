@@ -1,14 +1,14 @@
 # -------------------------------------------------------------------------------
-type IterableCollections = (
-	_dict | _list | _set | _tuple | _str |
+type AnyIterable = (
+	_dict[_Any, _Any] | _list[_Any] | _set[_Any] | _tuple[_Any] | _str |
 	Entities | Grounds | Hats | Items | Leaderboard | Unlocks
 )
 
 # --------------------------------------------------
-class dict[key: Any, value: Any](_dict):
+class dict[key: Any, value: Any](_dict[Any, Any]):
 	# Docstring: dict
 
-	def __init__(self: Self, input: dict | None = None) -> None:
+	def __init__(self: Self, input: dict[Any, Any] | None = None) -> None:
 		...
 
 	def len(self: Self) -> _int:
@@ -22,17 +22,17 @@ class dict[key: Any, value: Any](_dict):
 
 
 # --------------------------------------------------
-class list[value: Any](_list):
+class list[index: Any](_list[Any]):
 	# Docstring: list
 
-	def __init__(self: Self, input: IterableCollections | None = None) -> None:
+	def __init__(self: Self, input: AnyIterable | None = None) -> None:
 		...
 
 	def append(self: Self, object: Any) -> None:
 		# Docstring: append
 		...
 
-	def insert(self: Self, object: Any, index: _int) -> None:
+	def insert(self: Self, index: _int, object: Any) -> None: # type: ignore
 		# Docstring: insert
 		...
 
@@ -51,10 +51,10 @@ class list[value: Any](_list):
 
 
 # --------------------------------------------------
-class set[key: Any](_set):
+class set[key: Any](_set[Any]):
 	# Docstring: set
 
-	def __init__(self: Self, input: IterableCollections | None = None) -> None:
+	def __init__(self: Self, input: AnyIterable | None = None) -> None:
 		...
 
 	def add(self: Self, object: Any) -> None:

@@ -20,7 +20,9 @@ SECTION_SUB_DIVIDER = "# --------------------------------------------------"
 CATEGORY_PADDING = "\n\n"
 
 def AddContributionsSection(templatecontent: list[str],
-                            contributionsfile: str = pathlib.Path.cwd().joinpath("Template").joinpath("Contributions.py")
+                            contributionsfile: str = pathlib.Path.cwd()
+                                .joinpath("Template")
+                                .joinpath("Contributions.py")
                             ) -> list[str]:
     NewTemplateContent = list(templatecontent)
 
@@ -32,6 +34,25 @@ def AddContributionsSection(templatecontent: list[str],
     for i in range(len(NewTemplateContent)):
         if NewTemplateContent[i].find(TAG_SECTION + "Contributions") > -1:
             NewTemplateContent[i] = ContributionsContent
+            break
+
+    return NewTemplateContent
+
+def AddImportsSection(templatecontent: list[str],
+                            importsfile: str = pathlib.Path.cwd()
+                                .joinpath("Template")
+                                .joinpath("Imports.py")
+                            ) -> list[str]:
+    NewTemplateContent = list(templatecontent)
+
+    ImportsContent = ""
+
+    with open(importsfile) as FileImports:
+        ImportsContent = FileImports.read()
+
+    for i in range(len(NewTemplateContent)):
+        if NewTemplateContent[i].find(TAG_SECTION + "Imports") > -1:
+            NewTemplateContent[i] = ImportsContent
             break
 
     return NewTemplateContent
@@ -203,6 +224,7 @@ class Manager:
                 TemplateContent.append(line)
 
         TemplateContent = AddContributionsSection(TemplateContent)
+        TemplateContent = AddImportsSection(TemplateContent)
 
         ReleaseDirectory = pathlib.Path("Release")
 
