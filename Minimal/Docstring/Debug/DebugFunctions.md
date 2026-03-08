@@ -4,7 +4,7 @@ Get the current game time.
 
 returns the time in seconds since the start of the game.
 
-takes `1` tick to execute.
+takes `0` tick to execute.
 
 example usage:
 

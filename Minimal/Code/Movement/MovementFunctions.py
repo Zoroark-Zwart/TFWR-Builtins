@@ -12,7 +12,7 @@ def can_move(direction: Direction) -> _bool:
 
 # --------------------------------------------------
 def get_pos_x() -> _int:
-	get_pos_x
+	# Docstring: get_pos_x
 	...
 
 

@@ -38,3 +38,27 @@ spawn_drone(SpawnTester) # Correct usage
 spawn_drone("Test") # Should error and say not assignable
 spawn_drone(2) # Should error and say not assignable
 spawn_drone() # Should error and say no arguments given
+
+
+TestDict = dict()
+TestList = list()
+TestSet = set()
+
+dict.len(TestList) # Error
+dict.len(TestDict) # Proper usage
+
+
+list(1) # Error - wrong type
+list(1, 2) # Error - positional
+TestList.append(8)
+TestDict.len()
+TestSet.add(1)
+
+TestList2 = []
+TestList2.len() # Can this be done? Overwrite lists that use [] and add methods?
+
+
+TestDict2 = dict({1:1,2:2,3:3})
+TestDict2.pop(1)
+
+pop(TestDict2, 1)

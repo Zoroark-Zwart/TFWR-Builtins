@@ -1,3 +1,16 @@
+# Mar 7/26 Update 1
+
+- Changed tick cost for get_time in Minimal
+- Changed parameter name for spawn_drone from callback to task in Minimal
+- Fixed Docstring tag in Minimal/Code/Movement/MovementFunctions.py
+- Added type ignore to range overloads to avoid needing to implement them as they are not needed
+- Added type arguments to dict, list and set in Minimal/Code/Types/TypesClasses.py
+- Added Self typing import in Template/Template.py to be used for new custom classes
+- Mostly added custom class definitions for dict, list and set that contain only the methods usable in-game to Minimum
+- Added function versions of add, append, insert, pop, and removed in Minimal
+- Sorted order of type functions in Minimal
+- Fixed Docstring for get_pos_x
+
 # Feb 24/26 Update 2
 
 - Added pyrightconfig.json to help with typing error reduction and to help change modes for future use. Especially useful for test scripts.
