@@ -8,12 +8,12 @@ A member of the Unlocks class
 
 Automatically unlock things.
 
-## Cactus
+## Cactus (Unlock)
 
 Unlock: Cactus!
 Upgrade: Increases the yield and cost of cactus.
 
-## Carrots
+## Carrots (Unlock)
 
 Unlock: Till the soil and plant carrots.
 Upgrade: Increases the yield and cost of carrots.
@@ -34,7 +34,7 @@ Functions to temporarily slow down the execution and make the grid smaller.
 
 Get access to dictionaries and sets.
 
-## Dinosaurs
+## Dinosaurs (Unlock)
 
 Unlock: Majestic ancient creatures.
 Upgrade: Increases the yield and cost of dinosaurs.
@@ -44,7 +44,7 @@ Upgrade: Increases the yield and cost of dinosaurs.
 Unlock: Expands the farm land and unlocks movement.
 Upgrade: Expands the farm. This also clears the farm.
 
-## Fertilizer
+## Fertilizer (Unlock)
 
 Reduces the remaining growing time of the plant under the drone by 2 seconds.
 
@@ -52,7 +52,7 @@ Reduces the remaining growing time of the plant under the drone by 2 seconds.
 
 Define your own functions.
 
-## Grass
+## Grass (Unlock)
 
 Increases the yield of grass.
 
@@ -64,9 +64,9 @@ Unlocks new hat colors for your drone.
 
 Import code from other files.
 
-## Leaderboard
+## Leaderboard (Unlock)
 
-Join the leaderboard for the fastest reset time.
+Join the leaderboard for the fastest time in farming a specific crop or for the fastest reset of the farm.
 
 ## Lists
 
@@ -76,7 +76,7 @@ Use lists to store lots of values.
 
 Unlocks a simple while loop.
 
-## Mazes
+## Mazes (Unlock)
 
 Unlock: A maze with a treasure in the middle.
 Upgrade: Increases the gold in treasure chests.
@@ -97,7 +97,7 @@ Unlocks planting.
 
 Use companion planting to increase the yield.
 
-## Pumpkins
+## Pumpkins (Unlock)
 
 Unlock: Pumpkins!
 Upgrade: Increases the yield and cost of pumpkins.
@@ -114,7 +114,7 @@ Unlocks simulation functions for testing and optimization.
 
 Increases the speed of the drone.
 
-## Sunflowers
+## Sunflowers (Unlock)
 
 Unlock: Sunflowers and Power.
 Upgrade: Increases the power gained from sunflowers.
@@ -131,7 +131,7 @@ Functions to help measure performance.
 
 Unlocks the fancy Top Hat.
 
-## Trees
+## Trees (Unlock)
 
 Unlocks trees.
 Upgrade: Increases the yield of bushes and trees.

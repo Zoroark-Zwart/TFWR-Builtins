@@ -1,10 +1,10 @@
-# Leaderboard:
+# Leaderboard
 
 A member of the Leaderboards class
 
-# Leaderboards:
+# Leaderboards
 
-## Cactus
+## Cactus (Leaderboard)
 
 Farm 33_554_432 cacti with multiple drones.
 
@@ -12,7 +12,7 @@ Farm 33_554_432 cacti with multiple drones.
 
 Farm 131_072_cacti with a single drone on an 8x8 farm.
 
-## Carrots
+## Carrots (Leaderboard)
 
 Farm 2_000_000_000 carrots with multiple drones.
 
@@ -20,7 +20,7 @@ Farm 2_000_000_000 carrots with multiple drones.
 
 Farm 100_000_000 carrots with a single drone on an 8x8 farm.
 
-## Dinosaur
+## Dinosaur (Leaderboard)
 
 Farm 33_488_928 bones with multiple drones.
 
@@ -28,7 +28,7 @@ Farm 33_488_928 bones with multiple drones.
 
 The most prestigious category. Completely automate the game from a single farm plot to unlocking the leaderboards again.
 
-## Hay
+## Hay (Leaderboard)
 
 Farm 2_000_000_000 hay with multiple drones.
 
@@ -36,7 +36,7 @@ Farm 2_000_000_000 hay with multiple drones.
 
 Farm 100_000_000 hay with a single drone on an 8x8 farm.
 
-## Maze
+## Maze (Leaderboard)
 
 Farm 9_863_168_gold with multiple drones.
 
@@ -44,7 +44,7 @@ Farm 9_863_168_gold with multiple drones.
 
 Farm 616_448 gold with a single drone on an 8x8 farm.
 
-## Pumpkins
+## Pumpkins (Leaderboard)
 
 Farm 200_000_000 pumpkins with multiple drones.
 
@@ -52,7 +52,7 @@ Farm 200_000_000 pumpkins with multiple drones.
 
 Farm 10_000_000 pumpkins with a single drone on an 8x8 farm.
 
-## Sunflowers
+## Sunflowers (Leaderboard)
 
 Farm 100_000 power with multiple drones.
 
@@ -60,7 +60,7 @@ Farm 100_000 power with multiple drones.
 
 Farm 10_000 power with a single drone on an 8x8 farm.
 
-## Wood
+## Wood (Leaderboard)
 
 Farm 10_000_000_000 wood with multiple drones.
 

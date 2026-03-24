@@ -5,7 +5,7 @@ type AnyIterable = (
 )
 
 # --------------------------------------------------
-class dict[key: Any, value: Any](_dict[Any, Any]):
+class dict[key: Any, value: Any](_dict):
 	# Docstring: dict
 
 	def __init__(self: Self, input: dict[Any, Any] | None = None) -> None:
@@ -22,7 +22,7 @@ class dict[key: Any, value: Any](_dict[Any, Any]):
 
 
 # --------------------------------------------------
-class list[index: Any](_list[Any]):
+class list[index: Any](_list):
 	# Docstring: list
 
 	def __init__(self: Self, input: AnyIterable | None = None) -> None:
@@ -51,7 +51,7 @@ class list[index: Any](_list[Any]):
 
 
 # --------------------------------------------------
-class set[key: Any](_set[Any]):
+class set[key: Any](_set):
 	# Docstring: set
 
 	def __init__(self: Self, input: AnyIterable | None = None) -> None:

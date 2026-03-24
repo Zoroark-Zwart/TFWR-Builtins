@@ -76,15 +76,22 @@ set_world_size(5)
 
 Starts a simulation for the leaderboard using the specified `file_name` as a starting point.
 
-`sim_unlocks`: A sequence containing the starting unlocks.
+`sim_unlocks`: A sequence containing the starting unlocks. These unlocks can be one of these:
+
+- `dict[Unlock, int]` - Example: `{Unlocks.Expand: 2, Unlocks.Cactus: 1}`
+- `tuple[tuple[Unlock, int]]` - Example: `((Unlocks.Expand, 2), (Unlocks.Cactus, 1))`
+- `list[tuple[Unlock, int]]` - Example: `[(Unlocks.Expand, 2), (Unlocks.Cactus, 1)]`
+- `tuple[Unlock]` - Captures your current unlock level of specific unlocks from your main farm. Example: `(Unlocks.Expand, Unlocks.Cactus)`
+- `list[Unlock]` - Captures your current unlock level of specific unlocks from your main farm. Example: `[Unlocks.Expand, Unlocks.Cactus]`
+- `Unlocks` - Captures all of your current unlock levels from your main farm.
 
 `sim_items`: A dict mapping items to amounts. The simulation starts with these items.
 
-`sim_globals`: A dict mapping variable names to values. The simulation starts with these variables in the global scope.
+`sim_globals`: A dict mapping variable names to values. The simulation starts with these variables in the global scope. Make sure any variables assigned in here are not assigned in the simulation code as that will override the vales from this dict.
 
 `seed`: The random seed of the simulation. Must be a positive integer.
 
-`speedup`: The starting speedup.
+`speedup`: The starting speedup. The simulation may not reach the stated `speedup` value if it cannot properly speedup computation. Common causes for this include use of multiple drones or eating up too many ticks in a loop per iteration (for example a wait loop using pass).
 
 returns the time it took to run the simulation.
 

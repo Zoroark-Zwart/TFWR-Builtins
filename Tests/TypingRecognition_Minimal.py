@@ -109,6 +109,14 @@ wait_for("a") # Wront type error
 
 simulate("Hi", {Unlocks.Cactus: 1}, {Items.Power: 1000}, {}, 1, 250)
 
+UnlockDict = dict()
+UnlockDict[Unlocks.Cactus] = 1
+
+ItemDict = dict()
+ItemDict[Items.Power] = 1000
+
+simulate("Hi", UnlockDict, ItemDict, {}, 1, 250)
+
 MyList: list[int] = list()
 
 remove(MyList, 1)

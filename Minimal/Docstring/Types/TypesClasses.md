@@ -159,7 +159,7 @@ Current List: [1,3]
 
 Remove the element corresponding to the `object` in the list.
 
-takes `# comparions - # shifts` ticks to execute
+takes `num_comparions + num_shifts` ticks to execute
 
 example usage:
 
@@ -172,7 +172,7 @@ print(my_list)
 Output:
 
 ```
-[1,3]
+[2,3]
 ```
 
 # set

@@ -178,7 +178,7 @@ Output:
 
 Remove the element corresponding to the `object` in a list or set provided as `collection`.
 
-takes `num_comparions - num_shifts` ticks to execute if a list is provided.
+takes `num_comparions + num_shifts` ticks to execute if a list is provided.
 takes `1` tick to execute if a set is provided.
 
 example usage:

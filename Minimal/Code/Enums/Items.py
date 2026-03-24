@@ -7,37 +7,37 @@ class Item:
 # --------------------------------------------------
 class Items:
     Bone: Item
-    # Docstring: Bone
+    # Docstring: Bone (Items)
 
     Cactus: Item
-    # Docstring: Cactus
+    # Docstring: Cactus (Items)
 
     Carrot: Item
-    # Docstring: Carrot
+    # Docstring: Carrot (Items)
 
     Fertilizer: Item
-    # Docstring: Fertilizer
+    # Docstring: Fertilizer (Items)
 
     Gold: Item
-    # Docstring: Gold
+    # Docstring: Gold (Items)
 
     Hay: Item
-    # Docstring: Hay
+    # Docstring: Hay (Items)
 
     Piggy: Item
-    # Docstring: Piggy
+    # Docstring: Piggy (Items)
 
     Power: Item
-    # Docstring: Power
+    # Docstring: Power (Items)
 
     Pumpkin: Item
-    # Docstring: Pumpkin
+    # Docstring: Pumpkin (Items)
 
     Water: Item
-    # Docstring: Water
+    # Docstring: Water (Items)
 
     Weird_Substance: Item
-    # Docstring: Weird_Substance
+    # Docstring: Weird_Substance (Items)
 
     Wood: Item
-    # Docstring: Wood
+    # Docstring: Wood (Items)

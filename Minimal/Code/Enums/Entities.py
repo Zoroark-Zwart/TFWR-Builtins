@@ -7,37 +7,37 @@ class Entity:
 # --------------------------------------------------
 class Entities:
 	Apple: Entity
-	# Docstring: Apple
+	# Docstring: Apple (Entities)
 
 	Bush: Entity
-	# Docstring: Bush
+	# Docstring: Bush (Entities)
 
 	Cactus: Entity
-	# Docstring: Cactus
+	# Docstring: Cactus (Entities)
 
 	Carrot: Entity
-	# Docstring: Carrot
+	# Docstring: Carrot (Entities)
 
 	Dead_Pumpkin: Entity
 	# Docstring: Dead_Pumpkin
 
 	Dinosaur: Entity
-	# Docstring: Dinosaur
+	# Docstring: Dinosaur (Entities)
 
 	Grass: Entity
-	# Docstring: Grass
+	# Docstring: Grass (Entities)
 
 	Hedge: Entity
 	# Docstring: Hedge
 
 	Pumpkin: Entity
-	# Docstring: Pumpkin
+	# Docstring: Pumpkin (Entities)
 
 	Sunflower: Entity
-	# Docstring: Sunflower
+	# Docstring: Sunflower (Entities)
 
 	Treasure: Entity
-	# Docstring: Treasure
+	# Docstring: Treasure (Entities)
 
 	Tree: Entity
-	# Docstring: Tree
+	# Docstring: Tree (Entities)

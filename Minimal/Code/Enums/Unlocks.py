@@ -10,10 +10,10 @@ class Unlocks:
 	# Docstring: Auto_Unlock
 
 	Cactus: Unlock
-	# Docstring: Cactus
+	# Docstring: Cactus (Unlock)
 
 	Carrots: Unlock
-	# Docstring: Carrots
+	# Docstring: Carrots (Unlock)
 
 	Costs: Unlock
 	# Docstring: Costs
@@ -28,19 +28,19 @@ class Unlocks:
 	# Docstring: Dictionaries
 
 	Dinosaurs: Unlock
-	# Docstring: Dinosaurs
+	# Docstring: Dinosaurs (Unlock)
 
 	Expand: Unlock
 	# Docstring: Expand
 
 	Fertilizer: Unlock
-	# Docstring: Fertilizer
+	# Docstring: Fertilizer (Unlock)
 
 	Functions: Unlock
 	# Docstring: Functions
 
 	Grass: Unlock
-	# Docstring: Grass
+	# Docstring: Grass (Unlock)
 
 	Hats: Unlock
 	# Docstring: Hats
@@ -49,7 +49,7 @@ class Unlocks:
 	# Docstring: Import
 
 	Leaderboard: Unlock
-	# Docstring: Leaderboard
+	# Docstring: Leaderboard (Unlock)
 
 	Lists: Unlock
 	# Docstring: Lists
@@ -58,7 +58,7 @@ class Unlocks:
 	# Docstring: Loops
 
 	Mazes: Unlock
-	# Docstring: Mazes
+	# Docstring: Mazes (Unlock)
 
 	Megafarm: Unlock
 	# Docstring: Megafarm
@@ -73,7 +73,7 @@ class Unlocks:
 	# Docstring: Polyculture
 
 	Pumpkins: Unlock
-	# Docstring: Pumpkins
+	# Docstring: Pumpkins (Unlock)
 
 	Senses: Unlock
 	# Docstring: Senses
@@ -85,7 +85,7 @@ class Unlocks:
 	# Docstring: Speed
 
 	Sunflowers: Unlock
-	# Docstring: Sunflowers
+	# Docstring: Sunflowers (Unlock)
 
 	The_Farmers_Remains: Unlock
 	# Docstring: The_Farmers_Remains
@@ -97,7 +97,7 @@ class Unlocks:
 	# Docstring: Top_Hat
 
 	Trees: Unlock
-	# Docstring: Trees
+	# Docstring: Trees (Unlock)
 
 	Utilities: Unlock
 	# Docstring: Utilities
