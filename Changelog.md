@@ -1,7 +1,7 @@
 # Mar/24 Update 1
 
 - Improved `simulate` typing and documentation in Minimal
-- Corrected tick cost calculation and example errors for remove and list.remove in Minimal
+- Corrected tick cost calculation and example errors for `remove` and `list.remove` in Minimal
 - Fixed tagging for enums to help avoid possible conflicts with names and to future proof conflicts a bit in Minimal
 
 # Mar 8/26 Update 1
