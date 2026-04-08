@@ -11,6 +11,6 @@ def pet_the_piggy() -> None:
 
 
 # --------------------------------------------------
-def leaderboard_run(leaderboard: Leaderboard, file_name: _str, speedup: _float) -> None:
+def leaderboard_run(leaderboard: Leaderboard, file_name: string, speedup: _float) -> None:
 	# Docstring: leaderboard_run
 	...

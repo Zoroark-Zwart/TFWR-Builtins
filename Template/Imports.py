@@ -1,21 +1,29 @@
-from typing import Self, Any as _Any, overload
-from collections.abc import Iterable, Callable
-from builtins import (bool as _bool, int as _int, float as _float, str as _str,
-					  range as _range,
-					  tuple as _tuple, list as _list, set as _set, dict as _dict)
+# Expose some useful types to allow for typing without using a typing import.
+# Typing imports would fail to run in-game as they are not ignored.
 
-type Any = (
-    _bool | _int | _float | _str | _range | # Python builtin    - basic types
+# Notes on aliases because of TFWR functions:
+# - string -> builtins.str
+# - range_class -> builtins.range
 
-	_tuple[Any] | _list[Any] |				# Python builtin    - collection types
-    _set[Any] | _dict[Any, Any] |
+from typing import Self, TypeVar, Literal, Final, overload
+from collections.abc import Callable, Iterable, Sequence, Container
 
-	Direction | Entity | Entities | 		# Game builtins		- enum classes
-    Ground | Grounds | Hat | Hats |
-    Item | Items | Leaderboard |
-    Leaderboards | Unlock | Unlocks |
+from builtins import (
+    bool, int, float, str as string,
+    range as range_class,
+    tuple,
 
-	Drone |									# Game builtins		- megafarm classes
-
-    None									# Python builtin	- None
+    # If you uncomment the custom classes found below then
+    # comment this line to prevent conflicts
+    list, set, dict
 )
+
+# Used for when the builtin type is desirable over a possible
+# redefinition using the same name
+from builtins import (
+    bool as _bool, int as _int, float as _float,
+    tuple as _tuple, list as _list, set as _set, dict as _dict
+)
+
+from typing import Any as _Any
+from enum import Enum as _Enum, auto as _auto

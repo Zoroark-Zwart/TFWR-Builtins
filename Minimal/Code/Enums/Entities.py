@@ -5,39 +5,43 @@ class Entity:
 
 
 # --------------------------------------------------
-class Entities:
-	Apple: Entity
+class Entities(_Enum):
+	@staticmethod
+	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Entity:
+		return Entity()
+
+	Apple = _auto()
 	# Docstring: Apple (Entities)
 
-	Bush: Entity
+	Bush = _auto()
 	# Docstring: Bush (Entities)
 
-	Cactus: Entity
+	Cactus = _auto()
 	# Docstring: Cactus (Entities)
 
-	Carrot: Entity
+	Carrot = _auto()
 	# Docstring: Carrot (Entities)
 
-	Dead_Pumpkin: Entity
+	Dead_Pumpkin = _auto()
 	# Docstring: Dead_Pumpkin
 
-	Dinosaur: Entity
+	Dinosaur = _auto()
 	# Docstring: Dinosaur (Entities)
 
-	Grass: Entity
+	Grass = _auto()
 	# Docstring: Grass (Entities)
 
-	Hedge: Entity
+	Hedge = _auto()
 	# Docstring: Hedge
 
-	Pumpkin: Entity
+	Pumpkin = _auto()
 	# Docstring: Pumpkin (Entities)
 
-	Sunflower: Entity
+	Sunflower = _auto()
 	# Docstring: Sunflower (Entities)
 
-	Treasure: Entity
+	Treasure = _auto()
 	# Docstring: Treasure (Entities)
 
-	Tree: Entity
+	Tree = _auto()
 	# Docstring: Tree (Entities)

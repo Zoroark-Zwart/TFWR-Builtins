@@ -1,3 +1,16 @@
+# Apr/07 Update 1
+
+- Made custom classes optional as they can cause conflicts when using `[]` to initialize an empty list, `{}` to initialize a dict, and when trying to initialize with list, dict, and set literals. Added some comments to note why these classes are there.
+- Added a comment explaining the method-as-function section
+- Added new custom types for Primitives, Any and Hashable with comments explaining them
+- Added some type safety Sequence and Container to functions that accept a list, set, dict, or tuple for type checkers that may complain about collections of the custom types.
+- Created a type alias for str -> string and range -> range_class to allow type hints where those types are shadowed by in-game functions
+- Added notes about these aliases in the game function docstring
+- Changed the dict in `get_cost` to use the type alias `_dict` instead of the potential custom class `dict` for compatibility
+- Changed parameter types for `print` and `quick_print` to `_Any` (builtins.Any from Python) to handle possible unknown typings and very complex unknowable types.
+- Changed from using Sequence and Container to using covariant type vars in functions that a list, dict, or set of Any or Hashable
+- Changed builtin enums to use Python's enum.Enum class for better iteration
+
 # Mar/24 Update 1
 
 - Improved `simulate` typing and documentation in Minimal

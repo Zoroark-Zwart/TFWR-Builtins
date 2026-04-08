@@ -6,38 +6,42 @@ class Item:
 
 # --------------------------------------------------
 class Items:
-    Bone: Item
+    @staticmethod
+    def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Item:
+        return Item()
+
+    Bone = _auto()
     # Docstring: Bone (Items)
 
-    Cactus: Item
+    Cactus = _auto()
     # Docstring: Cactus (Items)
 
-    Carrot: Item
+    Carrot = _auto()
     # Docstring: Carrot (Items)
 
-    Fertilizer: Item
+    Fertilizer = _auto()
     # Docstring: Fertilizer (Items)
 
-    Gold: Item
+    Gold = _auto()
     # Docstring: Gold (Items)
 
-    Hay: Item
+    Hay = _auto()
     # Docstring: Hay (Items)
 
-    Piggy: Item
+    Piggy = _auto()
     # Docstring: Piggy (Items)
 
-    Power: Item
+    Power = _auto()
     # Docstring: Power (Items)
 
-    Pumpkin: Item
+    Pumpkin = _auto()
     # Docstring: Pumpkin (Items)
 
-    Water: Item
+    Water = _auto()
     # Docstring: Water (Items)
 
-    Weird_Substance: Item
+    Weird_Substance = _auto()
     # Docstring: Weird_Substance (Items)
 
-    Wood: Item
+    Wood = _auto()
     # Docstring: Wood (Items)

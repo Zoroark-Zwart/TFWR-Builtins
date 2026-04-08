@@ -1,3 +1,68 @@
+# Primitive
+
+Basic immutable types in TFWR.
+
+included:
+
+- `bool`
+- `int`
+- `float`
+- `string`
+- `None`
+
+# Enums
+
+Type representing all available enums in TFWR.
+
+included:
+
+- `Direction` (`North`, `East`, `South`, `West`)
+- `Hat`, `Entity`, `Item`, `Ground`, `Leaderboard`, `Unlock`
+- `Hats`, `Entities`, `Items`, `Grounds`, `Leaderboards`, `Unlocks`
+
+# Hashable
+
+Type representing all of the useable types for a dict key or set element in TFWR.
+
+included:
+
+- Primitives: `bool`, `int`, `float`, `string`, `None`
+- `tuple` and tuples of tuples that use a `Hashable`
+- `range_class`, `function` (hinted as `Callable`)
+- `Drone` (from `spawn_drone`)
+- Enums:
+  - `Direction` (`North`, `East`, `South`, `West`)
+  - `Hat`, `Entity`, `Item`, `Ground`, `Leaderboard`, `Unlock`
+  - `Hats`, `Entities`, `Items`, `Grounds`, `Leaderboards`, `Unlocks`
+
+# Any
+
+Type representing all of the useable types in TFWR.
+
+included:
+
+- Primitives: `bool`, `int`, `float`, `string`, `None`
+- `tuple`, `list`, `dict`, `set`
+- `range_class`, `module`, `function` (hinted as `Callable`)
+- `Drone` (from `spawn_drone`)
+- Enums:
+  - `Direction` (`North`, `East`, `South`, `West`)
+  - `Hat`, `Entity`, `Item`, `Ground`, `Leaderboard`, `Unlock`
+  - `Hats`, `Entities`, `Items`, `Grounds`, `Leaderboards`, `Unlocks`
+
+# AnyIterable
+
+Type representing all of the iterable types in TFWR.
+
+included:
+
+- `tuple`, `list`, `dict`, `set`
+- `string`, `range_class`
+- Enums:
+  - `Direction` (`North`, `East`, `South`, `West`)
+  - `Hat`, `Entity`, `Item`, `Ground`, `Leaderboard`, `Unlock`
+  - `Hats`, `Entities`, `Items`, `Grounds`, `Leaderboards`, `Unlocks`
+
 # dict
 
 Builds an unordered collection of key-value pairs

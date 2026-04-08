@@ -2,11 +2,11 @@ import BuiltinsBuilder
 
 BuiltinsManager: BuiltinsBuilder.Manager = BuiltinsBuilder.Manager("__builtins__minimal", "Minimal")
 
-BuiltinsManager.AddGroupingCode("Enums")
-BuiltinsManager.AddGroupingDocstring("Enums")
-
 BuiltinsManager.AddGroupingCode("Types")
 BuiltinsManager.AddGroupingDocstring("Types")
+
+BuiltinsManager.AddGroupingCode("Enums")
+BuiltinsManager.AddGroupingDocstring("Enums")
 
 BuiltinsManager.AddGroupingCode("Crops")
 BuiltinsManager.AddGroupingDocstring("Crops")

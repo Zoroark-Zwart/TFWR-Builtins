@@ -1,10 +1,10 @@
 # -------------------------------------------------------------------------------
-def print(*something: Any) -> None:
+def print(*something: _Any) -> None:
 	# Docstring: print
 	...
 
 
 # --------------------------------------------------
-def quick_print(*something: Any) -> None:
+def quick_print(*something: _Any) -> None:
 	# Docstring: quick_print
 	...

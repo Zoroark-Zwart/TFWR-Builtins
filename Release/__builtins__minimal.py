@@ -3,689 +3,146 @@
 
 # Contributed by @Noon, @KlingonDragon, @dieckie, @Flekay and @Zoroark-Zwart on the TFWR Discord server.
 
-from typing import Self, Any as _Any, overload
-from collections.abc import Iterable, Callable
-from builtins import (bool as _bool, int as _int, float as _float, str as _str,
-					  range as _range,
-					  tuple as _tuple, list as _list, set as _set, dict as _dict)
+# Expose some useful types to allow for typing without using a typing import.
+# Typing imports would fail to run in-game as they are not ignored.
 
-type Any = (
-    _bool | _int | _float | _str | _range | # Python builtin    - basic types
+# Notes on aliases because of TFWR functions:
+# - string -> builtins.str
+# - range_class -> builtins.range
 
-	_tuple[Any] | _list[Any] |				# Python builtin    - collection types
-    _set[Any] | _dict[Any, Any] |
+from typing import Self, TypeVar, Literal, Final, overload
+from collections.abc import Callable, Iterable, Sequence, Container
 
-	Direction | Entity | Entities | 		# Game builtins		- enum classes
-    Ground | Grounds | Hat | Hats |
-    Item | Items | Leaderboard |
-    Leaderboards | Unlock | Unlocks |
+from builtins import (
+    bool, int, float, str as string,
+    range as range_class,
+    tuple,
 
-	Drone |									# Game builtins		- megafarm classes
-
-    None									# Python builtin	- None
+    # If you uncomment the custom classes found below then
+    # comment this line to prevent conflicts
+    list, set, dict
 )
 
-# -------------------------------------------------------------------------------
-# In-Game Enums
-# -------------------------------------------------------------------------------
-
-# -------------------------------------------------------------------------------
-class Direction:
-    """
-    A direction, e.g. North.
-    """
-    ...
-
-
-# --------------------------------------------------
-North = Direction()
-"""
-The direction north, i.e. up.
-"""
-
-East = Direction()
-"""
-The direction east, i.e. right.
-"""
-
-South = Direction()
-"""
-The direction south, i.e. down.
-"""
-
-West = Direction()
-"""
-The direction west, i.e. left.
-"""
-
-
-# -------------------------------------------------------------------------------
-class Entity:
-	"""
-	A member of the Entities class
-	"""
-	...
-
-
-# --------------------------------------------------
-class Entities:
-	Apple: Entity
-	"""
-	Dinosaurs love them apparently.
-	"""
-
-	Bush: Entity
-	"""
-	A small bush that drops `Items.Wood`.
-	
-	Average seconds to grow: 4
-	Grows on: grassland or soil
-	"""
-
-	Cactus: Entity
-	"""
-	Cacti come in 10 different sizes (0-9). When harvested, adjacent cacti that are in sorted order will also be harvested recursively.
-	You receive cactus equal to the number of harvested cacti squared.
-	
-	Average seconds to grow: 1
-	Grows on: soil
-	"""
-
-	Carrot: Entity
-	"""
-	Carrots!
-	
-	Average seconds to grow: 6
-	Grows on: soil
-	"""
-
-	Dead_Pumpkin: Entity
-	"""
-	One in five pumpkins dies when it grows up, leaving behind a dead pumpkin. Dead pumpkins are useless and disappear when something new is planted.
-	`can_harvest()` always returns `False` on dead pumpkins.
-	"""
-
-	Dinosaur: Entity
-	"""
-	A piece of the tail of the dinosaur hat. When wearing the dinosaur hat, the tail is dragged behind the drone filling previously moved tiles.
-	
-	Average seconds to grow: 0.2
-	Grows on: grassland or soil
-	"""
-
-	Grass: Entity
-	"""
-	Grows automatically on grassland. Harvest it to obtain `Items.Hay`.
-	
-	Average seconds to grow: 0.5
-	Grows on: grassland or soil
-	"""
-
-	Hedge: Entity
-	"""
-	Part of the maze.
-	"""
-
-	Pumpkin: Entity
-	"""
-	Pumpkins grow together when they are next to other fully grown pumpkins. About 1 in 5 pumpkins dies when it grows up.
-	When you harvest a pumpkin you get `Items.Pumpkin` equal to the number of pumpkins in the mega pumpkin cubed.
-	
-	Average seconds to grow: 2
-	Grows on: soil
-	"""
-
-	Sunflower: Entity
-	"""
-	Sunflowers collect the power from the sun. Harvesting them will give you `Items.Power`.
-	If you harvest a sunflower with the maximum number of petals (and there are at least 10 sunflowers) you get 5x bonus power.
-	
-	Average seconds to grow: 5
-	Grows on: soil
-	"""
-
-	Treasure: Entity
-	"""
-	A treasure that contains gold equal to the side length of the maze in which it is hidden. It can be harvested like a plant.
-	"""
-
-	Tree: Entity
-	"""
-	Trees drop more wood than bushes. They take longer to grow if other trees grow next to them.
-	
-	Average seconds to grow: 7
-	Grows on: grassland or soil
-	"""
-
-
-# -------------------------------------------------------------------------------
-class Ground:
-	"""
-	A member of the Grounds class
-	"""
-	...
-
-
-# --------------------------------------------------
-class Grounds:
-	Grassland: Ground
-	"""
-	The default ground. Grass will automatically grow on it.
-	"""
-
-	Soil: Ground
-	"""
-	Calling `till()` turns the ground into this. Calling `till()` again changes it back to grassland.
-	"""
-
-
-# -------------------------------------------------------------------------------
-class Hat:
-	"""
-	A member of the Hats class
-	"""
-	...
-
-
-# --------------------------------------------------
-class Hats:
-	Brown_Hat: Hat
-	"""
-	A brown hat.
-	"""
-
-	Cactus_Hat: Hat
-	"""
-	A hat shaped like a cactus.
-	"""
-
-	Carrot_Hat: Hat
-	"""
-	A hat shaped like a carrot.
-	"""
-
-	Dinosaur_Hat: Hat
-	"""
-	Equip it to start the dinosaur game.
-	"""
-
-	Gold_Hat: Hat
-	"""
-	A golden hat.
-	"""
-
-	Gold_Trophy_Hat: Hat
-	"""
-	A golden trophy hat.
-	"""
-
-	Golden_Cactus_Hat: Hat
-	"""
-	A golden hat shaped like a cactus.
-	"""
-
-	Golden_Carrot_Hat: Hat
-	"""
-	A golden hat shaped like a carrot.
-	"""
-
-	Golden_Gold_Hat: Hat
-	"""
-	A golden version of the gold hat.
-	"""
-
-	Golden_Pumpkin_Hat: Hat
-	"""
-	A golden hat shaped like a pumpkin.
-	"""
-
-	Golden_Sunflower_Hat: Hat
-	"""
-	A golden hat shaped like a sunflower.
-	"""
-
-	Golden_Tree_Hat: Hat
-	"""
-	A golden hat shaped like a tree.
-	"""
-
-	Gray_Hat: Hat
-	"""
-	A gray hat.
-	"""
-
-	Green_Hat: Hat
-	"""
-	A green hat.
-	"""
-
-	Pumpkin_Hat: Hat
-	"""
-	A hat shaped like a pumpkin.
-	"""
-
-	Purple_Hat: Hat
-	"""
-	A purple hat.
-	"""
-
-	Silver_Trophy_Hat: Hat
-	"""
-	A silver trophy hat.
-	"""
-
-	Straw_Hat: Hat
-	"""
-	The default hat.
-	"""
-
-	Sunflower_Hat: Hat
-	"""
-	A hat shaped like a sunflower.
-	"""
-
-	The_Farmers_Remains: Hat
-	"""
-	Unlocks the special hat 'The Farmers Remains'.
-	"""
-
-	Top_Hat: Hat
-	"""
-	Unlocks the fancy Top Hat.
-	"""
-
-	Traffic_Cone: Hat
-	"""
-	A traffic cone hat.
-	"""
-
-	Traffic_Cone_Stack: Hat
-	"""
-	A stack of traffic cones as a hat.
-	"""
-
-	Tree_Hat: Hat
-	"""
-	A hat shaped like a tree.
-	"""
-
-	Wizard_Hat: Hat
-	"""
-	A magical wizard hat.
-	"""
-
-	Wood_Trophy_Hat: Hat
-	"""
-	A wooden trophy hat.
-	"""
-
-
-# -------------------------------------------------------------------------------
-class Item:
-    """
-    A member of the Items Class
-    """
-    ...
-
-
-# --------------------------------------------------
-class Items:
-    Bone: Item
-    """
-    The bones of an ancient creature.
-    """
-
-    Cactus: Item
-    """
-    Obtained by harvesting sorted cacti.
-    """
-
-    Carrot: Item
-    """
-    Obtained by harvesting carrots.
-    """
-
-    Fertilizer: Item
-    """
-    Call `use_item(Items.Fertilizer)` to instantly remove 2s from the plants remaining grow time.
-    """
-
-    Gold: Item
-    """
-    Found in treasure chests in mazes.
-    """
-
-    Hay: Item
-    """
-    Obtained by cutting grass.
-    """
-
-    Piggy: Item
-    """
-    This item has been removed from the game but remains as a nostalgia trophy.
-    """
-
-    Power: Item
-    """
-    Obtained by harvesting sunflowers. The drone automatically uses this to move twice as fast.
-    """
-
-    Pumpkin: Item
-    """
-    Obtained by harvesting pumpkins.
-    """
-
-    Water: Item
-    """
-    Used to water the ground by calling `use_item(Items.Water)`.
-    """
-
-    Weird_Substance: Item
-    """
-    Call `use_item(Items.Weird_Substance)` on a bush to grow a maze, or on other plants to toggle their infection status.
-    """
-
-    Wood: Item
-    """
-    Obtained from bushes and trees.
-    """
-
-
-# -------------------------------------------------------------------------------
-class Leaderboard:
-	"""
-	A member of the Leaderboards class
-	"""
-	...
-
-
-# --------------------------------------------------
-class Leaderboards:
-	Cactus: Leaderboard
-	"""
-	Farm 33_554_432 cacti with multiple drones.
-	"""
-
-	Cactus_Single: Leaderboard
-	"""
-	Farm 131_072_cacti with a single drone on an 8x8 farm.
-	"""
-
-	Carrots: Leaderboard
-	"""
-	Farm 2_000_000_000 carrots with multiple drones.
-	"""
-
-	Carrots_Single: Leaderboard
-	"""
-	Farm 100_000_000 carrots with a single drone on an 8x8 farm.
-	"""
-
-	Dinosaur: Leaderboard
-	"""
-	Farm 33_488_928 bones with multiple drones.
-	"""
-
-	Fastest_Reset: Leaderboard
-	"""
-	The most prestigious category. Completely automate the game from a single farm plot to unlocking the leaderboards again.
-	"""
-
-	Hay: Leaderboard
-	"""
-	Farm 2_000_000_000 hay with multiple drones.
-	"""
-
-	Hay_Single: Leaderboard
-	"""
-	Farm 100_000_000 hay with a single drone on an 8x8 farm.
-	"""
-
-	Maze: Leaderboard
-	"""
-	Farm 9_863_168_gold with multiple drones.
-	"""
-
-	Maze_Single: Leaderboard
-	"""
-	Farm 616_448 gold with a single drone on an 8x8 farm.
-	"""
-
-	Pumpkins: Leaderboard
-	"""
-	Farm 200_000_000 pumpkins with multiple drones.
-	"""
-
-	Pumpkins_Single: Leaderboard
-	"""
-	Farm 10_000_000 pumpkins with a single drone on an 8x8 farm.
-	"""
-
-	Sunflowers: Leaderboard
-	"""
-	Farm 100_000 power with multiple drones.
-	"""
-
-	Sunflowers_Single: Leaderboard
-	"""
-	Farm 10_000 power with a single drone on an 8x8 farm.
-	"""
-
-	Wood: Leaderboard
-	"""
-	Farm 10_000_000_000 wood with multiple drones.
-	"""
-
-	Wood_Single: Leaderboard
-	"""
-	Farm 500_000_000 wood with a single drone on an 8x8 farm.
-	"""
-
-
-# -------------------------------------------------------------------------------
-class Unlock:
-	"""
-	A member of the Unlocks class
-	"""
-	...
-
-
-# --------------------------------------------------
-class Unlocks:
-	Auto_Unlock: Unlock
-	"""
-	Automatically unlock things.
-	"""
-
-	Cactus: Unlock
-	"""
-	Unlock: Cactus!
-	Upgrade: Increases the yield and cost of cactus.
-	"""
-
-	Carrots: Unlock
-	"""
-	Unlock: Till the soil and plant carrots.
-	Upgrade: Increases the yield and cost of carrots.
-	"""
-
-	Costs: Unlock
-	"""
-	Allows access to the cost of things.
-	"""
-
-	Debug: Unlock
-	"""
-	Tools to help with debugging programs.
-	"""
-
-	Debug_2: Unlock
-	"""
-	Functions to temporarily slow down the execution and make the grid smaller.
-	"""
-
-	Dictionaries: Unlock
-	"""
-	Get access to dictionaries and sets.
-	"""
-
-	Dinosaurs: Unlock
-	"""
-	Unlock: Majestic ancient creatures.
-	Upgrade: Increases the yield and cost of dinosaurs.
-	"""
-
-	Expand: Unlock
-	"""
-	Unlock: Expands the farm land and unlocks movement.
-	Upgrade: Expands the farm. This also clears the farm.
-	"""
-
-	Fertilizer: Unlock
-	"""
-	Reduces the remaining growing time of the plant under the drone by 2 seconds.
-	"""
-
-	Functions: Unlock
-	"""
-	Define your own functions.
-	"""
-
-	Grass: Unlock
-	"""
-	Increases the yield of grass.
-	"""
-
-	Hats: Unlock
-	"""
-	Unlocks new hat colors for your drone.
-	"""
-
-	Import: Unlock
-	"""
-	Import code from other files.
-	"""
-
-	Leaderboard: Unlock
-	"""
-	Join the leaderboard for the fastest time in farming a specific crop or for the fastest reset of the farm.
-	"""
-
-	Lists: Unlock
-	"""
-	Use lists to store lots of values.
-	"""
-
-	Loops: Unlock
-	"""
-	Unlocks a simple while loop.
-	"""
-
-	Mazes: Unlock
-	"""
-	Unlock: A maze with a treasure in the middle.
-	Upgrade: Increases the gold in treasure chests.
-	"""
-
-	Megafarm: Unlock
-	"""
-	Unlocks multiple drones and drone management functions.
-	"""
-
-	Operators: Unlock
-	"""
-	Arithmetic, comparison and logic operators.
-	"""
-
-	Plant: Unlock
-	"""
-	Unlocks planting.
-	"""
-
-	Polyculture: Unlock
-	"""
-	Use companion planting to increase the yield.
-	"""
-
-	Pumpkins: Unlock
-	"""
-	Unlock: Pumpkins!
-	Upgrade: Increases the yield and cost of pumpkins.
-	"""
-
-	Senses: Unlock
-	"""
-	The drone can see what's under it and where it is.
-	"""
-
-	Simulation: Unlock
-	"""
-	Unlocks simulation functions for testing and optimization.
-	"""
-
-	Speed: Unlock
-	"""
-	Increases the speed of the drone.
-	"""
-
-	Sunflowers: Unlock
-	"""
-	Unlock: Sunflowers and Power.
-	Upgrade: Increases the power gained from sunflowers.
-	"""
-
-	The_Farmers_Remains: Unlock
-	"""
-	Unlocks the special hat 'The Farmers Remains'.
-	"""
-
-	Timing: Unlock
-	"""
-	Functions to help measure performance.
-	"""
-
-	Top_Hat: Unlock
-	"""
-	Unlocks the fancy Top Hat.
-	"""
-
-	Trees: Unlock
-	"""
-	Unlocks trees.
-	Upgrade: Increases the yield of bushes and trees.
-	"""
-
-	Utilities: Unlock
-	"""
-	Unlocks the `min()`, `max()` and `abs()` functions.
-	"""
-
-	Variables: Unlock
-	"""
-	Assign values to variables.
-	"""
-
-	Watering: Unlock
-	"""
-	Water the plants to make them grow faster.
-	"""
-
-
-
-
+# Used for when the builtin type is desirable over a possible
+# redefinition using the same name
+from builtins import (
+    bool as _bool, int as _int, float as _float,
+    tuple as _tuple, list as _list, set as _set, dict as _dict
+)
+
+from typing import Any as _Any
+from enum import Enum as _Enum, auto as _auto
 
 # -------------------------------------------------------------------------------
 # Basic Types and Collections
 # -------------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------------
-type AnyIterable = (
-	_dict[_Any, _Any] | _list[_Any] | _set[_Any] | _tuple[_Any] | _str |
-	Entities | Grounds | Hats | Items | Leaderboard | Unlocks
-)
+"""
+Basic immutable types in TFWR.
+
+included:
+
+- `bool`
+- `int`
+- `float`
+- `string`
+- `None`
+"""
+type Primitive = _bool | _int | _float | string | None
 
 # --------------------------------------------------
-class dict[key: Any, value: Any](_dict):
+type Enums = (
+	Direction | Entity | Entities |
+    Ground | Grounds | Hat | Hats |
+    Item | Items | Leaderboard |
+    Leaderboards | Unlock | Unlocks
+)
+"""
+Type representing all available enums in TFWR.
+
+included:
+
+- `Direction` (`North`, `East`, `South`, `West`)
+- `Hat`, `Entity`, `Item`, `Ground`, `Leaderboard`, `Unlock`
+- `Hats`, `Entities`, `Items`, `Grounds`, `Leaderboards`, `Unlocks`
+"""
+
+# --------------------------------------------------
+type Hashable = Primitive | Enums | range_class | Drone | tuple[Hashable, ...]
+"""
+Type representing all of the useable types for a dict key or set element in TFWR.
+
+included:
+
+- Primitives: `bool`, `int`, `float`, `string`, `None`
+- `tuple` and tuples of tuples that use a `Hashable`
+- `range_class`, `function` (hinted as `Callable`)
+- `Drone` (from `spawn_drone`)
+- Enums:
+  - `Direction` (`North`, `East`, `South`, `West`)
+  - `Hat`, `Entity`, `Item`, `Ground`, `Leaderboard`, `Unlock`
+  - `Hats`, `Entities`, `Items`, `Grounds`, `Leaderboards`, `Unlocks`
+"""
+
+_Hashable_ = TypeVar("_Hashable_", Hashable, Hashable, covariant = True)
+
+# --------------------------------------------------
+type Any = (
+    Primitive | 								# Python builtin    - basic types
+
+	range_class | Callable[..., Any] |			# Python builtin    - functions / modules
+
+	_tuple[Any,...] | _list[Any] |				# Python builtin    - collection types
+    _set[Hashable] | _dict[Hashable, Any] |
+
+	Enums | 									# Game builtins		- enum classes
+
+	Drone										# Game builtins		- megafarm classes
+)
+"""
+Type representing all of the useable types in TFWR.
+
+included:
+
+- Primitives: `bool`, `int`, `float`, `string`, `None`
+- `tuple`, `list`, `dict`, `set`
+- `range_class`, `module`, `function` (hinted as `Callable`)
+- `Drone` (from `spawn_drone`)
+- Enums:
+  - `Direction` (`North`, `East`, `South`, `West`)
+  - `Hat`, `Entity`, `Item`, `Ground`, `Leaderboard`, `Unlock`
+  - `Hats`, `Entities`, `Items`, `Grounds`, `Leaderboards`, `Unlocks`
+"""
+
+_Any_ = TypeVar("_Any_", Any, Any, covariant = True)
+
+# --------------------------------------------------
+type AnyIterable = (
+	_dict[Hashable, Any] | _list[Any] | _set[Hashable] | _tuple[Any,...] |
+	string | range_class |
+	Entities | Grounds | Hats | Items | Leaderboard | Unlocks
+)
+"""
+Type representing all of the iterable types in TFWR.
+
+included:
+
+- `tuple`, `list`, `dict`, `set`
+- `string`, `range_class`
+- Enums:
+  - `Direction` (`North`, `East`, `South`, `West`)
+  - `Hat`, `Entity`, `Item`, `Ground`, `Leaderboard`, `Unlock`
+  - `Hats`, `Entities`, `Items`, `Grounds`, `Leaderboards`, `Unlocks`
+"""
+
+# --------------------------------------------------
+# Uncomment this class if you want additional game-specific type hints and docstrings for `dict` methods
+# This class requires the use of of the `dict()` constructor. Assigning `dict` literals (ex. `{'1':1, '1':2, '1':3}`) will cause typing conflicts with the builtin Python type `builtins.dict`
+
+# Comment out the `dict` builtins import above to prevent conflict errors.
+
+class dict[key: Hashable, value: Any](_dict):
 	"""
 	Builds an unordered collection of key-value pairs
 	
@@ -697,7 +154,7 @@ class dict[key: Any, value: Any](_dict):
 	takes `1` tick to execute if no input is given.
 	"""
 
-	def __init__(self: Self, input: dict[Any, Any] | None = None) -> None:
+	def __init__(self: Self, input: _dict[_Hashable_, _Any_] | None | Container[Hashable] = None) -> None:
 		...
 
 	def len(self: Self) -> _int:
@@ -724,7 +181,7 @@ class dict[key: Any, value: Any](_dict):
 		"""
 		...
 
-	def pop(self: Self, key: Any) -> Any: # type: ignore
+	def pop(self: Self, key: Hashable) -> Any: # type: ignore
 		"""
 		Remove the key-value pair corresponding to the `key` in the dict
 		
@@ -752,7 +209,12 @@ class dict[key: Any, value: Any](_dict):
 
 
 # --------------------------------------------------
-class list[index: Any](_list):
+# Uncomment this class if you want additional game-specific type hints and docstrings for `list` methods
+# This class requires the use of of the `list()` constructor. Assigning `list` literals (ex. `[1, 2, 3]`) will cause typing conflicts with the builtin Python type `builtins.list`
+
+# Comment out the `list` builtins import above to prevent conflict errors.
+
+class list[value: Any](_list):
 	"""
 	Builds an ordered sequence of values.
 	
@@ -890,7 +352,12 @@ class list[index: Any](_list):
 
 
 # --------------------------------------------------
-class set[key: Any](_set):
+# Uncomment this class if you want additional game-specific type hints and docstrings for `set` methods
+# This class requires the use of of the `set()` constructor. Assigning set literals (ex. `{1, 2, 3}`) will cause typing conflicts with the builtin Python type `builtins.set`
+
+# Comment out the `set` builtins import above to prevent conflict errors.
+
+class set[value: Hashable](_set):
 	"""
 	Builds an unordered collection of elements
 	
@@ -979,7 +446,114 @@ class set[key: Any](_set):
 	...
 
 # -------------------------------------------------------------------------------
-def add(given_set: _set[Any], object: Any):
+@overload
+def range(stop: _float) -> range_class:  # type: ignore
+	"""
+	Returns a sequence of numbers from `0` (inclusive) to `stop` (exclusive).
+	
+	returns a range object.
+	
+	takes `1` tick to execute.
+	
+	example usage:
+	
+	```
+	for i in range(5):
+	    print(i)
+	```
+	
+	Output:
+	
+	```
+	0
+	1
+	2
+	3
+	4
+	```
+	
+	Note: if you wish to type hint a `range` variable use the alias `range_class` instead
+	"""
+	...
+
+@overload
+def range(start: _float, stop: _float) -> range_class:  # type: ignore
+	"""
+	Returns a sequence of numbers from `start` (inclusive) to `stop` (exclusive).
+	
+	returns a range object.
+	
+	takes `1` tick to execute.
+	
+	example usage:
+	
+	```
+	for i in range(2, 5):
+	    print(i)
+	```
+	
+	Output:
+	
+	```
+	2
+	3
+	4
+	```
+	
+	Note: if you wish to type hint a `range` variable use the alias `range_class` instead
+	"""
+	...
+
+@overload
+def range(start: _float, stop: _float, step: _float) -> range_class:  # type: ignore
+	"""
+	Returns a sequence of numbers from `start` (inclusive) to `stop` (exclusive) every `step` interval.
+	
+	returns a range object.
+	
+	takes `1` tick to execute.
+	
+	example usage:
+	
+	```
+	for i in range(2, 5, 2):
+	    print(i)
+	```
+	
+	Output:
+	
+	```
+	2
+	4
+	```
+	
+	Note: if you wish to type hint a `range` variable use the alias `range_class` instead
+	"""
+	...
+
+# --------------------------------------------------
+"""
+The following definitions are functions that mirror the methods that `lists`, `sets`, and `dicts` have. These definitions can be used as both a method and a function in TFWR.
+
+example usage (method):
+
+```
+list_numbers = [1, 2, 3]
+last_number = list_numbers.pop()
+print(last_number)
+```
+
+example usage (function):
+
+```
+list_numbers = [1, 2, 3]
+last_number = pop(list_numbers)
+print(last_number)
+```
+"""
+
+# --------------------------------------------------
+def add(given_set: _set[_Hashable_], object: Any):
 	"""
 	Add the `object` to a `given_set`.
 	
@@ -1002,7 +576,7 @@ def add(given_set: _set[Any], object: Any):
 	...
 
 # --------------------------------------------------
-def append(given_list: _list[Any], object: Any):
+def append(given_list: _list[_Any_], object: Any):
 	"""
 	Add `object` to the end of a list provided as `given_list`.
 	
@@ -1025,7 +599,7 @@ def append(given_list: _list[Any], object: Any):
 	...
 
 # --------------------------------------------------
-def insert(given_list: _list[Any], index: _int, object: Any):
+def insert(given_list: _list[_Any_], index: _int, object: Any):
 	"""
 	Add a `object` to the specified `index` to a list provided as `given_list`.
 	
@@ -1048,7 +622,7 @@ def insert(given_list: _list[Any], index: _int, object: Any):
 	...
 
 # --------------------------------------------------
-def len(object : _str | _dict[Any, Any] | _list[Any] | _set[Any] | _tuple[Any]) -> _int:
+def len(object : string | _dict[_Hashable_, _Any_] | _list[_Any_] | _set[_Hashable_] | _tuple[_Any_]) -> _int:
 	"""
 	Returns the number of items in the dict, list, set or str provided as `collection`.
 	
@@ -1073,7 +647,7 @@ def len(object : _str | _dict[Any, Any] | _list[Any] | _set[Any] | _tuple[Any]) 
 	...
 
 # --------------------------------------------------
-def pop(collection: _dict[Any, Any] | _list[Any], object: Any):
+def pop(collection: _dict[_Hashable_, _Any_] | _list[_Any_], object: Any):
 	"""
 	Remove the element corresponding to the `key` in a dict or list provided as `collection`. If it is a list and no `key` is specified removes the last element in the list.
 	
@@ -1100,87 +674,7 @@ def pop(collection: _dict[Any, Any] | _list[Any], object: Any):
 	...
 
 # --------------------------------------------------
-@overload
-def range(stop: _float) -> _range:  # type: ignore
-	"""
-	Returns a sequence of numbers from `0` (inclusive) to `stop` (exclusive).
-	
-	returns a range object.
-	
-	takes `1` tick to execute.
-	
-	example usage:
-	
-	```
-	for i in range(5):
-	    print(i)
-	```
-	
-	Output:
-	
-	```
-	0
-	1
-	2
-	3
-	4
-	```
-	"""
-	...
-
-@overload
-def range(start: _float, stop: _float) -> _range:  # type: ignore
-	"""
-	Returns a sequence of numbers from `start` (inclusive) to `stop` (exclusive).
-	
-	returns a range object.
-	
-	takes `1` tick to execute.
-	
-	example usage:
-	
-	```
-	for i in range(2, 5):
-	    print(i)
-	```
-	
-	Output:
-	
-	```
-	2
-	3
-	4
-	```
-	"""
-	...
-
-@overload
-def range(start: _float, stop: _float, step: _float) -> _range:  # type: ignore
-	"""
-	Returns a sequence of numbers from `start` (inclusive) to `stop` (exclusive) every `step` interval.
-	
-	returns a range object.
-	
-	takes `1` tick to execute.
-	
-	example usage:
-	
-	```
-	for i in range(2, 5, 2):
-	    print(i)
-	```
-	
-	Output:
-	
-	```
-	2
-	4
-	```
-	"""
-	...
-
-# --------------------------------------------------
-def remove(collection: _list[Any] | _set[Any], object: Any):
+def remove(collection: _list[_Any_] | _set[_Hashable_], object: Any):
 	"""
 	Remove the element corresponding to the `object` in a list or set provided as `collection`.
 	
@@ -1204,7 +698,7 @@ def remove(collection: _list[Any] | _set[Any], object: Any):
 	...
 
 # --------------------------------------------------
-def str(object: Any) -> _str:
+def str(object: Any) -> string:
 	"""
 	Converts an object to its string representation.
 	
@@ -1224,8 +718,683 @@ def str(object: Any) -> _str:
 	```
 	"1000"
 	```
+	
+	Note: if you wish to type hint a `str` variable use the alias `string` instead
 	"""
 	...
+
+
+
+
+# -------------------------------------------------------------------------------
+# In-Game Enums
+# -------------------------------------------------------------------------------
+
+# -------------------------------------------------------------------------------
+class Direction:
+    """
+    A direction, e.g. North.
+    """
+    ...
+
+
+# --------------------------------------------------
+North = Direction()
+"""
+The direction north, i.e. up.
+"""
+
+East = Direction()
+"""
+The direction east, i.e. right.
+"""
+
+South = Direction()
+"""
+The direction south, i.e. down.
+"""
+
+West = Direction()
+"""
+The direction west, i.e. left.
+"""
+
+
+# -------------------------------------------------------------------------------
+class Entity:
+	"""
+	A member of the Entities class
+	"""
+	...
+
+
+# --------------------------------------------------
+class Entities(_Enum):
+	@staticmethod
+	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Entity:
+		return Entity()
+
+	Apple = _auto()
+	"""
+	Dinosaurs love them apparently.
+	"""
+
+	Bush = _auto()
+	"""
+	A small bush that drops `Items.Wood`.
+	
+	Average seconds to grow: 4
+	Grows on: grassland or soil
+	"""
+
+	Cactus = _auto()
+	"""
+	Cacti come in 10 different sizes (0-9). When harvested, adjacent cacti that are in sorted order will also be harvested recursively.
+	You receive cactus equal to the number of harvested cacti squared.
+	
+	Average seconds to grow: 1
+	Grows on: soil
+	"""
+
+	Carrot = _auto()
+	"""
+	Carrots!
+	
+	Average seconds to grow: 6
+	Grows on: soil
+	"""
+
+	Dead_Pumpkin = _auto()
+	"""
+	One in five pumpkins dies when it grows up, leaving behind a dead pumpkin. Dead pumpkins are useless and disappear when something new is planted.
+	`can_harvest()` always returns `False` on dead pumpkins.
+	"""
+
+	Dinosaur = _auto()
+	"""
+	A piece of the tail of the dinosaur hat. When wearing the dinosaur hat, the tail is dragged behind the drone filling previously moved tiles.
+	
+	Average seconds to grow: 0.2
+	Grows on: grassland or soil
+	"""
+
+	Grass = _auto()
+	"""
+	Grows automatically on grassland. Harvest it to obtain `Items.Hay`.
+	
+	Average seconds to grow: 0.5
+	Grows on: grassland or soil
+	"""
+
+	Hedge = _auto()
+	"""
+	Part of the maze.
+	"""
+
+	Pumpkin = _auto()
+	"""
+	Pumpkins grow together when they are next to other fully grown pumpkins. About 1 in 5 pumpkins dies when it grows up.
+	When you harvest a pumpkin you get `Items.Pumpkin` equal to the number of pumpkins in the mega pumpkin cubed.
+	
+	Average seconds to grow: 2
+	Grows on: soil
+	"""
+
+	Sunflower = _auto()
+	"""
+	Sunflowers collect the power from the sun. Harvesting them will give you `Items.Power`.
+	If you harvest a sunflower with the maximum number of petals (and there are at least 10 sunflowers) you get 5x bonus power.
+	
+	Average seconds to grow: 5
+	Grows on: soil
+	"""
+
+	Treasure = _auto()
+	"""
+	A treasure that contains gold equal to the side length of the maze in which it is hidden. It can be harvested like a plant.
+	"""
+
+	Tree = _auto()
+	"""
+	Trees drop more wood than bushes. They take longer to grow if other trees grow next to them.
+	
+	Average seconds to grow: 7
+	Grows on: grassland or soil
+	"""
+
+
+# -------------------------------------------------------------------------------
+class Ground:
+	"""
+	A member of the Grounds class
+	"""
+	...
+
+
+# --------------------------------------------------
+class Grounds:
+	@staticmethod
+	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Ground:
+		return Ground()
+
+	Grassland = _auto()
+	"""
+	The default ground. Grass will automatically grow on it.
+	"""
+
+	Soil = _auto()
+	"""
+	Calling `till()` turns the ground into this. Calling `till()` again changes it back to grassland.
+	"""
+
+
+# -------------------------------------------------------------------------------
+class Hat:
+	"""
+	A member of the Hats class
+	"""
+	...
+
+
+# --------------------------------------------------
+class Hats:
+	@staticmethod
+	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Hat:
+		return Hat()
+
+	Brown_Hat = _auto()
+	"""
+	A brown hat.
+	"""
+
+	Cactus_Hat = _auto()
+	"""
+	A hat shaped like a cactus.
+	"""
+
+	Carrot_Hat = _auto()
+	"""
+	A hat shaped like a carrot.
+	"""
+
+	Dinosaur_Hat = _auto()
+	"""
+	Equip it to start the dinosaur game.
+	"""
+
+	Gold_Hat = _auto()
+	"""
+	A golden hat.
+	"""
+
+	Gold_Trophy_Hat = _auto()
+	"""
+	A golden trophy hat.
+	"""
+
+	Golden_Cactus_Hat = _auto()
+	"""
+	A golden hat shaped like a cactus.
+	"""
+
+	Golden_Carrot_Hat = _auto()
+	"""
+	A golden hat shaped like a carrot.
+	"""
+
+	Golden_Gold_Hat = _auto()
+	"""
+	A golden version of the gold hat.
+	"""
+
+	Golden_Pumpkin_Hat = _auto()
+	"""
+	A golden hat shaped like a pumpkin.
+	"""
+
+	Golden_Sunflower_Hat = _auto()
+	"""
+	A golden hat shaped like a sunflower.
+	"""
+
+	Golden_Tree_Hat = _auto()
+	"""
+	A golden hat shaped like a tree.
+	"""
+
+	Gray_Hat = _auto()
+	"""
+	A gray hat.
+	"""
+
+	Green_Hat = _auto()
+	"""
+	A green hat.
+	"""
+
+	Pumpkin_Hat = _auto()
+	"""
+	A hat shaped like a pumpkin.
+	"""
+
+	Purple_Hat = _auto()
+	"""
+	A purple hat.
+	"""
+
+	Silver_Trophy_Hat = _auto()
+	"""
+	A silver trophy hat.
+	"""
+
+	Straw_Hat = _auto()
+	"""
+	The default hat.
+	"""
+
+	Sunflower_Hat = _auto()
+	"""
+	A hat shaped like a sunflower.
+	"""
+
+	The_Farmers_Remains = _auto()
+	"""
+	Unlocks the special hat 'The Farmers Remains'.
+	"""
+
+	Top_Hat = _auto()
+	"""
+	Unlocks the fancy Top Hat.
+	"""
+
+	Traffic_Cone = _auto()
+	"""
+	A traffic cone hat.
+	"""
+
+	Traffic_Cone_Stack = _auto()
+	"""
+	A stack of traffic cones as a hat.
+	"""
+
+	Tree_Hat = _auto()
+	"""
+	A hat shaped like a tree.
+	"""
+
+	Wizard_Hat = _auto()
+	"""
+	A magical wizard hat.
+	"""
+
+	Wood_Trophy_Hat = _auto()
+	"""
+	A wooden trophy hat.
+	"""
+
+
+# -------------------------------------------------------------------------------
+class Item:
+    """
+    A member of the Items Class
+    """
+    ...
+
+
+# --------------------------------------------------
+class Items:
+    @staticmethod
+    def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Item:
+        return Item()
+
+    Bone = _auto()
+    """
+    The bones of an ancient creature.
+    """
+
+    Cactus = _auto()
+    """
+    Obtained by harvesting sorted cacti.
+    """
+
+    Carrot = _auto()
+    """
+    Obtained by harvesting carrots.
+    """
+
+    Fertilizer = _auto()
+    """
+    Call `use_item(Items.Fertilizer)` to instantly remove 2s from the plants remaining grow time.
+    """
+
+    Gold = _auto()
+    """
+    Found in treasure chests in mazes.
+    """
+
+    Hay = _auto()
+    """
+    Obtained by cutting grass.
+    """
+
+    Piggy = _auto()
+    """
+    This item has been removed from the game but remains as a nostalgia trophy.
+    """
+
+    Power = _auto()
+    """
+    Obtained by harvesting sunflowers. The drone automatically uses this to move twice as fast.
+    """
+
+    Pumpkin = _auto()
+    """
+    Obtained by harvesting pumpkins.
+    """
+
+    Water = _auto()
+    """
+    Used to water the ground by calling `use_item(Items.Water)`.
+    """
+
+    Weird_Substance = _auto()
+    """
+    Call `use_item(Items.Weird_Substance)` on a bush to grow a maze, or on other plants to toggle their infection status.
+    """
+
+    Wood = _auto()
+    """
+    Obtained from bushes and trees.
+    """
+
+
+# -------------------------------------------------------------------------------
+class Leaderboard:
+	"""
+	A member of the Leaderboards class
+	"""
+	...
+
+
+# --------------------------------------------------
+class Leaderboards:
+	@staticmethod
+	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Leaderboard:
+		return Leaderboard()
+
+	Cactus = _auto()
+	"""
+	Farm 33_554_432 cacti with multiple drones.
+	"""
+
+	Cactus_Single = _auto()
+	"""
+	Farm 131_072_cacti with a single drone on an 8x8 farm.
+	"""
+
+	Carrots = _auto()
+	"""
+	Farm 2_000_000_000 carrots with multiple drones.
+	"""
+
+	Carrots_Single = _auto()
+	"""
+	Farm 100_000_000 carrots with a single drone on an 8x8 farm.
+	"""
+
+	Dinosaur = _auto()
+	"""
+	Farm 33_488_928 bones with multiple drones.
+	"""
+
+	Fastest_Reset = _auto()
+	"""
+	The most prestigious category. Completely automate the game from a single farm plot to unlocking the leaderboards again.
+	"""
+
+	Hay = _auto()
+	"""
+	Farm 2_000_000_000 hay with multiple drones.
+	"""
+
+	Hay_Single = _auto()
+	"""
+	Farm 100_000_000 hay with a single drone on an 8x8 farm.
+	"""
+
+	Maze = _auto()
+	"""
+	Farm 9_863_168_gold with multiple drones.
+	"""
+
+	Maze_Single = _auto()
+	"""
+	Farm 616_448 gold with a single drone on an 8x8 farm.
+	"""
+
+	Pumpkins = _auto()
+	"""
+	Farm 200_000_000 pumpkins with multiple drones.
+	"""
+
+	Pumpkins_Single = _auto()
+	"""
+	Farm 10_000_000 pumpkins with a single drone on an 8x8 farm.
+	"""
+
+	Sunflowers = _auto()
+	"""
+	Farm 100_000 power with multiple drones.
+	"""
+
+	Sunflowers_Single = _auto()
+	"""
+	Farm 10_000 power with a single drone on an 8x8 farm.
+	"""
+
+	Wood = _auto()
+	"""
+	Farm 10_000_000_000 wood with multiple drones.
+	"""
+
+	Wood_Single = _auto()
+	"""
+	Farm 500_000_000 wood with a single drone on an 8x8 farm.
+	"""
+
+
+# -------------------------------------------------------------------------------
+class Unlock:
+	"""
+	A member of the Unlocks class
+	"""
+	...
+
+
+# --------------------------------------------------
+class Unlocks:
+	@staticmethod
+	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Unlock:
+		return Unlock()
+
+	Auto_Unlock = _auto()
+	"""
+	Automatically unlock things.
+	"""
+
+	Cactus = _auto()
+	"""
+	Unlock: Cactus!
+	Upgrade: Increases the yield and cost of cactus.
+	"""
+
+	Carrots = _auto()
+	"""
+	Unlock: Till the soil and plant carrots.
+	Upgrade: Increases the yield and cost of carrots.
+	"""
+
+	Costs = _auto()
+	"""
+	Allows access to the cost of things.
+	"""
+
+	Debug = _auto()
+	"""
+	Tools to help with debugging programs.
+	"""
+
+	Debug_2 = _auto()
+	"""
+	Functions to temporarily slow down the execution and make the grid smaller.
+	"""
+
+	Dictionaries = _auto()
+	"""
+	Get access to dictionaries and sets.
+	"""
+
+	Dinosaurs = _auto()
+	"""
+	Unlock: Majestic ancient creatures.
+	Upgrade: Increases the yield and cost of dinosaurs.
+	"""
+
+	Expand = _auto()
+	"""
+	Unlock: Expands the farm land and unlocks movement.
+	Upgrade: Expands the farm. This also clears the farm.
+	"""
+
+	Fertilizer = _auto()
+	"""
+	Reduces the remaining growing time of the plant under the drone by 2 seconds.
+	"""
+
+	Functions = _auto()
+	"""
+	Define your own functions.
+	"""
+
+	Grass = _auto()
+	"""
+	Increases the yield of grass.
+	"""
+
+	Hats = _auto()
+	"""
+	Unlocks new hat colors for your drone.
+	"""
+
+	Import = _auto()
+	"""
+	Import code from other files.
+	"""
+
+	Leaderboard = _auto()
+	"""
+	Join the leaderboard for the fastest time in farming a specific crop or for the fastest reset of the farm.
+	"""
+
+	Lists = _auto()
+	"""
+	Use lists to store lots of values.
+	"""
+
+	Loops = _auto()
+	"""
+	Unlocks a simple while loop.
+	"""
+
+	Mazes = _auto()
+	"""
+	Unlock: A maze with a treasure in the middle.
+	Upgrade: Increases the gold in treasure chests.
+	"""
+
+	Megafarm = _auto()
+	"""
+	Unlocks multiple drones and drone management functions.
+	"""
+
+	Operators = _auto()
+	"""
+	Arithmetic, comparison and logic operators.
+	"""
+
+	Plant = _auto()
+	"""
+	Unlocks planting.
+	"""
+
+	Polyculture = _auto()
+	"""
+	Use companion planting to increase the yield.
+	"""
+
+	Pumpkins = _auto()
+	"""
+	Unlock: Pumpkins!
+	Upgrade: Increases the yield and cost of pumpkins.
+	"""
+
+	Senses = _auto()
+	"""
+	The drone can see what's under it and where it is.
+	"""
+
+	Simulation = _auto()
+	"""
+	Unlocks simulation functions for testing and optimization.
+	"""
+
+	Speed = _auto()
+	"""
+	Increases the speed of the drone.
+	"""
+
+	Sunflowers = _auto()
+	"""
+	Unlock: Sunflowers and Power.
+	Upgrade: Increases the power gained from sunflowers.
+	"""
+
+	The_Farmers_Remains = _auto()
+	"""
+	Unlocks the special hat 'The Farmers Remains'.
+	"""
+
+	Timing = _auto()
+	"""
+	Functions to help measure performance.
+	"""
+
+	Top_Hat = _auto()
+	"""
+	Unlocks the fancy Top Hat.
+	"""
+
+	Trees = _auto()
+	"""
+	Unlocks trees.
+	Upgrade: Increases the yield of bushes and trees.
+	"""
+
+	Utilities = _auto()
+	"""
+	Unlocks the `min()`, `max()` and `abs()` functions.
+	"""
+
+	Variables = _auto()
+	"""
+	Assign values to variables.
+	"""
+
+	Watering = _auto()
+	"""
+	Water the plants to make them grow faster.
+	"""
+
 
 
 
@@ -1849,10 +2018,10 @@ def set_world_size(size: _float) -> None:
 type SimulateUnlocks = _dict[Unlock, _int] | _tuple[_tuple[Unlock, _int]] | _list[_tuple[Unlock, _int]] | _tuple[Unlock] | _list[Unlock] | Unlocks
 
 def simulate(
-		filename: _str,
+		filename: string,
 		sim_unlocks: SimulateUnlocks,
 		sim_items: _dict[Item, _float],
-		sim_globals: _dict[_str, Any],
+		sim_globals: _dict[string, Any],
 		seed: _float, speedup: _float
 	) -> _float:
 	"""
@@ -1901,7 +2070,7 @@ def simulate(
 # -------------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------------
-def get_cost(thing: Entity | Item | Unlock, level: _int | None = None) -> dict[Item, _int] | None:
+def get_cost(thing: Entity | Item | Unlock, level: _int | None = None) -> _dict[Item, _int] | None:
 	"""
 	Gets the cost of a `thing`
 	
@@ -2051,7 +2220,7 @@ def abs(x: _float) -> _float:
 # -------------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------------
-def print(*something: Any) -> None:
+def print(*something: _Any) -> None:
 	"""
 	Prints `something` into the air above the drone using smoke. This action is not affected by speed upgrades.
 	Multiple values can be printed at once.
@@ -2070,7 +2239,7 @@ def print(*something: Any) -> None:
 
 
 # --------------------------------------------------
-def quick_print(*something: Any) -> None:
+def quick_print(*something: _Any) -> None:
 	"""
 	Prints a value just like `print()` but it doesn't stop to write it into the air so it can only be found on the output page.
 	
@@ -2132,7 +2301,7 @@ def pet_the_piggy() -> None:
 
 
 # --------------------------------------------------
-def leaderboard_run(leaderboard: Leaderboard, file_name: _str, speedup: _float) -> None:
+def leaderboard_run(leaderboard: Leaderboard, file_name: string, speedup: _float) -> None:
 	"""
 	Starts a timed run for the `leaderboard` using the specified `file_name` as a starting point.
 	`speedup` sets the starting speedup.
