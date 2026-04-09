@@ -26,4 +26,4 @@ from builtins import (
 )
 
 from typing import Any as _Any
-from enum import Enum as _Enum, auto as _auto
+from enum import Enum as _Enum

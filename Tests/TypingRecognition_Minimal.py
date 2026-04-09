@@ -169,3 +169,23 @@ TestDictSmall : dict[Hashable, Any] = {1: 1}
 Entities.Apple
 for entity in Entities:
 	print(entity)
+
+
+for hat in Hats:
+    print(hat)
+    num_unlocked(hat)
+
+NewHat : Hat = Hats.Brown_Hat
+NewEntity : Entity = Entities.Apple
+
+num_unlocked(Hats.Brown_Hat)
+
+
+for entity in Entities:
+    get_cost(entity)
+
+get_cost(Entities.Apple)
+
+quick_print(West)
+
+num_unlocked(West)

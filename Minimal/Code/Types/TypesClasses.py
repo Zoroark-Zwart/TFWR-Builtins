@@ -4,10 +4,9 @@ type Primitive = _bool | _int | _float | string | None
 
 # --------------------------------------------------
 type Enums = (
-	Direction | Entity | Entities |
-    Ground | Grounds | Hat | Hats |
-    Item | Items | Leaderboard |
-    Leaderboards | Unlock | Unlocks
+	Entity | Entities |
+    Ground | Grounds | Hat | Hats | Item | Items |
+	Leaderboard | Leaderboards | Unlock | Unlocks
 )
 # Docstring: Enums
 
@@ -26,7 +25,7 @@ type Any = (
 	_tuple[Any,...] | _list[Any] |				# Python builtin    - collection types
     _set[Hashable] | _dict[Hashable, Any] |
 
-	Enums | 									# Game builtins		- enum classes
+	Direction | Enums | 						# Game builtins		- enum classes
 
 	Drone										# Game builtins		- megafarm classes
 )

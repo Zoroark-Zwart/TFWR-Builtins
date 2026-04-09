@@ -5,109 +5,109 @@ class Unlock:
 
 
 # --------------------------------------------------
-class Unlocks:
+class Unlocks(_Enum):
 	@staticmethod
 	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Unlock:
 		return Unlock()
 
-	Auto_Unlock = _auto()
+	Auto_Unlock: Unlock
 	# Docstring: Auto_Unlock
 
-	Cactus = _auto()
+	Cactus: Unlock
 	# Docstring: Cactus (Unlock)
 
-	Carrots = _auto()
+	Carrots: Unlock
 	# Docstring: Carrots (Unlock)
 
-	Costs = _auto()
+	Costs: Unlock
 	# Docstring: Costs
 
-	Debug = _auto()
+	Debug: Unlock
 	# Docstring: Debug
 
-	Debug_2 = _auto()
+	Debug_2: Unlock
 	# Docstring: Debug_2
 
-	Dictionaries = _auto()
+	Dictionaries: Unlock
 	# Docstring: Dictionaries
 
-	Dinosaurs = _auto()
+	Dinosaurs: Unlock
 	# Docstring: Dinosaurs (Unlock)
 
-	Expand = _auto()
+	Expand: Unlock
 	# Docstring: Expand
 
-	Fertilizer = _auto()
+	Fertilizer: Unlock
 	# Docstring: Fertilizer (Unlock)
 
-	Functions = _auto()
+	Functions: Unlock
 	# Docstring: Functions
 
-	Grass = _auto()
+	Grass: Unlock
 	# Docstring: Grass (Unlock)
 
-	Hats = _auto()
+	Hats: Unlock
 	# Docstring: Hats
 
-	Import = _auto()
+	Import: Unlock
 	# Docstring: Import
 
-	Leaderboard = _auto()
+	Leaderboard: Unlock
 	# Docstring: Leaderboard (Unlock)
 
-	Lists = _auto()
+	Lists: Unlock
 	# Docstring: Lists
 
-	Loops = _auto()
+	Loops: Unlock
 	# Docstring: Loops
 
-	Mazes = _auto()
+	Mazes: Unlock
 	# Docstring: Mazes (Unlock)
 
-	Megafarm = _auto()
+	Megafarm: Unlock
 	# Docstring: Megafarm
 
-	Operators = _auto()
+	Operators: Unlock
 	# Docstring: Operators
 
-	Plant = _auto()
+	Plant: Unlock
 	# Docstring: Plant
 
-	Polyculture = _auto()
+	Polyculture: Unlock
 	# Docstring: Polyculture
 
-	Pumpkins = _auto()
+	Pumpkins: Unlock
 	# Docstring: Pumpkins (Unlock)
 
-	Senses = _auto()
+	Senses: Unlock
 	# Docstring: Senses
 
-	Simulation = _auto()
+	Simulation: Unlock
 	# Docstring: Simulation
 
-	Speed = _auto()
+	Speed: Unlock
 	# Docstring: Speed
 
-	Sunflowers = _auto()
+	Sunflowers: Unlock
 	# Docstring: Sunflowers (Unlock)
 
-	The_Farmers_Remains = _auto()
+	The_Farmers_Remains: Unlock
 	# Docstring: The_Farmers_Remains
 
-	Timing = _auto()
+	Timing: Unlock
 	# Docstring: Timing
 
-	Top_Hat = _auto()
+	Top_Hat: Unlock
 	# Docstring: Top_Hat
 
-	Trees = _auto()
+	Trees: Unlock
 	# Docstring: Trees (Unlock)
 
-	Utilities = _auto()
+	Utilities: Unlock
 	# Docstring: Utilities
 
-	Variables = _auto()
+	Variables: Unlock
 	# Docstring: Variables
 
-	Watering = _auto()
+	Watering: Unlock
 	# Docstring: Watering

@@ -5,85 +5,85 @@ class Hat:
 
 
 # --------------------------------------------------
-class Hats:
+class Hats(_Enum):
 	@staticmethod
 	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Hat:
 		return Hat()
 
-	Brown_Hat = _auto()
+	Brown_Hat: Hat
 	# Docstring: Brown_Hat
 
-	Cactus_Hat = _auto()
+	Cactus_Hat: Hat
 	# Docstring: Cactus_Hat
 
-	Carrot_Hat = _auto()
+	Carrot_Hat: Hat
 	# Docstring: Carrot_Hat
 
-	Dinosaur_Hat = _auto()
+	Dinosaur_Hat: Hat
 	# Docstring: Dinosaur_Hat
 
-	Gold_Hat = _auto()
+	Gold_Hat: Hat
 	# Docstring: Gold_Hat
 
-	Gold_Trophy_Hat = _auto()
+	Gold_Trophy_Hat: Hat
 	# Docstring: Gold_Trophy_Hat
 
-	Golden_Cactus_Hat = _auto()
+	Golden_Cactus_Hat: Hat
 	# Docstring: Golden_Cactus_Hat
 
-	Golden_Carrot_Hat = _auto()
+	Golden_Carrot_Hat: Hat
 	# Docstring: Golden_Carrot_Hat
 
-	Golden_Gold_Hat = _auto()
+	Golden_Gold_Hat: Hat
 	# Docstring: Golden_Gold_Hat
 
-	Golden_Pumpkin_Hat = _auto()
+	Golden_Pumpkin_Hat: Hat
 	# Docstring: Golden_Pumpkin_Hat
 
-	Golden_Sunflower_Hat = _auto()
+	Golden_Sunflower_Hat: Hat
 	# Docstring: Golden_Sunflower_Hat
 
-	Golden_Tree_Hat = _auto()
+	Golden_Tree_Hat: Hat
 	# Docstring: Golden_Tree_Hat
 
-	Gray_Hat = _auto()
+	Gray_Hat: Hat
 	# Docstring: Gray_Hat
 
-	Green_Hat = _auto()
+	Green_Hat: Hat
 	# Docstring: Green_Hat
 
-	Pumpkin_Hat = _auto()
+	Pumpkin_Hat: Hat
 	# Docstring: Pumpkin_Hat
 
-	Purple_Hat = _auto()
+	Purple_Hat: Hat
 	# Docstring: Purple_Hat
 
-	Silver_Trophy_Hat = _auto()
+	Silver_Trophy_Hat: Hat
 	# Docstring: Silver_Trophy_Hat
 
-	Straw_Hat = _auto()
+	Straw_Hat: Hat
 	# Docstring: Straw_Hat
 
-	Sunflower_Hat = _auto()
+	Sunflower_Hat: Hat
 	# Docstring: Sunflower_Hat
 
-	The_Farmers_Remains = _auto()
+	The_Farmers_Remains: Hat
 	# Docstring: The_Farmers_Remains
 
-	Top_Hat = _auto()
+	Top_Hat: Hat
 	# Docstring: Top_Hat
 
-	Traffic_Cone = _auto()
+	Traffic_Cone: Hat
 	# Docstring: Traffic_Cone
 
-	Traffic_Cone_Stack = _auto()
+	Traffic_Cone_Stack: Hat
 	# Docstring: Traffic_Cone_Stack
 
-	Tree_Hat = _auto()
+	Tree_Hat: Hat
 	# Docstring: Tree_Hat
 
-	Wizard_Hat = _auto()
+	Wizard_Hat: Hat
 	# Docstring: Wizard_Hat
 
-	Wood_Trophy_Hat = _auto()
+	Wood_Trophy_Hat: Hat
 	# Docstring: Wood_Trophy_Hat

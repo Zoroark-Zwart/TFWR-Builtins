@@ -5,55 +5,55 @@ class Leaderboard:
 
 
 # --------------------------------------------------
-class Leaderboards:
+class Leaderboards(_Enum):
 	@staticmethod
 	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Leaderboard:
 		return Leaderboard()
 
-	Cactus = _auto()
+	Cactus: Leaderboard
 	# Docstring: Cactus (Leaderboard)
 
-	Cactus_Single = _auto()
+	Cactus_Single: Leaderboard
 	# Docstring: Cactus_Single
 
-	Carrots = _auto()
+	Carrots: Leaderboard
 	# Docstring: Carrots (Leaderboard)
 
-	Carrots_Single = _auto()
+	Carrots_Single: Leaderboard
 	# Docstring: Carrots_Single
 
-	Dinosaur = _auto()
+	Dinosaur: Leaderboard
 	# Docstring: Dinosaur (Leaderboard)
 
-	Fastest_Reset = _auto()
+	Fastest_Reset: Leaderboard
 	# Docstring: Fastest_Reset
 
-	Hay = _auto()
+	Hay: Leaderboard
 	# Docstring: Hay (Leaderboard)
 
-	Hay_Single = _auto()
+	Hay_Single: Leaderboard
 	# Docstring: Hay_Single
 
-	Maze = _auto()
+	Maze: Leaderboard
 	# Docstring: Maze (Leaderboard)
 
-	Maze_Single = _auto()
+	Maze_Single: Leaderboard
 	# Docstring: Maze_Single
 
-	Pumpkins = _auto()
+	Pumpkins: Leaderboard
 	# Docstring: Pumpkins (Leaderboard)
 
-	Pumpkins_Single = _auto()
+	Pumpkins_Single: Leaderboard
 	# Docstring: Pumpkins_Single
 
-	Sunflowers = _auto()
+	Sunflowers: Leaderboard
 	# Docstring: Sunflowers (Leaderboard)
 
-	Sunflowers_Single = _auto()
+	Sunflowers_Single: Leaderboard
 	# Docstring: Sunflowers_Single
 
-	Wood = _auto()
+	Wood: Leaderboard
 	# Docstring: Wood (Leaderboard)
 
-	Wood_Single = _auto()
+	Wood_Single: Leaderboard
 	# Docstring: Wood_Single

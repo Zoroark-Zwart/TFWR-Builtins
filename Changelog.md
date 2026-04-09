@@ -1,3 +1,20 @@
+# Apr/08 Update 1
+
+- Reverted changes for Enum class variables to use the specific singular Enum version instead of `_auto()` because auto creates a literal of that singular class, which can cause typing confusion when the singular class is also available as a type
+
+The Enum classes are still iterable because of `_generate_next_value_`. Since the code is not meant to be run outside of the game, there is no need to have usable Enums when iterating over them.
+
+- Adjusted the unlock functions: `get_cost`, and `unlock` to accept the enumerated version and the specific version of an Enum. `num_unlocked` is changed to use the custom `Enums` type to save on column length. The docstring explains which of those is acceptable.
+
+This allows for stuff like:
+
+`for hat in Hats:
+  num_unlocked(hat)`
+
+To not throw typing errors.
+
+- Rearranged the `Enums` and `Any` custom types so that `Direction` is not a part of `Enums`. Since `Direction` acts more like a regular object. Stuff like `num_unlocked` doesn't accept a `Direction` as well.
+
 # Apr/07 Update 1
 
 - Made custom classes optional as they can cause conflicts when using `[]` to initialize an empty list, `{}` to initialize a dict, and when trying to initialize with list, dict, and set literals. Added some comments to note why these classes are there.

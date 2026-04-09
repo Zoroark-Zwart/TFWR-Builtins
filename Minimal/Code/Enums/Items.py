@@ -5,43 +5,43 @@ class Item:
 
 
 # --------------------------------------------------
-class Items:
+class Items(_Enum):
     @staticmethod
     def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Item:
         return Item()
 
-    Bone = _auto()
+    Bone: Item
     # Docstring: Bone (Items)
 
-    Cactus = _auto()
+    Cactus: Item
     # Docstring: Cactus (Items)
 
-    Carrot = _auto()
+    Carrot: Item
     # Docstring: Carrot (Items)
 
-    Fertilizer = _auto()
+    Fertilizer: Item
     # Docstring: Fertilizer (Items)
 
-    Gold = _auto()
+    Gold: Item
     # Docstring: Gold (Items)
 
-    Hay = _auto()
+    Hay: Item
     # Docstring: Hay (Items)
 
-    Piggy = _auto()
+    Piggy: Item
     # Docstring: Piggy (Items)
 
-    Power = _auto()
+    Power: Item
     # Docstring: Power (Items)
 
-    Pumpkin = _auto()
+    Pumpkin: Item
     # Docstring: Pumpkin (Items)
 
-    Water = _auto()
+    Water: Item
     # Docstring: Water (Items)
 
-    Weird_Substance = _auto()
+    Weird_Substance: Item
     # Docstring: Weird_Substance (Items)
 
-    Wood = _auto()
+    Wood: Item
     # Docstring: Wood (Items)

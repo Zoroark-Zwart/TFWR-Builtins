@@ -10,38 +10,38 @@ class Entities(_Enum):
 	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Entity:
 		return Entity()
 
-	Apple = _auto()
+	Apple: Entity
 	# Docstring: Apple (Entities)
 
-	Bush = _auto()
+	Bush: Entity
 	# Docstring: Bush (Entities)
 
-	Cactus = _auto()
+	Cactus: Entity
 	# Docstring: Cactus (Entities)
 
-	Carrot = _auto()
+	Carrot: Entity
 	# Docstring: Carrot (Entities)
 
-	Dead_Pumpkin = _auto()
+	Dead_Pumpkin: Entity
 	# Docstring: Dead_Pumpkin
 
-	Dinosaur = _auto()
+	Dinosaur: Entity
 	# Docstring: Dinosaur (Entities)
 
-	Grass = _auto()
+	Grass: Entity
 	# Docstring: Grass (Entities)
 
-	Hedge = _auto()
+	Hedge: Entity
 	# Docstring: Hedge
 
-	Pumpkin = _auto()
+	Pumpkin: Entity
 	# Docstring: Pumpkin (Entities)
 
-	Sunflower = _auto()
+	Sunflower: Entity
 	# Docstring: Sunflower (Entities)
 
-	Treasure = _auto()
+	Treasure: Entity
 	# Docstring: Treasure (Entities)
 
-	Tree = _auto()
+	Tree: Entity
 	# Docstring: Tree (Entities)
