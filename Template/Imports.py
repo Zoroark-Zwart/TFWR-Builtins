@@ -25,5 +25,6 @@ from builtins import (
     tuple as _tuple, list as _list, set as _set, dict as _dict
 )
 
+from types import ModuleType
 from typing import Any as _Any
 from enum import Enum as _Enum

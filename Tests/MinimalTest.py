@@ -1,9 +1,10 @@
 from Release.__builtins__minimal import *
 #  from __builtins__ import *
 
-def DroneFunction() -> string:
-    ...
+for entity in Entities:
+    print(entity)
 
-MyDrone : Drone[string] = spawn_drone(DroneFunction)
+import builtins
 
-DroneReturn : string = wait_for(MyDrone)
+MyModule : ModuleType = builtins
+MyModuleAny : Any = builtins

@@ -1,3 +1,10 @@
+# May/21 Update 3
+
+- Renamed `ReturnType` to `R` in `Drone` class
+- Added `ModuleType` to custom type `Any`
+- Added `Items` as type for `item` parameter for `num_items`
+- Change `Drone` to `Drone[Any]` in `Any` custom type
+
 # May/21 Update 2
 
 - Added `None` return type UFCS functions

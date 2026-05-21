@@ -20,14 +20,15 @@ _Hashable_ = TypeVar("_Hashable_", Hashable, Hashable, covariant = True)
 type Any = (
     Primitive | 								# Python builtin    - basic types
 
-	range_class | Callable[..., Any] |			# Python builtin    - functions / modules
+	range_class | Callable[..., Any]			# Python builtin    - functions / modules
+	| ModuleType |
 
 	_tuple[Any,...] | _list[Any] |				# Python builtin    - collection types
     _set[Hashable] | _dict[Hashable, Any] |
 
 	Direction | Enums | 						# Game builtins		- enum classes
 
-	Drone										# Game builtins		- megafarm classes
+	Drone[Any]										# Game builtins		- megafarm classes
 )
 # Docstring: Any
 
