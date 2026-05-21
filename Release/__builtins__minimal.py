@@ -1800,14 +1800,14 @@ def measure(direction: Direction | None = None) -> _int | _tuple[_int, _int] | N
 # -------------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------------
-class Drone:
+class Drone[ReturnType : Any]:
     """
     A class representing a spawned drone given a task to execute.
     """
     ...
 
 # -------------------------------------------------------------------------------
-def spawn_drone(task: Callable[[], Any]) -> Drone:
+def spawn_drone[R : Any](task: Callable[..., R]) -> Drone[R]:
 	"""
 	Spawns a new drone in the same position as the drone that ran `spawn_drone(task)`. The new drone then begins executing the specified `task` function. After it is done, it will disappear automatically.
 	
@@ -1832,7 +1832,7 @@ def spawn_drone(task: Callable[[], Any]) -> Drone:
 
 
 # --------------------------------------------------
-def wait_for(drone: Drone) -> Any:
+def wait_for[R : Any](drone: Drone[R]) -> R:
 	"""
 	Waits until the given `drone` terminates.
 	

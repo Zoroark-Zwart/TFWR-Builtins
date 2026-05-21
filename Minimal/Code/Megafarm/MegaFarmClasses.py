@@ -1,4 +1,4 @@
 # -------------------------------------------------------------------------------
-class Drone:
+class Drone[ReturnType : Any]:
     # Docstring: Drone
     ...
