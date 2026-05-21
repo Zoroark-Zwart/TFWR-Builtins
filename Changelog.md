@@ -1,3 +1,14 @@
+# May/21 Update 2
+
+- Added `None` return type UFCS functions
+- Removed `return Class()` from all Enum classes
+- Added `range_class` as accepted `object` types in `len`
+
+# May/21 Update 1
+
+- Added return type to Drone class
+- Updated TODO
+
 # Apr/08 Update 1
 
 - Reverted changes for Enum class variables to use the specific singular Enum version instead of `_auto()` because auto creates a literal of that singular class, which can cause typing confusion when the singular class is also available as a type

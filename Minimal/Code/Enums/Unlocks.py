@@ -8,7 +8,7 @@ class Unlock:
 class Unlocks(_Enum):
 	@staticmethod
 	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Unlock:
-		return Unlock()
+		...
 
 	Auto_Unlock: Unlock
 	# Docstring: Auto_Unlock

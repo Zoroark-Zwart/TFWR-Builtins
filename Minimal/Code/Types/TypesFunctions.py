@@ -18,22 +18,22 @@ def range(start: _float, stop: _float, step: _float) -> range_class:  # type: ig
 # Docstring: MethodFunction
 
 # --------------------------------------------------
-def add(given_set: _set[_Hashable_], object: Any):
+def add(given_set: _set[_Hashable_], object: Any) -> None:
 	# Docstring: add
 	...
 
 # --------------------------------------------------
-def append(given_list: _list[_Any_], object: Any):
+def append(given_list: _list[_Any_], object: Any) -> None:
 	# Docstring: append
 	...
 
 # --------------------------------------------------
-def insert(given_list: _list[_Any_], index: _int, object: Any):
+def insert(given_list: _list[_Any_], index: _int, object: Any) -> None:
 	# Docstring: insert
 	...
 
 # --------------------------------------------------
-def len(object : string | _dict[_Hashable_, _Any_] | _list[_Any_] | _set[_Hashable_] | _tuple[_Any_]) -> _int:
+def len(object : string | _dict[_Hashable_, _Any_] | _list[_Any_] | _set[_Hashable_] | _tuple[_Any_] | range_class) -> _int:
 	# Docstring: len
 	...
 
