@@ -197,7 +197,7 @@ class Manager:
                         Padding = codeline[:codeline.find("#")]
 
                         SectionComment = Padding + DOCSTRING_COMMENT_BEGIN
-
+                        
                         for docline in GroupDocstring[codeline.strip()[len(TAG_DOCSTRING):]]:
                             SectionComment = SectionComment + Padding + docline + "\n"
 

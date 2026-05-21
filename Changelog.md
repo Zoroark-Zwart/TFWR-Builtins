@@ -1,3 +1,9 @@
+# May/21 Update 5
+
+- Renamed `Any` to `AnyTFWR`
+- Unalised `builtins.Any` and let it be just `Any`
+- Changes made to make it distinguishable which type of Any is being used in all scenarios
+
 # May/21 Update 4
 
 - Changed `Drone` to `Drone[Any]` for parameter `drone` of `has_finished`

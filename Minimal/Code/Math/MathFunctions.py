@@ -5,13 +5,13 @@ def random() -> _float:
 
 
 # --------------------------------------------------
-def min(*args: Any) -> Any:
+def min(*args: AnyTFWR) -> AnyTFWR:
 	# Docstring: min
 	...
 
 
 # --------------------------------------------------
-def max(*args: Any) -> Any:
+def max(*args: AnyTFWR) -> AnyTFWR:
 	# Docstring: max
 	...
 

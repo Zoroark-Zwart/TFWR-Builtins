@@ -29,7 +29,7 @@ def simulate(
 		filename: string,
 		sim_unlocks: SimulateUnlocks,
 		sim_items: _dict[Item, _float],
-		sim_globals: _dict[string, Any],
+		sim_globals: _dict[string, AnyTFWR],
 		seed: _float, speedup: _float
 	) -> _float:
 	# Docstring: simulate

@@ -35,7 +35,7 @@ included:
   - `Hat`, `Entity`, `Item`, `Ground`, `Leaderboard`, `Unlock`
   - `Hats`, `Entities`, `Items`, `Grounds`, `Leaderboards`, `Unlocks`
 
-# Any
+# AnyTFWR
 
 Type representing all of the useable types in TFWR.
 

@@ -1,10 +1,11 @@
 from Release.__builtins__minimal import *
 #  from __builtins__ import *
 
-for entity in Entities:
-    print(entity)
+def test_add(given_set: set[Hashable], object: AnyTFWR) -> None:
+    ...
 
-import builtins
 
-MyModule : ModuleType = builtins
-MyModuleAny : Any = builtins
+TestSet = set()
+TestSet.add(1)
+test_add({1, 2, 3}, 4)
+test_add(TestSet, 6)

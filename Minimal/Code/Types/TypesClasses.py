@@ -11,32 +11,32 @@ type Enums = (
 # Docstring: Enums
 
 # --------------------------------------------------
-type Hashable = Primitive | Enums | range_class | Drone[Any] | tuple[Hashable, ...]
+type Hashable = Primitive | Enums | range_class | Drone[AnyTFWR] | tuple[Hashable, ...]
 # Docstring: Hashable
 
 _Hashable_ = TypeVar("_Hashable_", Hashable, Hashable, covariant = True)
 
 # --------------------------------------------------
-type Any = (
+type AnyTFWR = (
     Primitive | 								# Python builtin    - basic types
 
-	range_class | Callable[..., Any]			# Python builtin    - functions / modules
+	range_class | Callable[..., AnyTFWR]			# Python builtin    - functions / modules
 	| ModuleType |
 
-	_tuple[Any,...] | _list[Any] |				# Python builtin    - collection types
-    _set[Hashable] | _dict[Hashable, Any] |
+	_tuple[AnyTFWR,...] | _list[AnyTFWR] |				# Python builtin    - collection types
+    _set[Hashable] | _dict[Hashable, AnyTFWR] |
 
 	Direction | Enums | 						# Game builtins		- enum classes
 
-	Drone[Any]										# Game builtins		- megafarm classes
+	Drone[AnyTFWR]										# Game builtins		- megafarm classes
 )
-# Docstring: Any
+# Docstring: AnyTFWR
 
-_Any_ = TypeVar("_Any_", Any, Any, covariant = True)
+_Any_ = TypeVar("_Any_", AnyTFWR, AnyTFWR, covariant = True)
 
 # --------------------------------------------------
 type AnyIterable = (
-	_dict[Hashable, Any] | _list[Any] | _set[Hashable] | _tuple[Any,...] |
+	_dict[Hashable, AnyTFWR] | _list[AnyTFWR] | _set[Hashable] | _tuple[AnyTFWR,...] |
 	string | range_class |
 	Entities | Grounds | Hats | Items | Leaderboard | Unlocks
 )
@@ -48,7 +48,7 @@ type AnyIterable = (
 
 # Comment out the `dict` builtins import above to prevent conflict errors.
 
-class dict[key: Hashable, value: Any](_dict):
+class dict[key: Hashable, value: AnyTFWR](_dict):
 	# Docstring: dict
 
 	def __init__(self: Self, input: _dict[_Hashable_, _Any_] | None | Container[Hashable] = None) -> None:
@@ -58,7 +58,7 @@ class dict[key: Hashable, value: Any](_dict):
 		# Docstring: len (dict)
 		...
 
-	def pop(self: Self, key: Hashable) -> Any: # type: ignore
+	def pop(self: Self, key: Hashable) -> AnyTFWR: # type: ignore
 		# Docstring: pop (dict)
 		...
 	...
@@ -70,17 +70,17 @@ class dict[key: Hashable, value: Any](_dict):
 
 # Comment out the `list` builtins import above to prevent conflict errors.
 
-class list[value: Any](_list):
+class list[value: AnyTFWR](_list):
 	# Docstring: list
 
 	def __init__(self: Self, input: AnyIterable | None = None) -> None:
 		...
 
-	def append(self: Self, object: Any) -> None:
+	def append(self: Self, object: AnyTFWR) -> None:
 		# Docstring: append
 		...
 
-	def insert(self: Self, index: _int, object: Any) -> None: # type: ignore
+	def insert(self: Self, index: _int, object: AnyTFWR) -> None: # type: ignore
 		# Docstring: insert
 		...
 
@@ -88,11 +88,11 @@ class list[value: Any](_list):
 		# Docstring: len (list)
 		...
 
-	def pop(self: Self, index: _int) -> Any: # type: ignore
+	def pop(self: Self, index: _int) -> AnyTFWR: # type: ignore
 		# Docstring: pop (list)
 		...
 
-	def remove(self: Self, object: Any) -> None:
+	def remove(self: Self, object: AnyTFWR) -> None:
 		# Docstring: remove (list)
 		...
 	...
@@ -110,7 +110,7 @@ class set[value: Hashable](_set):
 	def __init__(self: Self, input: AnyIterable | None = None) -> None:
 		...
 
-	def add(self: Self, object: Any) -> None:
+	def add(self: Self, object: AnyTFWR) -> None:
 		# Docstring: add
 		...
 
@@ -118,7 +118,7 @@ class set[value: Hashable](_set):
 		# Docstring: len (set)
 		...
 
-	def remove(self: Self, object: Any) -> None:
+	def remove(self: Self, object: AnyTFWR) -> None:
 		# Docstring: remove (set)
 		...
 	...

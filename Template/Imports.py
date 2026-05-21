@@ -26,5 +26,5 @@ from builtins import (
 )
 
 from types import ModuleType
-from typing import Any as _Any
+from typing import Any
 from enum import Enum as _Enum

@@ -32,7 +32,7 @@ from builtins import (
 )
 
 from types import ModuleType
-from typing import Any as _Any
+from typing import Any
 from enum import Enum as _Enum
 
 # -------------------------------------------------------------------------------
@@ -70,7 +70,7 @@ included:
 """
 
 # --------------------------------------------------
-type Hashable = Primitive | Enums | range_class | Drone | tuple[Hashable, ...]
+type Hashable = Primitive | Enums | range_class | Drone[AnyTFWR] | tuple[Hashable, ...]
 """
 Type representing all of the useable types for a dict key or set element in TFWR.
 
@@ -89,18 +89,18 @@ included:
 _Hashable_ = TypeVar("_Hashable_", Hashable, Hashable, covariant = True)
 
 # --------------------------------------------------
-type Any = (
+type AnyTFWR = (
     Primitive | 								# Python builtin    - basic types
 
-	range_class | Callable[..., Any]			# Python builtin    - functions / modules
+	range_class | Callable[..., AnyTFWR]			# Python builtin    - functions / modules
 	| ModuleType |
 
-	_tuple[Any,...] | _list[Any] |				# Python builtin    - collection types
-    _set[Hashable] | _dict[Hashable, Any] |
+	_tuple[AnyTFWR,...] | _list[AnyTFWR] |				# Python builtin    - collection types
+    _set[Hashable] | _dict[Hashable, AnyTFWR] |
 
 	Direction | Enums | 						# Game builtins		- enum classes
 
-	Drone[Any]									# Game builtins		- megafarm classes
+	Drone[AnyTFWR]										# Game builtins		- megafarm classes
 )
 """
 Type representing all of the useable types in TFWR.
@@ -117,11 +117,11 @@ included:
   - `Hats`, `Entities`, `Items`, `Grounds`, `Leaderboards`, `Unlocks`
 """
 
-_Any_ = TypeVar("_Any_", Any, Any, covariant = True)
+_Any_ = TypeVar("_Any_", AnyTFWR, AnyTFWR, covariant = True)
 
 # --------------------------------------------------
 type AnyIterable = (
-	_dict[Hashable, Any] | _list[Any] | _set[Hashable] | _tuple[Any,...] |
+	_dict[Hashable, AnyTFWR] | _list[AnyTFWR] | _set[Hashable] | _tuple[AnyTFWR,...] |
 	string | range_class |
 	Entities | Grounds | Hats | Items | Leaderboard | Unlocks
 )
@@ -144,7 +144,7 @@ included:
 
 # Comment out the `dict` builtins import above to prevent conflict errors.
 
-# class dict[key: Hashable, value: Any](_dict):
+# class dict[key: Hashable, value: AnyTFWR](_dict):
 # 	"""
 # 	Builds an unordered collection of key-value pairs
 
@@ -183,7 +183,7 @@ included:
 # 		"""
 # 		...
 
-# 	def pop(self: Self, key: Hashable) -> Any: # type: ignore
+# 	def pop(self: Self, key: Hashable) -> AnyTFWR: # type: ignore
 # 		"""
 # 		Remove the key-value pair corresponding to the `key` in the dict
 
@@ -216,7 +216,7 @@ included:
 
 # Comment out the `list` builtins import above to prevent conflict errors.
 
-# class list[value: Any](_list):
+# class list[value: AnyTFWR](_list):
 # 	"""
 # 	Builds an ordered sequence of values.
 
@@ -235,7 +235,7 @@ included:
 # 	def __init__(self: Self, input: AnyIterable | None = None) -> None:
 # 		...
 
-# 	def append(self: Self, object: Any) -> None:
+# 	def append(self: Self, object: AnyTFWR) -> None:
 # 		"""
 # 		Add `object` to the end of a list provided as `given_list`.
 
@@ -257,7 +257,7 @@ included:
 # 		"""
 # 		...
 
-# 	def insert(self: Self, index: _int, object: Any) -> None: # type: ignore
+# 	def insert(self: Self, index: _int, object: AnyTFWR) -> None: # type: ignore
 # 		"""
 # 		Add a `object` to the specified `index` to a list provided as `given_list`.
 
@@ -303,7 +303,7 @@ included:
 # 		"""
 # 		...
 
-# 	def pop(self: Self, index: _int) -> Any: # type: ignore
+# 	def pop(self: Self, index: _int) -> AnyTFWR: # type: ignore
 # 		"""
 # 		Remove the element corresponding to the `index` in the list. If no index is specified removes the last element in the list.
 
@@ -329,7 +329,7 @@ included:
 # 		"""
 # 		...
 
-# 	def remove(self: Self, object: Any) -> None:
+# 	def remove(self: Self, object: AnyTFWR) -> None:
 # 		"""
 # 		Remove the element corresponding to the `object` in the list.
 
@@ -378,7 +378,7 @@ included:
 # 	def __init__(self: Self, input: AnyIterable | None = None) -> None:
 # 		...
 
-# 	def add(self: Self, object: Any) -> None:
+# 	def add(self: Self, object: AnyTFWR) -> None:
 # 		"""
 # 		Add the `object` to a `given_set`.
 
@@ -424,7 +424,7 @@ included:
 # 		"""
 # 		...
 
-# 	def remove(self: Self, object: Any) -> None:
+# 	def remove(self: Self, object: AnyTFWR) -> None:
 # 		"""
 # 		Remove the `object` from the set.
 
@@ -555,7 +555,7 @@ print(last_number)
 """
 
 # --------------------------------------------------
-def add(given_set: _set[_Hashable_], object: Any) -> None:
+def add(given_set: _set[_Hashable_], object: AnyTFWR) -> None:
 	"""
 	Add the `object` to a `given_set`.
 
@@ -578,7 +578,7 @@ def add(given_set: _set[_Hashable_], object: Any) -> None:
 	...
 
 # --------------------------------------------------
-def append(given_list: _list[_Any_], object: Any) -> None:
+def append(given_list: _list[_Any_], object: AnyTFWR) -> None:
 	"""
 	Add `object` to the end of a list provided as `given_list`.
 
@@ -601,7 +601,7 @@ def append(given_list: _list[_Any_], object: Any) -> None:
 	...
 
 # --------------------------------------------------
-def insert(given_list: _list[_Any_], index: _int, object: Any) -> None:
+def insert(given_list: _list[_Any_], index: _int, object: AnyTFWR) -> None:
 	"""
 	Add a `object` to the specified `index` to a list provided as `given_list`.
 
@@ -649,7 +649,7 @@ def len(object : string | _dict[_Hashable_, _Any_] | _list[_Any_] | _set[_Hashab
 	...
 
 # --------------------------------------------------
-def pop(collection: _dict[_Hashable_, _Any_] | _list[_Any_], object: Any):
+def pop(collection: _dict[_Hashable_, _Any_] | _list[_Any_], object: AnyTFWR):
 	"""
 	Remove the element corresponding to the `key` in a dict or list provided as `collection`. If it is a list and no `key` is specified removes the last element in the list.
 
@@ -676,7 +676,7 @@ def pop(collection: _dict[_Hashable_, _Any_] | _list[_Any_], object: Any):
 	...
 
 # --------------------------------------------------
-def remove(collection: _list[_Any_] | _set[_Hashable_], object: Any):
+def remove(collection: _list[_Any_] | _set[_Hashable_], object: AnyTFWR):
 	"""
 	Remove the element corresponding to the `object` in a list or set provided as `collection`.
 
@@ -773,7 +773,7 @@ class Entity:
 # --------------------------------------------------
 class Entities(_Enum):
 	@staticmethod
-	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Entity:
+	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[AnyTFWR]) -> Entity:
 		...
 
 	Apple: Entity
@@ -876,7 +876,7 @@ class Ground:
 # --------------------------------------------------
 class Grounds(_Enum):
 	@staticmethod
-	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Ground:
+	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[AnyTFWR]) -> Ground:
 		...
 
 	Grassland: Ground
@@ -901,7 +901,7 @@ class Hat:
 # --------------------------------------------------
 class Hats(_Enum):
 	@staticmethod
-	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Hat:
+	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[AnyTFWR]) -> Hat:
 		...
 
 	Brown_Hat: Hat
@@ -1046,7 +1046,7 @@ class Item:
 # --------------------------------------------------
 class Items(_Enum):
     @staticmethod
-    def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Item:
+    def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[AnyTFWR]) -> Item:
         ...
 
     Bone: Item
@@ -1121,7 +1121,7 @@ class Leaderboard:
 # --------------------------------------------------
 class Leaderboards(_Enum):
 	@staticmethod
-	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Leaderboard:
+	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[AnyTFWR]) -> Leaderboard:
 		...
 
 	Cactus: Leaderboard
@@ -1216,7 +1216,7 @@ class Unlock:
 # --------------------------------------------------
 class Unlocks(_Enum):
 	@staticmethod
-	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[_Any]) -> Unlock:
+	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[AnyTFWR]) -> Unlock:
 		...
 
 	Auto_Unlock: Unlock
@@ -1802,14 +1802,14 @@ def measure(direction: Direction | None = None) -> _int | _tuple[_int, _int] | N
 # -------------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------------
-class Drone[R : Any]:
+class Drone[R: AnyTFWR]:
     """
     A class representing a spawned drone given a task to execute.
     """
     ...
 
 # -------------------------------------------------------------------------------
-def spawn_drone[R : Any](task: Callable[..., R]) -> Drone[R]:
+def spawn_drone[R: AnyTFWR](task: Callable[..., R]) -> Drone[R]:
 	"""
 	Spawns a new drone in the same position as the drone that ran `spawn_drone(task)`. The new drone then begins executing the specified `task` function. After it is done, it will disappear automatically.
 
@@ -1834,7 +1834,7 @@ def spawn_drone[R : Any](task: Callable[..., R]) -> Drone[R]:
 
 
 # --------------------------------------------------
-def wait_for[R : Any](drone: Drone[R]) -> R:
+def wait_for[R: AnyTFWR](drone: Drone[R]) -> R:
 	"""
 	Waits until the given `drone` terminates.
 
@@ -1860,7 +1860,7 @@ def wait_for[R : Any](drone: Drone[R]) -> R:
 
 
 # --------------------------------------------------
-def has_finished(drone: Drone) -> _bool:
+def has_finished(drone: Drone[AnyTFWR]) -> _bool:
 	"""
 	Checks if the given 1drone1 has finished.
 
@@ -2023,7 +2023,7 @@ def simulate(
 		filename: string,
 		sim_unlocks: SimulateUnlocks,
 		sim_items: _dict[Item, _float],
-		sim_globals: _dict[string, Any],
+		sim_globals: _dict[string, AnyTFWR],
 		seed: _float, speedup: _float
 	) -> _float:
 	"""
@@ -2163,7 +2163,7 @@ def random() -> _float:
 
 
 # --------------------------------------------------
-def min(*args: Any) -> Any:
+def min(*args: AnyTFWR) -> AnyTFWR:
 	"""
 	Gets the minimum of a sequence of elements or several passed arguments.
 	Can be used on numbers and strings.
@@ -2177,7 +2177,7 @@ def min(*args: Any) -> Any:
 
 
 # --------------------------------------------------
-def max(*args: Any) -> Any:
+def max(*args: AnyTFWR) -> AnyTFWR:
 	"""
 	Gets the maximum of a sequence of elements or several passed arguments.
 	Can be used on numbers and strings.
@@ -2222,7 +2222,7 @@ def abs(x: _float) -> _float:
 # -------------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------------
-def print(*something: _Any) -> None:
+def print(*something: Any) -> None:
 	"""
 	Prints `something` into the air above the drone using smoke. This action is not affected by speed upgrades.
 	Multiple values can be printed at once.
@@ -2241,7 +2241,7 @@ def print(*something: _Any) -> None:
 
 
 # --------------------------------------------------
-def quick_print(*something: _Any) -> None:
+def quick_print(*something: Any) -> None:
 	"""
 	Prints a value just like `print()` but it doesn't stop to write it into the air so it can only be found on the output page.
 
