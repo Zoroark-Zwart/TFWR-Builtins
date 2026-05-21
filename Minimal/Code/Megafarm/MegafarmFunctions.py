@@ -1,17 +1,17 @@
 # -------------------------------------------------------------------------------
-def spawn_drone[R : Any](task: Callable[..., R]) -> Drone[R]:
+def spawn_drone[R: Any](task: Callable[..., R]) -> Drone[R]:
 	# Docstring: spawn_drone
 	...
 
 
 # --------------------------------------------------
-def wait_for[R : Any](drone: Drone[R]) -> R:
+def wait_for[R: Any](drone: Drone[R]) -> R:
 	# Docstring: wait_for
 	...
 
 
 # --------------------------------------------------
-def has_finished(drone: Drone) -> _bool:
+def has_finished(drone: Drone[Any]) -> _bool:
 	# Docstring: has_finished
 	...
 

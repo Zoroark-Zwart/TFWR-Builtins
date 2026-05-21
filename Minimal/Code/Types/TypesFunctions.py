@@ -48,6 +48,6 @@ def remove(collection: _list[_Any_] | _set[_Hashable_], object: Any):
 	...
 
 # --------------------------------------------------
-def str(object: Any) -> string:
+def str(object: _Any) -> string:
 	# Docstring: str
 	...

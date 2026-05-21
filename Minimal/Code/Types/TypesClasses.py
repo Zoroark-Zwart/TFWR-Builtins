@@ -11,7 +11,7 @@ type Enums = (
 # Docstring: Enums
 
 # --------------------------------------------------
-type Hashable = Primitive | Enums | range_class | Drone | tuple[Hashable, ...]
+type Hashable = Primitive | Enums | range_class | Drone[Any] | tuple[Hashable, ...]
 # Docstring: Hashable
 
 _Hashable_ = TypeVar("_Hashable_", Hashable, Hashable, covariant = True)

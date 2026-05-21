@@ -1,3 +1,9 @@
+# May/21 Update 4
+
+- Changed `Drone` to `Drone[Any]` for parameter `drone` of `has_finished`
+- Changed `Drone` to `Drone[Any]` in custom type `Hashable`
+- Changed `object` of `str` to use `builtins.Any` (alias `_Any`) to make it purely generic
+
 # May/21 Update 3
 
 - Renamed `ReturnType` to `R` in `Drone` class
