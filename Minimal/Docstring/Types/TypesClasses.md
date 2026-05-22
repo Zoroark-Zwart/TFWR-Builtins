@@ -66,7 +66,7 @@ included:
 
 # dict
 
-Builds an unordered collection of key-value pairs
+Builds an unordered collection of key-value pairs. This custom class is not assignable to `builtins.dict` from Python standard library or dict literals.
 
 dict() -> new empty dictionary
 
@@ -122,7 +122,7 @@ Current Dict: {"Two":2,"Three":3}
 
 # list
 
-Builds an ordered sequence of values.
+Builds an ordered sequence of values. This custom class is not assignable to `builtins.list` from Python standard library or list literals.
 
 list() -> new empty list
 
@@ -243,7 +243,7 @@ Output:
 
 # set
 
-Builds an unordered collection of elements
+Builds an unordered collection of elements. This custom class is not assignable to `builtins.set` from Python standard library or set literals.
 
 set() -> new empty set
 
@@ -320,7 +320,7 @@ Output:
 
 # range_class
 
-A range of values produced by the `range` function. See the `range` function for further details on ranges. This custom class not assignable to `builtins.range`.
+A range of values produced by the `range` function. See the `range` function for further details on ranges. This custom class is not assignable to `builtins.range` from Python standard library.
 
 ## len (range_class)
 

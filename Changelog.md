@@ -8,6 +8,7 @@
 - Updated docstrings where applicable
 - Changed `AnyTFWR` and `AnyIterable` to take from `_AnyCollection` which defines `builtin` collections and game collections
 - Imports adjusted to note the new custom class and added `_Iterator`
+- Added warning in description for custom class about assignability.
 
 # May/21 Update 5
 
