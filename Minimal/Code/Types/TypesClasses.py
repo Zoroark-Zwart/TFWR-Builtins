@@ -14,31 +14,30 @@ type Enums = (
 type Hashable = Primitive | Enums | range_class | Drone[AnyTFWR] | tuple[Hashable, ...]
 # Docstring: Hashable
 
-_Hashable_ = TypeVar("_Hashable_", Hashable, Hashable, covariant = True)
-
 # --------------------------------------------------
+type _AnyCollection = (
+	tuple[AnyTFWR, ...] |
+	_list[AnyTFWR] | _set[AnyTFWR] | _dict[Hashable, AnyTFWR] |		# Python builtins
+    list[AnyTFWR] | set[AnyTFWR] | dict[Hashable, AnyTFWR]			# game builtins
+)
+
 type AnyTFWR = (
-    Primitive | 								# Python builtin    - basic types
+    Primitive |	range_class |				# Python builtin    - basic types
 
-	range_class | Callable[..., AnyTFWR]			# Python builtin    - functions / modules
-	| ModuleType |
+	Callable[..., AnyTFWR] | ModuleType |	# Python builtin    - functions / modules
 
-	_tuple[AnyTFWR,...] | _list[AnyTFWR] |				# Python builtin    - collection types
-    _set[Hashable] | _dict[Hashable, AnyTFWR] |
+	_AnyCollection |						# Both builtins     - collection types
 
-	Direction | Enums | 						# Game builtins		- enum classes
+	Direction | Enums | 					# Game builtins		- enum classes
 
-	Drone[AnyTFWR]										# Game builtins		- megafarm classes
+	Drone[AnyTFWR]							# Game builtins		- megafarm classes
 )
 # Docstring: AnyTFWR
 
-_Any_ = TypeVar("_Any_", AnyTFWR, AnyTFWR, covariant = True)
-
 # --------------------------------------------------
 type AnyIterable = (
-	_dict[Hashable, AnyTFWR] | _list[AnyTFWR] | _set[Hashable] | _tuple[AnyTFWR,...] |
-	string | range_class |
-	Entities | Grounds | Hats | Items | Leaderboard | Unlocks
+	string | range_class | _AnyCollection |
+	Entities | Grounds | Hats | Items | Leaderboards | Unlocks
 )
 # Docstring: AnyIterable
 
@@ -48,17 +47,29 @@ type AnyIterable = (
 
 # Comment out the `dict` builtins import above to prevent conflict errors.
 
-class dict[key: Hashable, value: AnyTFWR](_dict):
+class dict[K: Hashable, V: AnyTFWR]():
 	# Docstring: dict
 
-	def __init__(self: Self, input: _dict[_Hashable_, _Any_] | None | Container[Hashable] = None) -> None:
+	def __init__(self: Self, input: dict[K, V] | _dict[K, V] | None = None) -> None:
+		...
+
+	def __iter__(self: Self) -> _Iterator[K]:
+		...
+
+	def __next__(self: Self) -> K:
+		...
+
+	def __getitem__(self: Self, key: K) -> V:
+		...
+
+	def __setitem__(self: Self, key: K, object: V) -> None:
 		...
 
 	def len(self: Self) -> _int:
 		# Docstring: len (dict)
 		...
 
-	def pop(self: Self, key: Hashable) -> AnyTFWR: # type: ignore
+	def pop(self: Self, key: K) -> V:
 		# Docstring: pop (dict)
 		...
 	...
@@ -70,17 +81,47 @@ class dict[key: Hashable, value: AnyTFWR](_dict):
 
 # Comment out the `list` builtins import above to prevent conflict errors.
 
-class list[value: AnyTFWR](_list):
+class list[V: AnyTFWR]():
 	# Docstring: list
 
 	def __init__(self: Self, input: AnyIterable | None = None) -> None:
 		...
 
-	def append(self: Self, object: AnyTFWR) -> None:
+	def __iter__(self: Self) -> _Iterator[V]:
+		...
+
+	def __next__(self: Self) -> V:
+		...
+
+	def __getitem__(self: Self, index: _float) -> V:
+		...
+
+	def __setitem__(self: Self, index: _float, object: V) -> None:
+		...
+
+	def __le__(self: Self, compare_list: tuple[V] | list[V] | _list[V]) -> _bool:
+		...
+
+	def __lt__(self: Self, compare_list: tuple[V] | list[V] | _list[V]) -> _bool:
+		...
+
+	def __ge__(self: Self, compare_list: tuple[V] | list[V] | _list[V]) -> _bool:
+		...
+
+	def __gt__(self: Self, compare_list: tuple[V] | list[V] | _list[V]) -> _bool:
+		...
+
+	def __iadd__(self: Self, compare_list: list[V] | _list[V]) -> list[V]:
+		...
+
+	def __add__(self: Self, compare_list: list[V] | _list[V]) -> list[V]:
+		...
+
+	def append(self: Self, object: V) -> None:
 		# Docstring: append
 		...
 
-	def insert(self: Self, index: _int, object: AnyTFWR) -> None: # type: ignore
+	def insert(self: Self, index: _float, object: V) -> None: # type: ignore
 		# Docstring: insert
 		...
 
@@ -88,11 +129,11 @@ class list[value: AnyTFWR](_list):
 		# Docstring: len (list)
 		...
 
-	def pop(self: Self, index: _int) -> AnyTFWR: # type: ignore
+	def pop(self: Self, index: _float) -> V: # type: ignore
 		# Docstring: pop (list)
 		...
 
-	def remove(self: Self, object: AnyTFWR) -> None:
+	def remove(self: Self, object: V) -> None:
 		# Docstring: remove (list)
 		...
 	...
@@ -104,13 +145,19 @@ class list[value: AnyTFWR](_list):
 
 # Comment out the `set` builtins import above to prevent conflict errors.
 
-class set[value: Hashable](_set):
+class set[K: Hashable]():
 	# Docstring: set
 
 	def __init__(self: Self, input: AnyIterable | None = None) -> None:
 		...
 
-	def add(self: Self, object: AnyTFWR) -> None:
+	def __iter__(self: Self) -> _Iterator[K]:
+		...
+
+	def __next__(self: Self) -> K:
+		...
+
+	def add(self: Self, object: K) -> None:
 		# Docstring: add
 		...
 
@@ -118,7 +165,41 @@ class set[value: Hashable](_set):
 		# Docstring: len (set)
 		...
 
-	def remove(self: Self, object: AnyTFWR) -> None:
+	def remove(self: Self, object: K) -> None:
 		# Docstring: remove (set)
+		...
+	...
+
+# --------------------------------------------------
+# Uncomment this class if you want additional game-specific type hints and docstrings for `range_class` methods. Should use in conjunction with the `range` function.
+
+# Comment out the `range_class` builtins import above to prevent conflict errors.
+
+class range_class():
+	# Docstring: range_class
+
+	def __iter__(self: Self) -> _Iterator[_int]:
+		...
+
+	def __next__(self: Self) -> _int:
+		...
+
+	def __getitem__(self: Self, index: _float) -> _int:
+		...
+
+	def __le__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
+		...
+
+	def __lt__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
+		...
+
+	def __ge__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
+		...
+
+	def __gt__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
+		...
+
+	def len(self: Self) -> _int:
+		# Docstring: len (range_class)
 		...
 	...

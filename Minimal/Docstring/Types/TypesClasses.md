@@ -44,6 +44,7 @@ included:
 - Primitives: `bool`, `int`, `float`, `string`, `None`
 - `tuple`, `list`, `dict`, `set`
 - `range_class`, `module`, `function` (hinted as `Callable`)
+- `ModuleType`,
 - `Drone` (from `spawn_drone`)
 - Enums:
   - `Direction` (`North`, `East`, `South`, `West`)
@@ -86,7 +87,7 @@ example usage:
 
 ```
 my_dict = {"One": 1, "Two": 2, "Three": 3}
-length = len(my_dict)
+length = my_dict.len()
 print(length)
 ```
 
@@ -186,7 +187,7 @@ example usage:
 
 ```
 my_list = [1, 2, 3]
-length = len(my_list)
+length = my_list.len()
 print(length)
 ```
 
@@ -287,7 +288,7 @@ example usage:
 
 ```
 my_set = {1, 2, 3}
-length = len(my_set)
+length = my_set.len()
 print(length)
 ```
 
@@ -315,4 +316,30 @@ Output:
 
 ```
 {1,3}
+```
+
+# range_class
+
+A range of values produced by the `range` function. See the `range` function for further details on ranges. This custom class not assignable to `builtins.range`.
+
+## len (range_class)
+
+Returns the number of items in the range
+
+returns the length of the range
+
+takes `1` tick to execute.
+
+example usage:
+
+```
+my_range = range(10)
+length = my_range.len()
+print(length)
+```
+
+Output:
+
+```
+10
 ```

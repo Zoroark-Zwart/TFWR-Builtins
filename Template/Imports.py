@@ -10,11 +10,11 @@ from collections.abc import Callable, Iterable, Sequence, Container
 
 from builtins import (
     bool, int, float, str as string,
-    range as range_class,
     tuple,
 
     # If you uncomment the custom classes found below then
     # comment this line to prevent conflicts
+    range as range_class,
     list, set, dict
 )
 
@@ -24,6 +24,7 @@ from builtins import (
     bool as _bool, int as _int, float as _float,
     tuple as _tuple, list as _list, set as _set, dict as _dict
 )
+from collections.abc import Iterator as _Iterator
 
 from types import ModuleType
 from typing import Any

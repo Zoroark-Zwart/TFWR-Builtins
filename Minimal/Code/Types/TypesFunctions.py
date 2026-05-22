@@ -18,32 +18,38 @@ def range(start: _float, stop: _float, step: _float) -> range_class:  # type: ig
 # Docstring: MethodFunction
 
 # --------------------------------------------------
-def add(given_set: _set[_Hashable_], object: AnyTFWR) -> None:
+def add[K: Hashable](given_set: set[K], object: K) -> None:
 	# Docstring: add
 	...
 
 # --------------------------------------------------
-def append(given_list: _list[_Any_], object: AnyTFWR) -> None:
+def append[V: AnyTFWR](given_list: list[V], object: V) -> None:
 	# Docstring: append
 	...
 
 # --------------------------------------------------
-def insert(given_list: _list[_Any_], index: _int, object: AnyTFWR) -> None:
+def insert[V: AnyTFWR](given_list: list[V], index: _float, object: V) -> None:
 	# Docstring: insert
 	...
 
 # --------------------------------------------------
-def len(object : string | _dict[_Hashable_, _Any_] | _list[_Any_] | _set[_Hashable_] | _tuple[_Any_] | range_class) -> _int:
+def len[_K: Hashable, V: AnyTFWR](object : string | dict[_K, V] | list[V] | set[_K] | tuple[V] | range_class) -> _int:
 	# Docstring: len
 	...
 
 # --------------------------------------------------
-def pop(collection: _dict[_Hashable_, _Any_] | _list[_Any_], object: AnyTFWR):
-	# Docstring: pop
+@overload
+def pop[_K: Hashable, V: AnyTFWR](collection: dict[_K, V], key: _K) -> V: # type: ignore
+	# Docstring: pop (dict)
+	...
+
+@overload
+def pop[V: AnyTFWR](collection: list[V], index: _float) -> V:  # type: ignore
+	# Docstring: pop (list)
 	...
 
 # --------------------------------------------------
-def remove(collection: _list[_Any_] | _set[_Hashable_], object: AnyTFWR):
+def remove[_K: Hashable, V: AnyTFWR](collection: list[V] | set[_K], object: V) -> None:
 	# Docstring: remove
 	...
 

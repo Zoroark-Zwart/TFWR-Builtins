@@ -219,27 +219,3 @@ Output:
 ```
 3
 ```
-
-# pop
-
-Remove the element corresponding to the `key` in a dict or list provided as `collection`. If it is a list and no `key` is specified removes the last element in the list.
-
-returns the value of the removed element
-
-takes `len(list) - index` ticks to execute if an index is provided
-takes `1` tick to execute if no `key` is provided, of if a dict is provided
-
-example usage:
-
-```
-my_list = [1, 2, 3]
-print("Old Value:", my_list.pop(1))
-print("Current List:", my_list)
-```
-
-Output:
-
-```
-Old Value: 2
-Current List: [1,3]
-```

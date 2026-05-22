@@ -1,3 +1,14 @@
+# May/21 Update 6
+
+- Specfiied more direct functionality for custom classes `list`, `dict`, `set`
+- Generalised using type variables
+- Adjusted UFCS versions to use the type variables from the custom classes
+- Made an overload for `pop` since it did not play well being mixed
+- Added a custom class for `range_class` with special game-only functinoality
+- Updated docstrings where applicable
+- Changed `AnyTFWR` and `AnyIterable` to take from `_AnyCollection` which defines `builtin` collections and game collections
+- Imports adjusted to note the new custom class and added `_Iterator`
+
 # May/21 Update 5
 
 - Renamed `Any` to `AnyTFWR`
