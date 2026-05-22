@@ -11,7 +11,7 @@
 # - string -> builtins.str
 # - range_class -> builtins.range
 
-from typing import Self, TypeVar, Literal, Final, overload
+from typing import Generator, Self, TypeVar, Literal, Final, overload
 from collections.abc import Callable, Iterable, Sequence, Container
 
 from builtins import (
@@ -501,56 +501,56 @@ class dict[K: Hashable, V: AnyTFWR]():
 
 # Comment out the `range_class` builtins import above to prevent conflict errors.
 
-class range_class():
-	"""
-	A range of values produced by the `range` function. See the `range` function for further details on ranges. This custom class is not assignable to `builtins.range` from Python standard library.
-	"""
+# class range_class():
+# 	"""
+# 	A range of values produced by the `range` function. See the `range` function for further details on ranges. This custom class is not assignable to `builtins.range` from Python standard library.
+# 	"""
 
-	def __iter__(self: Self) -> _Iterator[_int]:
-		...
+# 	def __iter__(self: Self) -> _Iterator[_int]:
+# 		...
 
-	def __next__(self: Self) -> _int:
-		...
+# 	def __next__(self: Self) -> _int:
+# 		...
 
-	def __getitem__(self: Self, index: _float) -> _int:
-		...
+# 	def __getitem__(self: Self, index: _float) -> _int:
+# 		...
 
-	def __le__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
-		...
+# 	def __le__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
+# 		...
 
-	def __lt__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
-		...
+# 	def __lt__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
+# 		...
 
-	def __ge__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
-		...
+# 	def __ge__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
+# 		...
 
-	def __gt__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
-		...
+# 	def __gt__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
+# 		...
 
-	def len(self: Self) -> _int:
-		"""
-		Returns the number of items in the range
+# 	def len(self: Self) -> _int:
+# 		"""
+# 		Returns the number of items in the range
 
-		returns the length of the range
+# 		returns the length of the range
 
-		takes `1` tick to execute.
+# 		takes `1` tick to execute.
 
-		example usage:
+# 		example usage:
 
-		```
-		my_range = range(10)
-		length = my_range.len()
-		print(length)
-		```
+# 		```
+# 		my_range = range(10)
+# 		length = my_range.len()
+# 		print(length)
+# 		```
 
-		Output:
+# 		Output:
 
-		```
-		10
-		```
-		"""
-		...
-	...
+# 		```
+# 		10
+# 		```
+# 		"""
+# 		...
+# 	...
 
 # -------------------------------------------------------------------------------
 @overload
@@ -1007,10 +1007,6 @@ class Ground:
 
 # --------------------------------------------------
 class Grounds(_Enum):
-	@staticmethod
-	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[AnyTFWR]) -> Ground:
-		...
-
 	Grassland: Ground
 	"""
 	The default ground. Grass will automatically grow on it.
@@ -1020,6 +1016,11 @@ class Grounds(_Enum):
 	"""
 	Calling `till()` turns the ground into this. Calling `till()` again changes it back to grassland.
 	"""
+
+	@staticmethod
+	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[AnyTFWR]) -> Generator[Ground, Any, None]:
+		yield Grounds.Grassland
+		yield Grounds.Soil
 
 
 # -------------------------------------------------------------------------------

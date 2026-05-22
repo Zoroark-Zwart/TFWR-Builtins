@@ -1,6 +1,6 @@
 # -------------------------------------------------------------------------------
-# Docstring: Primitive
 type Primitive = _bool | _int | _float | string | None
+# Docstring: Primitive
 
 # --------------------------------------------------
 type Enums = (
@@ -11,7 +11,12 @@ type Enums = (
 # Docstring: Enums
 
 # --------------------------------------------------
-type Hashable = Primitive | Enums | range_class | Drone[AnyTFWR] | tuple[Hashable, ...]
+type Hashable = (
+    Primitive | range_class |
+	tuple[Hashable, ...] |
+	Enums |
+	Drone[AnyTFWR]
+)
 # Docstring: Hashable
 
 # --------------------------------------------------

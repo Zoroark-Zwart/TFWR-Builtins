@@ -1,3 +1,7 @@
+# May/21 Update 7
+
+- Moved docstring for `Primitive` to below the custom type instead of on top of it
+
 # May/21 Update 6
 
 - Specfiied more direct functionality for custom classes `list`, `dict`, `set`
