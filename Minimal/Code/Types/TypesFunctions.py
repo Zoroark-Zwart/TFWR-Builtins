@@ -23,33 +23,33 @@ def add[K: Hashable](given_set: set[K], object: K) -> None:
 	...
 
 # --------------------------------------------------
-def append[V: AnyTFWR](given_list: list[V], object: V) -> None:
+def append[V: Any](given_list: list[V], object: V) -> None:
 	# Docstring: append
 	...
 
 # --------------------------------------------------
-def insert[V: AnyTFWR](given_list: list[V], index: _float, object: V) -> None:
+def insert[V: Any](given_list: list[V], index: _float, object: V) -> None:
 	# Docstring: insert
 	...
 
 # --------------------------------------------------
-def len[K: Hashable, V: AnyTFWR](object : string | dict[K, V] | list[V] | set[K] | tuple[V] | range_class) -> _int:
+def len[K: Hashable, V: Any](object : string | dict[K, V] | list[V] | set[K] | tuple[V] | range_class) -> _int:
 	# Docstring: len
 	...
 
 # --------------------------------------------------
 @overload
-def pop[K: Hashable, V: AnyTFWR](collection: dict[K, V], key: K) -> V: # type: ignore
+def pop[K: Hashable, V: Any](collection: dict[K, V], key: K) -> V: # type: ignore
 	# Docstring: pop (dict)
 	...
 
 @overload
-def pop[V: AnyTFWR](collection: list[V], index: _float) -> V:  # type: ignore
+def pop[V: Any](collection: list[V], index: _float) -> V:  # type: ignore
 	# Docstring: pop (list)
 	...
 
 # --------------------------------------------------
-def remove[K: Hashable, V: AnyTFWR](collection: list[V] | set[K], object: V) -> None:
+def remove[K: Hashable, V: Any](collection: list[V] | set[K], object: V) -> None:
 	# Docstring: remove
 	...
 

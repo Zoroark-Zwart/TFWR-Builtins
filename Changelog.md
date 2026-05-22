@@ -1,6 +1,7 @@
 # May/21 Update 8
 
 - Made `V` type var of custom list and `K` of custom dicts be generic Any in order to be flexible enough for compatibility
+- Changed UFCS functions of similar type to use generic Any as well for compatibility
 - Made the constructor `input` parameter except `Iterable[V]` for custom list and `Iterable[K]` for custom set
 - Changed `_AnyCollection` from `Hashable` keys to a explicit list of keys to help with compatibility to an Any type
 

@@ -741,7 +741,7 @@ def add[K: Hashable](given_set: set[K], object: K) -> None:
 	...
 
 # --------------------------------------------------
-def append[V: AnyTFWR](given_list: list[V], object: V) -> None:
+def append[V: Any](given_list: list[V], object: V) -> None:
 	"""
 	Add `object` to the end of a list provided as `given_list`.
 	
@@ -764,7 +764,7 @@ def append[V: AnyTFWR](given_list: list[V], object: V) -> None:
 	...
 
 # --------------------------------------------------
-def insert[V: AnyTFWR](given_list: list[V], index: _float, object: V) -> None:
+def insert[V: Any](given_list: list[V], index: _float, object: V) -> None:
 	"""
 	Add a `object` to the specified `index` to a list provided as `given_list`.
 	
@@ -787,7 +787,7 @@ def insert[V: AnyTFWR](given_list: list[V], index: _float, object: V) -> None:
 	...
 
 # --------------------------------------------------
-def len[K: Hashable, V: AnyTFWR](object : string | dict[K, V] | list[V] | set[K] | tuple[V] | range_class) -> _int:
+def len[K: Hashable, V: Any](object : string | dict[K, V] | list[V] | set[K] | tuple[V] | range_class) -> _int:
 	"""
 	Returns the number of items in the dict, list, set or str provided as `collection`.
 	
@@ -813,7 +813,7 @@ def len[K: Hashable, V: AnyTFWR](object : string | dict[K, V] | list[V] | set[K]
 
 # --------------------------------------------------
 @overload
-def pop[K: Hashable, V: AnyTFWR](collection: dict[K, V], key: K) -> V: # type: ignore
+def pop[K: Hashable, V: Any](collection: dict[K, V], key: K) -> V: # type: ignore
 	"""
 	Remove the key-value pair corresponding to the `key` in the dict
 	
@@ -839,7 +839,7 @@ def pop[K: Hashable, V: AnyTFWR](collection: dict[K, V], key: K) -> V: # type: i
 	...
 
 @overload
-def pop[V: AnyTFWR](collection: list[V], index: _float) -> V:  # type: ignore
+def pop[V: Any](collection: list[V], index: _float) -> V:  # type: ignore
 	"""
 	Remove the element corresponding to the `index` in the list. If no index is specified removes the last element in the list.
 	
@@ -866,7 +866,7 @@ def pop[V: AnyTFWR](collection: list[V], index: _float) -> V:  # type: ignore
 	...
 
 # --------------------------------------------------
-def remove[K: Hashable, V: AnyTFWR](collection: list[V] | set[K], object: V) -> None:
+def remove[K: Hashable, V: Any](collection: list[V] | set[K], object: V) -> None:
 	"""
 	Remove the element corresponding to the `object` in a list or set provided as `collection`.
 	
