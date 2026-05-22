@@ -90,8 +90,8 @@ included:
 # --------------------------------------------------
 type _AnyCollection = (
 	tuple[AnyTFWR, ...] |
-	_list[AnyTFWR] | _set[AnyTFWR] | _dict[Hashable, AnyTFWR] |
-    list[AnyTFWR] | set[AnyTFWR] | dict[Hashable, AnyTFWR]
+	_list[AnyTFWR] | _set[AnyTFWR] | _dict[Hashable, AnyTFWR] |		# Python builtins
+    list[AnyTFWR] | set[AnyTFWR] | dict[Hashable, AnyTFWR]			# game builtins
 )
 
 type AnyTFWR = (
@@ -99,7 +99,7 @@ type AnyTFWR = (
 
 	Callable[..., AnyTFWR] | ModuleType |	# Python builtin    - functions / modules
 
-	_AnyCollection |						# Python builtin    - collection types
+	_AnyCollection |						# Both builtins     - collection types
 
 	Direction | Enums | 					# Game builtins		- enum classes
 
@@ -515,16 +515,16 @@ class range_class():
 	def __getitem__(self: Self, index: _float) -> _int:
 		...
 
-	def __le__(self: Self, compare_range: range_class) -> _bool:
+	def __le__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
 		...
 
-	def __lt__(self: Self, compare_range: range_class) -> _bool:
+	def __lt__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
 		...
 
-	def __ge__(self: Self, compare_range: range_class) -> _bool:
+	def __ge__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
 		...
 
-	def __gt__(self: Self, compare_range: range_class) -> _bool:
+	def __gt__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
 		...
 
 	def len(self: Self) -> _int:

@@ -33,13 +33,13 @@ def insert[V: AnyTFWR](given_list: list[V], index: _float, object: V) -> None:
 	...
 
 # --------------------------------------------------
-def len[_K: Hashable, V: AnyTFWR](object : string | dict[_K, V] | list[V] | set[_K] | tuple[V] | range_class) -> _int:
+def len[K: Hashable, V: AnyTFWR](object : string | dict[K, V] | list[V] | set[K] | tuple[V] | range_class) -> _int:
 	# Docstring: len
 	...
 
 # --------------------------------------------------
 @overload
-def pop[_K: Hashable, V: AnyTFWR](collection: dict[_K, V], key: _K) -> V: # type: ignore
+def pop[K: Hashable, V: AnyTFWR](collection: dict[K, V], key: K) -> V: # type: ignore
 	# Docstring: pop (dict)
 	...
 
@@ -49,7 +49,7 @@ def pop[V: AnyTFWR](collection: list[V], index: _float) -> V:  # type: ignore
 	...
 
 # --------------------------------------------------
-def remove[_K: Hashable, V: AnyTFWR](collection: list[V] | set[_K], object: V) -> None:
+def remove[K: Hashable, V: AnyTFWR](collection: list[V] | set[K], object: V) -> None:
 	# Docstring: remove
 	...
 
