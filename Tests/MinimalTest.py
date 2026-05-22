@@ -1,38 +1,22 @@
 from Release.__builtins__minimal import *
 #  from __builtins__ import *
 
-from collections.abc import Iterator as _Iterator
-from typing import Self
+import builtins
 
-class GroundsClass:
-    def __init__(self) -> None:
-        pass
+TestDict: dict[int, int] = dict()
+# TestDict = dict({1:1})
+TestDict2: dict[int, int] = dict(TestDict)
 
-    def __iter__(self: Self) -> _Iterator[Ground]:
-        ...
+TestList: list[int] = list(TestDict)
+TestList2: list[tuple[int,int]] = list({(1,2):1})
+TestList6: list[dict[int, int]] = list()
+TestList6.append(dict({1:1}))
 
-    def __next__(self: Self) -> Ground:
-        ...
+TestSet: set[int] = set(set({1,2}))
+TestList3: list[int] = list(TestSet)
 
-    Grassland: Ground
-    """
-    The default ground. Grass will automatically grow on it.
-    """
+TestList4: list[dict[Hashable, AnyTFWR]]
 
-    Soil: Ground
-    """
-    Calling `till()` turns the ground into this. Calling `till()` again changes it back to grassland.
-    """
-
-# Grounds = GroundsClass()
-
-TestDict: dict[Hashable, int] = dict()
-TestList: list[dict[Hashable, int]] = list()
-for ground in Grounds:
-    TestDict[ground] = 1
-    TestList.append(TestDict)
-
-
-
-
-print(Grounds.Grassland)
+TestAny1: AnyTFWR = dict(TestDict)
+TestAny2: AnyTFWR = set(TestDict)
+TestAny3: AnyTFWR = set(TestList)

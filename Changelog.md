@@ -1,3 +1,9 @@
+# May/21 Update 8
+
+- Made `V` type var of custom list and `K` of custom dicts be generic Any in order to be flexible enough for compatibility
+- Made the constructor `input` parameter except `Iterable[V]` for custom list and `Iterable[K]` for custom set
+- Changed `_AnyCollection` from `Hashable` keys to a explicit list of keys to help with compatibility to an Any type
+
 # May/21 Update 7
 
 - Moved docstring for `Primitive` to below the custom type instead of on top of it

@@ -21,9 +21,62 @@ type Hashable = (
 
 # --------------------------------------------------
 type _AnyCollection = (
-	tuple[AnyTFWR, ...] |
-	_list[AnyTFWR] | _set[AnyTFWR] | _dict[Hashable, AnyTFWR] |		# Python builtins
-    list[AnyTFWR] | set[AnyTFWR] | dict[Hashable, AnyTFWR]			# game builtins
+	_tuple[AnyTFWR,...] |
+
+	dict[_int, AnyTFWR] | _dict[_int, AnyTFWR] |
+	dict[_float, AnyTFWR] | _dict[_float, AnyTFWR] |
+	dict[string, AnyTFWR] | _dict[string, AnyTFWR] |
+	dict[None, AnyTFWR] | _dict[None, AnyTFWR] |
+
+	set[_int] | _set[_int] |
+	set[_float] | _set[_float] |
+	set[string] | _set[string] |
+	set[None] | _set[None] |
+
+	list[_int] | _list[_int] |
+	list[_float] | _list[_float] |
+	list[string] | _list[string] |
+	list[None] | _list[None] |
+
+	list[Entity] | _list[Entity] |
+	list[Entities] | _list[Entities] |
+	list[Ground] | _list[Ground] |
+	list[Grounds] | _list[Grounds] |
+	list[Hat] | _list[Hat] |
+	list[Hats] | _list[Hats] |
+	list[Item] | _list[Item] |
+	list[Items] | _list[Items] |
+	list[Leaderboard] | _list[Leaderboard] |
+	list[Leaderboards] | _list[Leaderboards] |
+	list[Unlock] | _list[Unlock] |
+	list[Unlocks] | _list[Unlocks] |
+
+
+	dict[Entity, AnyTFWR] | _dict[Entity, AnyTFWR] |
+	dict[Entities, AnyTFWR] | _dict[Entities, AnyTFWR] |
+	dict[Ground, AnyTFWR] | _dict[Ground, AnyTFWR] |
+	dict[Grounds, AnyTFWR] | _dict[Grounds, AnyTFWR] |
+	dict[Hat, AnyTFWR] | _dict[Hat, AnyTFWR] |
+	dict[Hats, AnyTFWR] | _dict[Hats, AnyTFWR] |
+	dict[Item, AnyTFWR] | _dict[Item, AnyTFWR] |
+	dict[Items, AnyTFWR] | _dict[Items, AnyTFWR] |
+	dict[Leaderboard, AnyTFWR] | _dict[Leaderboard, AnyTFWR] |
+	dict[Leaderboards, AnyTFWR] | _dict[Leaderboards, AnyTFWR] |
+	dict[Unlock, AnyTFWR] | _dict[Unlock, AnyTFWR] |
+	dict[Unlocks, AnyTFWR] | _dict[Unlocks, AnyTFWR] |
+
+	set[Entity] | _set[Entity] |
+	set[Entities] | _set[Entities] |
+	set[Ground] | _set[Ground] |
+	set[Grounds] | _set[Grounds] |
+	set[Hat] | _set[Hat] |
+	set[Hats] | _set[Hats] |
+	set[Item] | _set[Item] |
+	set[Items] | _set[Items] |
+	set[Leaderboard] | _set[Leaderboard] |
+	set[Leaderboards] | _set[Leaderboards] |
+	set[Unlock] | _set[Unlock] |
+	set[Unlocks] | _set[Unlocks]
 )
 
 type AnyTFWR = (
@@ -52,7 +105,7 @@ type AnyIterable = (
 
 # Comment out the `dict` builtins import above to prevent conflict errors.
 
-class dict[K: Hashable, V: AnyTFWR]():
+class dict[K: Hashable, V: Any]():
 	# Docstring: dict
 
 	def __init__(self: Self, input: dict[K, V] | _dict[K, V] | None = None) -> None:
@@ -86,10 +139,10 @@ class dict[K: Hashable, V: AnyTFWR]():
 
 # Comment out the `list` builtins import above to prevent conflict errors.
 
-class list[V: AnyTFWR]():
+class list[V: Any]():
 	# Docstring: list
 
-	def __init__(self: Self, input: AnyIterable | None = None) -> None:
+	def __init__(self: Self, input: Iterable[V] | None = None) -> None:
 		...
 
 	def __iter__(self: Self) -> _Iterator[V]:
@@ -153,7 +206,7 @@ class list[V: AnyTFWR]():
 class set[K: Hashable]():
 	# Docstring: set
 
-	def __init__(self: Self, input: AnyIterable | None = None) -> None:
+	def __init__(self: Self, input: Iterable[K] | None = None) -> None:
 		...
 
 	def __iter__(self: Self) -> _Iterator[K]:

@@ -78,3 +78,10 @@ Other code
 	set[Unlock] | _set[Unlock] |
 	set[Unlocks] | _set[Unlocks]
 )`
+
+
+`type _AnyCollection = (
+	tuple[AnyTFWR, ...] |
+	_list[AnyTFWR] | _set[AnyTFWR] | _dict[Hashable, AnyTFWR] |		# Python builtins
+    list[AnyTFWR] | set[AnyTFWR] | dict[Hashable, AnyTFWR]			# game builtins
+)`
