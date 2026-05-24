@@ -1,3 +1,9 @@
+# May/23 Update 5
+
+- Removed `TypeVar` import
+- Changed `DictType`, `ListType`, `SetType`, and `RangeType` to `SomethingTFWR`
+- Moved `Self` to private import
+
 # May/23 Update 4
 
 - Fixed protocol of `has_finished`
