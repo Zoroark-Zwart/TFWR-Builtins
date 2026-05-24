@@ -1981,7 +1981,7 @@ def measure(direction: Direction | None = None, /) -> _int | _tuple[_int, _int] 
 # -------------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------------
-class Drone[R: AnyTFWR]:
+class Drone[R: Any]:
     """
     A class representing a spawned drone given a task to execute.
     
@@ -1990,7 +1990,7 @@ class Drone[R: AnyTFWR]:
     ...
 
 # -------------------------------------------------------------------------------
-def spawn_drone[*P, R: AnyTFWR](task: Callable[[*P], R], /, *args: *P) -> Drone[R] | None:
+def spawn_drone[*P, R: Any](task: Callable[[*P], R], /, *args: *P) -> Drone[R] | None:
 	"""
 	Spawns a new drone in the same position as the drone that ran `spawn_drone(task, *args)`. The new drone then begins executing the provided `task` function. After it is done, it will disappear automatically.
 	

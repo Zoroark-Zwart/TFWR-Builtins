@@ -1,5 +1,5 @@
 # -------------------------------------------------------------------------------
-def spawn_drone[*P, R: AnyTFWR](task: Callable[[*P], R], /, *args: *P) -> Drone[R] | None:
+def spawn_drone[*P, R: Any](task: Callable[[*P], R], /, *args: *P) -> Drone[R] | None:
 	# Docstring: spawn_drone
 	...
 
