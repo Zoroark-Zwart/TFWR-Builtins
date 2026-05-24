@@ -41,7 +41,7 @@ Gets the minimum of several passed arguments. Can be used on `float` or `str` un
 `min(a,b,c)`: Returns the minimum of `a`, `b` and `c`.
 
 returns the collection that has the minimum total:
-- If `tuple`, `list` or `range` is given will return minimum argument based onvalue
+- If `tuple`, `list` or `range` is given will return minimum argument based on value
 - If `dict` or `set` is given will return the minimum argument based on key.
 
 takes `num_comparison` ticks to execute.
@@ -79,7 +79,7 @@ Gets the maximum of several passed arguments. Can be used on `float` or `str` un
 `max(a,b,c)`: Returns the maximum of `a`, `b` and `c`.
 
 returns the collection that has the maximum total:
-- If `tuple`, `list` or `range` is given will return maximum argument based onvalue
+- If `tuple`, `list` or `range` is given will return maximum argument based on value
 - If `dict` or `set` is given will return the maximum argument based on key.
 
 takes `num_comparison` ticks to execute.
