@@ -105,7 +105,7 @@ type AnyIterable = (
 
 # Comment out the `dict` builtins import above to prevent conflict errors.
 
-type DictTFWR[k: Hashable, v: Any] = dict[k, v] | _dict[k, v]
+type DictTFWR[K: Hashable, V: Any] = dict[K, V] | _dict[K, V]
 """
 This type is used to represent the custom dict type that is specific to the game and the dict type provided by Python's builtins module. It is used to help you manage custom dicts and dict literals such as `{1: "One", 2: "Two", 3: "Three"]`. You cannot assign a dict literal to the custom dict type, however.
 """
@@ -173,7 +173,7 @@ class list[V: Any]():
 
 # Comment out the `set` builtins import above to prevent conflict errors.
 
-type SetTFWR[K: Hashable] = set[k] | _set[K]
+type SetTFWR[K: Hashable] = set[K] | _set[K]
 """
 This type is used to represent the custom set type that is specific to the game and the set type provided by Python's builtins module. It is used to help you manage custom sets and set literals such as `{1, 2, 3}`. You cannot assign a set literal to the custom set type, however.
 """
