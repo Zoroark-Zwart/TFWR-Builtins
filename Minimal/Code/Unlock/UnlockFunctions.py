@@ -1,4 +1,7 @@
 # -------------------------------------------------------------------------------
+type Cost = dict[Item, _int] | _dict[Item, _int] | dict[_Never, _Never]
+# Docstring: get_cost (type)
+
 def get_cost(thing: Entity | Entities | Unlock | Unlocks, level: _int = 0, /) -> dict[Item, _int] | _dict[Item, _int] | dict[_Never, _Never]:
 	# Docstring: get_cost
 	...

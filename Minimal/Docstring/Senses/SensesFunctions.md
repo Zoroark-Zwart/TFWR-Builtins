@@ -76,6 +76,10 @@ if companion != None:
     print("Companion:", plant_type, "at", x, ",", y)
 ```
 
+## get_companion (type)
+
+Special type that helps with type hinting the return of the `get_companion` function.
+
 # measure
 
 Can measure some values on some entities. The effect of this depends on the entity.
@@ -99,3 +103,7 @@ example usage:
 num_petals = measure()
 treasure_pos = measure()
 ```
+
+## measure (type)
+
+Special type that helps with type hinting the return of the `measure` function.

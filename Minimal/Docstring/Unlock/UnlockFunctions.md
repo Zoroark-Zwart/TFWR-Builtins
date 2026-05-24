@@ -20,6 +20,10 @@ for item in cost:
         print('not enough items to unlock carrots')
 ```
 
+## get_cost (type)
+
+Special type that helps with type hinting the return of the `get_cost` function.
+
 # unlock
 
 Has exactly the same effect as clicking the button corresponding to `unlock` in the research tree.

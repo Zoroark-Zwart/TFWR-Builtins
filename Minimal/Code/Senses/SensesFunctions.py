@@ -23,12 +23,18 @@ def num_items(item: Item | Items, /) -> _float:
 
 
 # --------------------------------------------------
+type Companion = _tuple[Entity, _tuple[_int, _int]] | None
+# Docstring: get_companion (type)
+
 def get_companion() -> _tuple[Entity, _tuple[_int, _int]] | None:
 	# Docstring: get_companion
 	...
 
 
 # --------------------------------------------------
+type Measure = _int | _tuple[_int, _int] | None
+# Docstring: measure (type)
+
 def measure(direction: Direction | None = None, /) -> _int | _tuple[_int, _int] | None:
 	# Docstring: measure
 	...

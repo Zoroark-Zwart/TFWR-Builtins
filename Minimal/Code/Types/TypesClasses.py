@@ -203,7 +203,7 @@ class list[V: Any]():
 
 type SetType[K: Hashable] = set[k] | _set[K]
 """
-This type is used to represent the custom set type that is specific to the game and the set type provided by Python's builtins module. It is used to help you manage custom lists and set literals such as `{1, 2, 3}`. You cannot assign a set literal to the custom set type, however.
+This type is used to represent the custom set type that is specific to the game and the set type provided by Python's builtins module. It is used to help you manage custom sets and set literals such as `{1, 2, 3}`. You cannot assign a set literal to the custom set type, however.
 """
 
 class set[K: Hashable]():

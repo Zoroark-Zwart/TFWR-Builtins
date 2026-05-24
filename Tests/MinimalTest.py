@@ -50,7 +50,7 @@ min([1, 1])
 max(1, 2, 3.3)
 min(range(10))
 
-TestMeasure: int = measure(North)
+TestMeasure: Measure = measure(North)
 
 @overload
 def Test(a:int) -> int: ...
@@ -62,3 +62,6 @@ def Test(a:int|float) -> int | float:
     hjsjdhsjhd
     """
     ...
+
+
+TestCost: Cost = get_cost(Entities.Bush)

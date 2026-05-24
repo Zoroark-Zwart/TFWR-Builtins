@@ -1,3 +1,10 @@
+# May/23 Update 4
+
+- Fixed protocol of `has_finished`
+- Added custom types for functions with complex return types to help type hint them. These are just the main function word capitalized. Included: `Measure`, `Cost`
+- `Drone` and `Entity` left out to maintain that they can return return `None` when hovered.
+- Spelling error fixes
+
 # May/23 Update 3
 
 - Added overloads for `min` and `max` to properly catch all possibilities of valid uses of those functions.

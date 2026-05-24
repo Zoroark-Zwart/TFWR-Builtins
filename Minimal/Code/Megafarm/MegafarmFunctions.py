@@ -11,7 +11,7 @@ def wait_for[R: AnyTFWR](drone: Drone[R], /) -> R:
 
 
 # --------------------------------------------------
-def has_finished(drone: Drone[AnyTFWR], /) -> _bool:
+def has_finished[R: AnyTFWR](drone: Drone[R], /) -> _bool:
 	# Docstring: has_finished
 	...
 

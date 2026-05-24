@@ -459,7 +459,7 @@ class list[V: Any]():
 
 type SetType[K: Hashable] = set[k] | _set[K]
 """
-This type is used to represent the custom set type that is specific to the game and the set type provided by Python's builtins module. It is used to help you manage custom lists and set literals such as `{1, 2, 3}`. You cannot assign a set literal to the custom set type, however.
+This type is used to represent the custom set type that is specific to the game and the set type provided by Python's builtins module. It is used to help you manage custom sets and set literals such as `{1, 2, 3}`. You cannot assign a set literal to the custom set type, however.
 """
 
 class set[K: Hashable]():
@@ -1953,6 +1953,11 @@ def num_items(item: Item | Items, /) -> _float:
 
 
 # --------------------------------------------------
+type Companion = _tuple[Entity, _tuple[_int, _int]] | None
+"""
+Special type that helps with type hinting the return of the `get_companion` function.
+"""
+
 def get_companion() -> _tuple[Entity, _tuple[_int, _int]] | None:
 	"""
 	Get the companion preference of the plant under the drone.
@@ -1974,6 +1979,11 @@ def get_companion() -> _tuple[Entity, _tuple[_int, _int]] | None:
 
 
 # --------------------------------------------------
+type Measure = _int | _tuple[_int, _int] | None
+"""
+Special type that helps with type hinting the return of the `measure` function.
+"""
+
 def measure(direction: Direction | None = None, /) -> _int | _tuple[_int, _int] | None:
 	"""
 	Can measure some values on some entities. The effect of this depends on the entity.
@@ -2012,6 +2022,8 @@ def measure(direction: Direction | None = None, /) -> _int | _tuple[_int, _int] 
 class Drone[R: AnyTFWR]:
     """
     A class representing a spawned drone given a task to execute.
+    
+    `R` - the return type of the `task` you provide the drone when you use `spawn_drone`
     """
     ...
 
@@ -2073,7 +2085,7 @@ def wait_for[R: AnyTFWR](drone: Drone[R], /) -> R:
 
 
 # --------------------------------------------------
-def has_finished(drone: Drone[AnyTFWR], /) -> _bool:
+def has_finished[R: AnyTFWR](drone: Drone[R], /) -> _bool:
 	"""
 	Checks if the given `drone` has finished.
 	
@@ -2295,6 +2307,11 @@ def simulate(
 # -------------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------------
+type Cost = dict[Item, _int] | _dict[Item, _int] | dict[_Never, _Never]
+"""
+Special type that helps with type hinting the return of the `get_cost` function.
+"""
+
 def get_cost(thing: Entity | Entities | Unlock | Unlocks, level: _int = 0, /) -> dict[Item, _int] | _dict[Item, _int] | dict[_Never, _Never]:
 	"""
 	Gets the cost of a `thing`
