@@ -2386,29 +2386,241 @@ def random() -> _float:
 
 
 # --------------------------------------------------
-def min(*args: AnyTFWR) -> AnyTFWR:
+@overload
+def min(sequence: Iterable[_float], /) -> _float: # type: ignore
 	"""
-	Gets the minimum of a sequence of elements or several passed arguments.
-	Can be used on numbers and strings.
+	Gets the minimum of a sequence of elements. Elements can be `float` or `str`
 	
-	`min(a,b,c)`: Returns the minimum of `a`, `b` and `c`.
+	`sequence`: Any `tuple`, `list`, `dict` or `set`
+	
 	`min(sequence)`: Returns the minimum of all values in a sequence.
 	
 	returns the minimum value from the arguments.
+	
+	takes `num_comparison` ticks to execute.
+	
+	example usage:
+	
+	```
+	smallest_from_list = min([3, 6, 34, 16])
+	```
+	"""
+	...
+
+@overload
+def min(sequence: Iterable[string], /) -> string: # type: ignore
+	"""
+	Gets the minimum of a sequence of elements. Elements can be `float` or `str`
+	
+	`sequence`: Any `tuple`, `list`, `dict` or `set`
+	
+	`min(sequence)`: Returns the minimum of all values in a sequence.
+	
+	returns the minimum value from the arguments.
+	
+	takes `num_comparison` ticks to execute.
+	
+	example usage:
+	
+	```
+	smallest_from_list = min([3, 6, 34, 16])
+	```
+	"""
+	...
+
+@overload
+def min(*args: _float) -> _float: # type: ignore
+	"""
+	Gets the minimum of several passed arguments. Can be used on `float` or `str`
+	
+	`min(a,b,c)`: Returns the minimum of `a`, `b` and `c`.
+	
+	returns the minimum value from the arguments.
+	
+	takes `num_comparison` ticks to execute.
+	
+	example usage:
+	
+	```
+	smallest = min(1, 5, 3, 2)
+	```
+	"""
+	...
+
+@overload
+def min(*args: Iterable[_float]) -> Iterable[_float]: # type: ignore
+	"""
+	Gets the minimum of several passed arguments. Can be used on `float` or `str`
+	
+	`min(a,b,c)`: Returns the minimum of `a`, `b` and `c`.
+	
+	returns the minimum value from the arguments.
+	
+	takes `num_comparison` ticks to execute.
+	
+	example usage:
+	
+	```
+	smallest = min(1, 5, 3, 2)
+	```
+	"""
+	...
+
+@overload
+def min(*args: string) -> string: # type: ignore
+	"""
+	Gets the minimum of several passed arguments. Can be used on `float` or `str`
+	
+	`min(a,b,c)`: Returns the minimum of `a`, `b` and `c`.
+	
+	returns the minimum value from the arguments.
+	
+	takes `num_comparison` ticks to execute.
+	
+	example usage:
+	
+	```
+	smallest = min(1, 5, 3, 2)
+	```
+	"""
+	...
+
+@overload
+def min(*args: Iterable[string]) -> Iterable[srting]: # type: ignore
+	"""
+	Gets the minimum of several passed arguments. Can be used on `float` or `str`
+	
+	`min(a,b,c)`: Returns the minimum of `a`, `b` and `c`.
+	
+	returns the minimum value from the arguments.
+	
+	takes `num_comparison` ticks to execute.
+	
+	example usage:
+	
+	```
+	smallest = min(1, 5, 3, 2)
+	```
 	"""
 	...
 
 
 # --------------------------------------------------
-def max(*args: AnyTFWR) -> AnyTFWR:
+@overload
+def max(sequence: Iterable[_float], /) -> _float: # type: ignore
 	"""
-	Gets the maximum of a sequence of elements or several passed arguments.
-	Can be used on numbers and strings.
+	Gets the maximum of a sequence of elements. Elements can be `float` or `str`
 	
-	`max(a,b,c)`: Returns the maximum of `a`, `b` and `c`.
+	`sequence`: Any `tuple`, `list`, `dict` or `set`
+	
 	`max(sequence)`: Returns the maximum of all values in a sequence.
 	
 	returns the maximum value from the arguments.
+	
+	takes `num_comparison` ticks to execute.
+	
+	example usage:
+	
+	```
+	smallest_from_list = max([3, 6, 34, 16])
+	```
+	"""
+	...
+
+@overload
+def max(sequence: Iterable[string], /) -> string: # type: ignore
+	"""
+	Gets the maximum of a sequence of elements. Elements can be `float` or `str`
+	
+	`sequence`: Any `tuple`, `list`, `dict` or `set`
+	
+	`max(sequence)`: Returns the maximum of all values in a sequence.
+	
+	returns the maximum value from the arguments.
+	
+	takes `num_comparison` ticks to execute.
+	
+	example usage:
+	
+	```
+	smallest_from_list = max([3, 6, 34, 16])
+	```
+	"""
+	...
+
+@overload
+def max(*args: _float) -> _float: # type: ignore
+	"""
+	Gets the maximum of several passed arguments. Can be used on `float` or `str`.
+	
+	`max(a,b,c)`: Returns the maximum of `a`, `b` and `c`.
+	
+	returns the maximum value from the arguments.
+	
+	takes `num_comparison` ticks to execute.
+	
+	example usage:
+	
+	```
+	smallest = max(1, 5, 3, 2)
+	```
+	"""
+	...
+
+@overload
+def max(*args: Iterable[_float]) -> Iterable[_float]: # type: ignore
+	"""
+	Gets the maximum of several passed arguments. Can be used on `float` or `str`.
+	
+	`max(a,b,c)`: Returns the maximum of `a`, `b` and `c`.
+	
+	returns the maximum value from the arguments.
+	
+	takes `num_comparison` ticks to execute.
+	
+	example usage:
+	
+	```
+	smallest = max(1, 5, 3, 2)
+	```
+	"""
+	...
+
+@overload
+def max(*args: string) -> string: # type: ignore
+	"""
+	Gets the maximum of several passed arguments. Can be used on `float` or `str`.
+	
+	`max(a,b,c)`: Returns the maximum of `a`, `b` and `c`.
+	
+	returns the maximum value from the arguments.
+	
+	takes `num_comparison` ticks to execute.
+	
+	example usage:
+	
+	```
+	smallest = max(1, 5, 3, 2)
+	```
+	"""
+	...
+
+@overload
+def max(*args: Iterable[string]) -> Iterable[srting]: # type: ignore
+	"""
+	Gets the maximum of several passed arguments. Can be used on `float` or `str`.
+	
+	`max(a,b,c)`: Returns the maximum of `a`, `b` and `c`.
+	
+	returns the maximum value from the arguments.
+	
+	takes `num_comparison` ticks to execute.
+	
+	example usage:
+	
+	```
+	smallest = max(1, 5, 3, 2)
+	```
 	"""
 	...
 

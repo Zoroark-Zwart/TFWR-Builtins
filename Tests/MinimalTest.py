@@ -27,7 +27,8 @@ append(TestList6, {2:2})
 pop([1, 2])
 pop([1, 2], 1)
 
-min([1, 2], [3, 4], list([1, 2]), "Hello")
+min([1, 2], [3, 4], list([1, 2]), ['s', 'd'])
+min([1, 2], [3, 4], list([1, 2]))
 
 def DroneFunction() -> float | list[int]:
     TestNum = random()
@@ -41,3 +42,9 @@ MyDrone: Drone[float | list[int]] | None = spawn_drone(DroneFunction)
 
 plant(entity = Entities.Bush)
 plant(Entities.Carrot, entity = Entities.Bush)
+
+min([1, "Hel"])
+max(1, "Hello")
+
+min([1, 1])
+max(1, 2, 3.3)

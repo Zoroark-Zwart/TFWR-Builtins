@@ -1,3 +1,7 @@
+# May/23 Update 3
+
+- Added overloads for `min` and `max` to properly catch all possibilities of valid uses of those functions.
+
 # May/23 Update 2
 
 - Gave default value to `index` of list `pop`

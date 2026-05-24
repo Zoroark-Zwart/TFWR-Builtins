@@ -14,42 +14,72 @@ def random_elem(list):
     return list[index]
 ```
 
-# min
+# min (sequence)
 
-Gets the minimum of a sequence of elements or several passed arguments.
-Can be used on numbers and strings.
+Gets the minimum of a sequence of elements. Elements can be `float` or `str`
 
-`min(a,b,c)`: Returns the minimum of `a`, `b` and `c`.
+`sequence`: Any `tuple`, `list`, `dict` or `set`
+
 `min(sequence)`: Returns the minimum of all values in a sequence.
 
 returns the minimum value from the arguments.
 
-takes #comparisons ticks to execute.
+takes `num_comparison` ticks to execute.
+
+example usage:
+
+```
+smallest_from_list = min([3, 6, 34, 16])
+```
+
+# min (literal)
+
+Gets the minimum of several passed arguments. Can be used on `float` or `str`
+
+`min(a,b,c)`: Returns the minimum of `a`, `b` and `c`.
+
+returns the minimum value from the arguments.
+
+takes `num_comparison` ticks to execute.
 
 example usage:
 
 ```
 smallest = min(1, 5, 3, 2)
-smallest_from_list = min([3, 6, 34, 16])
 ```
 
-# max
+# max (sequence)
 
-Gets the maximum of a sequence of elements or several passed arguments.
-Can be used on numbers and strings.
+Gets the maximum of a sequence of elements. Elements can be `float` or `str`
 
-`max(a,b,c)`: Returns the maximum of `a`, `b` and `c`.
+`sequence`: Any `tuple`, `list`, `dict` or `set`
+
 `max(sequence)`: Returns the maximum of all values in a sequence.
 
 returns the maximum value from the arguments.
 
-takes #comparisons ticks to execute.
+takes `num_comparison` ticks to execute.
 
 example usage:
 
 ```
-largest = max(1, 5, 3, 2)
-largest_from_list = max([3, 6, 34, 16])
+smallest_from_list = max([3, 6, 34, 16])
+```
+
+# max (literal)
+
+Gets the maximum of several passed arguments. Can be used on `float` or `str`.
+
+`max(a,b,c)`: Returns the maximum of `a`, `b` and `c`.
+
+returns the maximum value from the arguments.
+
+takes `num_comparison` ticks to execute.
+
+example usage:
+
+```
+smallest = max(1, 5, 3, 2)
 ```
 
 # abs
