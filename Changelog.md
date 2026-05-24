@@ -1,7 +1,23 @@
+# May/23 Update 2
+
+- Gave default value to `index` of list `pop`
+- Added new definition header to `spawn_drone` that checks that the provided argument types match the parameter types in the task function, and added `None` to return type
+- Disabled the ability to pass in keyword arguments to all functions that take arguments
+- Removed `Item` and `Items` from types of `thing` in `get_cost`
+- Changed return value of `get_cost` to: `dict[Item, _int] | _dict[Item, _int] | dict[_Never, _Never]`
+- Removed lingering `int | float` and replaced with `float`
+- Made `Iterator` as a pass-through type
+- Added Enum plurals to crop functions
+- Changed default value of `level` of `get_cost` to 0
+- Changed documentation to match type changes
+- Spelling error fixes
+- Added `WorldSize` type that is a literal from 3-32
+- Added a literal constraint to `size` to `WorldWizes` of `set_world_size`
+
 # May/23 Update 1
 
 - Added `DictType`, `ListType`, `SetType` and `RangeType` as a catch-all for custom types and Python builtin types
-- Added the `contains` dunder with comparison restrictiosn to all custom types
+- Added the `contains` dunder with comparison restrictions to all custom types
 
 # May/21 Update 8
 
@@ -16,11 +32,11 @@
 
 # May/21 Update 6
 
-- Specfiied more direct functionality for custom classes `list`, `dict`, `set`
-- Generalised using type variables
+- Specified more direct functionality for custom classes `list`, `dict`, `set`
+- Generalized using type variables
 - Adjusted UFCS versions to use the type variables from the custom classes
 - Made an overload for `pop` since it did not play well being mixed
-- Added a custom class for `range_class` with special game-only functinoality
+- Added a custom class for `range_class` with special game-only functionality
 - Updated docstrings where applicable
 - Changed `AnyTFWR` and `AnyIterable` to take from `_AnyCollection` which defines `builtin` collections and game collections
 - Imports adjusted to note the new custom class and added `_Iterator`
@@ -29,7 +45,7 @@
 # May/21 Update 5
 
 - Renamed `Any` to `AnyTFWR`
-- Unalised `builtins.Any` and let it be just `Any`
+- Unaliased `builtins.Any` and let it be just `Any`
 - Changes made to make it distinguishable which type of Any is being used in all scenarios
 
 # May/21 Update 4
@@ -95,15 +111,15 @@ To not throw typing errors.
 # Mar 8/26 Update 1
 
 - Added some experimentation for custom classes and Any type to Tests/TypingRecognition_Minimal.py
-- Type classes type paramter refinements in Minimal/Code/Types/TypeClasses.py
-- Corrected paramenter of add in Minimal/Code/Types/TypeFunctions.py
-- Corrected index and object paramters for insert in Minimal/Code/Types/TypeClasses.py and Minimal/Docstring/Types/TypeFunctions.py
+- Type classes type parameter refinements in Minimal/Code/Types/TypeClasses.py
+- Corrected parameter of add in Minimal/Code/Types/TypeFunctions.py
+- Corrected index and object parameters for insert in Minimal/Code/Types/TypeClasses.py and Minimal/Docstring/Types/TypeFunctions.py
 - Added custom Any type that only includes Python builtin basic and collection types and game builtin types
 - Added Minimal/Code/Megafarm/MegafarmClasses.py and Minimal/Docstring/Megafarm/MegafarmClasses.md
-- Added Drone type to Minimal and updated/ammended Megafarm Docstrings
+- Added Drone type to Minimal and updated/amended Megafarm Docstrings
 - Fixed return type of has_finished to a bool
 - Updated simulate function signature
-- Renamed IterableCollections to AnyInterable in Minimal/Code/Types/TypeClasses.py
+- Renamed IterableCollections to AnyIterable in Minimal/Code/Types/TypeClasses.py
 - Added a dedicated Template/Imports.py file for imports and changed template to match
 
 # Mar 7/26 Update 1
@@ -129,12 +145,12 @@ To not throw typing errors.
 
 - Added all Code and Docstring files for a complete Minimal build
 - Added some additions and fixes that aren't present in the current official builtins file
-- Changed range() so that it now has 3 different overloads and appropriate commment
+- Changed range() so that it now has 3 different overloads and appropriate comment
 - Changed the wording of some example usages to avoid using comments inside of the examples. Instead, made those examples all print something and added an "Output" section
 - Added dummy default class overrides for dict, list, and set to help in the future. More should follow
 - Added alias names for primitive types to avoid collisions in the future
 - Adjusted spawn_drone to accept a callable with no arguments
-- Adjusted Template/BuiltinsBuilder.Manager.\_\_ParserDocstring to output a list of the contents instead of a string. Also added content compliation detection to safely allow newlines inside of the content itself
+- Adjusted Template/BuiltinsBuilder.Manager.\_\_ParserDocstring to output a list of the contents instead of a string. Also added content compilation detection to safely allow newlines inside of the content itself
 - Adjusted Template/BuiltinsBuilder.Manager.MergeGroupings to now accept a list for docstring content and adding appropriate padding to each new line
 - Reworked spacing in Template/Template.py
 - Added overload support to Template/Template.py
@@ -148,7 +164,7 @@ To not throw typing errors.
 
 - Renamed Changelog.md to CHANGELOG.md
 - Added TODO.md and some tasks
-- Added Release folder and changed Template/BuiltinsBuilder.Compile to ouput to Release
+- Added Release folder and changed Template/BuiltinsBuilder. Compile to output to Release
 - Changed Template/BuiltinsBuilder.AddContributionsSection to be a bit more direct but still non-destructive
 - Refactored some variable names to help make them clearer
 - Changed Template/BuiltinsBuilder.Compile to not output sections tags unless it has content for it
@@ -158,7 +174,7 @@ To not throw typing errors.
 - Changed Template/BuiltinsBuilder.MergeGroupings to return the merged content
 - Changed Template/BuiltinsBuilder.MergeGroupings to result Changed Template/BuiltinsBuilder.Groups to an empty dict
 - Added Template/Descriptive.py as continuation of the Minimal template
-- Added Template/BuiltinsBuilder setter and getters for name and version to allow renaming of template names and versions during continance files
+- Added Template/BuiltinsBuilder setter and getters for name and version to allow renaming of template names and versions during continuance files
 - Added Template/BuiltinsBuilder.Manager.TYPE_GROUPING types for code, docstring, and merged
 - Updated Template/BuiltinsBuilder.Manager fields to be marked as private intention
 - Separated Template/BuiltinsBuilder.Manager.Groupings types into more comprehensible code type and docstring type
@@ -195,6 +211,6 @@ To not throw typing errors.
 - Added example file for Minimal/Code/Items.py and Minimal/Docstring/Items.md
 - Created a starting template file under Template/Template.py
 - Added contributions under Template/Contributions.py
-- Created basic class for managing builtin file compliation and creation under Template/BuiltinManager.py
+- Created basic class for managing builtin file compilation and creation under Template/BuiltinManager.py
 - Created entry point for the Minimal version under Template/CreateMinima.py
 - Added basic gitignore

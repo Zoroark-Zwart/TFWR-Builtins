@@ -32,8 +32,8 @@ BuiltinsManager.AddGroupingDocstring("Math")
 BuiltinsManager.AddGroupingCode("Utility")
 BuiltinsManager.AddGroupingDocstring("Utility")
 
-BuiltinsManager.AddGroupingCode("Miscelaneous")
-BuiltinsManager.AddGroupingDocstring("Miscelaneous")
+BuiltinsManager.AddGroupingCode("Miscellaneous")
+BuiltinsManager.AddGroupingDocstring("Miscellaneous")
 
 # print(BuiltinsManager._Manager__Groupings)
 

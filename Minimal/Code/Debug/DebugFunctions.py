@@ -11,13 +11,20 @@ def get_tick_count() -> _int:
 
 
 # --------------------------------------------------
-def set_execution_speed(speed: _float) -> None:
+def set_execution_speed(speed: _float, /) -> None:
 	# Docstring: set_execution_speed
 	...
 
 
 # --------------------------------------------------
-def set_world_size(size: _float) -> None:
+type WorldSizes = Literal[
+	3, 4, 5, 6, 7, 8, 9, 10,
+	11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+	21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+	31, 32,
+]
+
+def set_world_size(size: WorldSizes, /) -> None:
 	# Docstring: set_world_size
 	...
 
@@ -30,7 +37,8 @@ def simulate(
 		sim_unlocks: SimulateUnlocks,
 		sim_items: _dict[Item, _float],
 		sim_globals: _dict[string, AnyTFWR],
-		seed: _float, speedup: _float
+		seed: _float, speedup: _float,
+		/
 	) -> _float:
 	# Docstring: simulate
 	...

@@ -11,13 +11,13 @@ def can_harvest() -> _bool:
 
 
 # --------------------------------------------------
-def plant(entity: Entity) -> _bool:
+def plant(entity: Entity | Entities, /) -> _bool:
 	# Docstring: plant
 	...
 
 
 # --------------------------------------------------
-def swap(direction: Direction) -> _bool:
+def swap(direction: Direction, /) -> _bool:
 	# Docstring: swap
 	...
 
@@ -29,7 +29,7 @@ def till() -> None:
 
 
 # --------------------------------------------------
-def use_item(item: Item, n: _int = 1) -> _bool:
+def use_item(item: Item | Items, n: _int = 1, /) -> _bool:
 	# Docstring: use_item
 	...
 
@@ -41,6 +41,6 @@ def clear() -> None:
 
 
 # --------------------------------------------------
-def change_hat(hat: Hat) -> None:
+def change_hat(hat: Hat | Hats, /) -> None:
 	# Docstring: change_hat
 	...

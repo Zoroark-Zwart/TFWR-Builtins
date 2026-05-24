@@ -27,4 +27,17 @@ append(TestList6, {2:2})
 pop([1, 2])
 pop([1, 2], 1)
 
-if 1.3 in list([1,2]): ...
+min([1, 2], [3, 4], list([1, 2]), "Hello")
+
+def DroneFunction() -> float | list[int]:
+    TestNum = random()
+
+    if TestNum:
+        return 1.3
+    else:
+        return list([1, 2])
+
+MyDrone: Drone[float | list[int]] | None = spawn_drone(DroneFunction)
+
+plant(entity = Entities.Bush)
+plant(Entities.Carrot, entity = Entities.Bush)

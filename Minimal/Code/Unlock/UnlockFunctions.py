@@ -1,16 +1,16 @@
 # -------------------------------------------------------------------------------
-def get_cost(thing: Entity | Entities | Item | Items | Unlock | Unlocks, level: _int | None = None) -> _dict[Item, _int] | None:
+def get_cost(thing: Entity | Entities | Unlock | Unlocks, level: _int = 0, /) -> dict[Item, _int] | _dict[Item, _int] | dict[_Never, _Never]:
 	# Docstring: get_cost
 	...
 
 
 # --------------------------------------------------
-def unlock(unlock: Unlock | Unlocks) -> _bool:
+def unlock(unlock: Unlock | Unlocks, /) -> _bool:
 	# Docstring: unlock
 	...
 
 
 # --------------------------------------------------
-def num_unlocked(thing: Enums) -> _int:
+def num_unlocked(thing: Enums, /) -> _int:
 	# Docstring: num_unlocked
 	...

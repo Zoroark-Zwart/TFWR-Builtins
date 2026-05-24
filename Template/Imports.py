@@ -6,7 +6,7 @@
 # - range_class -> builtins.range
 
 from typing import Self, TypeVar, Literal, Final, overload
-from collections.abc import Callable, Iterable, Sequence, Container
+from collections.abc import Callable, Iterator, Iterable, Sequence, Container
 
 from builtins import (
     bool, int, float, str as string,
@@ -24,8 +24,7 @@ from builtins import (
     bool as _bool, int as _int, float as _float, range as _range,
     tuple as _tuple, list as _list, set as _set, dict as _dict
 )
-from collections.abc import Iterator as _Iterator
 
 from types import ModuleType
-from typing import Any
+from typing import Any, Never as _Never
 from enum import Enum as _Enum

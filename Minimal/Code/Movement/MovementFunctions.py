@@ -1,11 +1,11 @@
 # -------------------------------------------------------------------------------
-def move(direction: Direction) -> _bool:
+def move(direction: Direction, /) -> _bool:
 	# Docstring: move
 	...
 
 
 # --------------------------------------------------
-def can_move(direction: Direction) -> _bool:
+def can_move(direction: Direction, /) -> _bool:
 	# Docstring: can_move
 	...
 

@@ -6,7 +6,7 @@ If `thing` is an entity: get the cost of planting it.
 If `thing` is an unlock: get the cost of unlocking it at the specified level.
 
 - returns a dictionary with items as keys and numbers as values. Each item is mapped to how much of it is needed.
-- returns `None` for unlocks that are already unlocked (when no level specified).
+- returns `{}` (empty dict) for unlocks that are already unlocked (when no level specified).
 - The optional `level` parameter specifies the upgrade level for unlocks.
 
 takes `1` tick to execute.

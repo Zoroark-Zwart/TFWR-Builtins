@@ -1,8 +1,13 @@
 # spawn_drone
 
-Spawns a new drone in the same position as the drone that ran `spawn_drone(task)`. The new drone then begins executing the specified `task` function. After it is done, it will disappear automatically.
+Spawns a new drone in the same position as the drone that ran `spawn_drone(task, *args)`. The new drone then begins executing the provided `task` function. After it is done, it will disappear automatically.
 
-returns the a `Drone` object for the new drone or `None` if all drones are already spawned.
+`*P` - list of parameters that your task can can take as arguments. Must match the type of arguments you give to `spawn_drone` with the parameter types you assign of the `task` that you provide.
+`R` - the return type of your drone. Must must the return type of of the `task` you provide.
+
+Passes the `*args` to the provided `task` when that drone runs.
+
+returns a `Drone[R]` object for the new drone or `None` if all drones are already spawned.
 
 takes `200` ticks to execute if a drone was spawned, `1` otherwise.
 
@@ -24,6 +29,7 @@ while True:
 Waits until the given `drone` terminates.
 
 returns the return value of the function that the `drone` was running.
+`R` - the return type of your drone. Must must the return type of of the `task` you provided with `spawn_drone`.
 
 takes `1 + remaining task ticks` remaining in the given drone's task function.
 takes `1` tick to execute if the awaited `drone` is already done.
@@ -43,7 +49,9 @@ print(wait_for(handle))
 
 # has_finished
 
-Checks if the given 1drone1 has finished.
+Checks if the given `drone` has finished.
+
+`R` - the return type of your drone. Must must the return type of of the `task` you provided with `spawn_drone`.
 
 returns `True` if the drone has finished, `False` otherwise.
 

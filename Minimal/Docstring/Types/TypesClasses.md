@@ -130,7 +130,7 @@ list(collection: list | tuple | set | str) -> new list from the values of the pr
 
 list(collection: set | dict) -> new list from the keys of the given `collection`
 
-list(game_enum) -> new list from the values of an in-game enumm `game_enum`
+list(game_enum) -> new list from the values of an in-game enum `game_enum`
 
 takes `1 + len(collection)` where `collection` is one of the above if an input is given.
 takes `1` tick to execute if no input is given.
@@ -225,7 +225,7 @@ Current List: [1,3]
 
 Remove the element corresponding to the `object` in the list.
 
-takes `num_comparions + num_shifts` ticks to execute
+takes `num_comparisons + num_shifts` ticks to execute
 
 example usage:
 
@@ -251,7 +251,7 @@ set(collection: list | tuple | set | str) -> new set from the values of the prov
 
 set(collection: set | dict) -> new set from the keys of the given `collection`
 
-set(game_enum) -> new set from the values of an in-game enumm `game_enum`
+set(game_enum) -> new set from the values of an in-game enum `game_enum`
 
 takes `1 + len(collection)` where `collection` is one of the above if an input is given.
 takes `1` tick to execute if no input is given.

@@ -17,7 +17,7 @@ def get_water() -> _float:
 
 
 # --------------------------------------------------
-def num_items(item: Item | Items) -> _int | _float:
+def num_items(item: Item | Items, /) -> _float:
 	# Docstring: num_items
 	...
 
@@ -29,6 +29,6 @@ def get_companion() -> _tuple[Entity, _tuple[_int, _int]] | None:
 
 
 # --------------------------------------------------
-def measure(direction: Direction | None = None) -> _int | _tuple[_int, _int] | None:
+def measure(direction: Direction | None = None, /) -> _int | _tuple[_int, _int] | None:
 	# Docstring: measure
 	...

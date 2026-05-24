@@ -58,7 +58,7 @@ Limits the size of the farm to better see what's happening.
 Also clears the farm and resets the drone position.
 
 - Sets the farm to a `size` x `size` grid.
-- The smallest `size` possible is `3`.
+- The smallest `size` possible is `3` and maximum `size` is `32`
 - A `size` smaller than `3` will change the grid back to its full size.
 - The effect will also stop when the execution stops.
 

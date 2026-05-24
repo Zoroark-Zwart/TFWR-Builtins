@@ -79,7 +79,7 @@ if companion != None:
 # measure
 
 Can measure some values on some entities. The effect of this depends on the entity.
-Will work anynore inside of a maze and only on a `Entities.Apple`
+Will work anymore inside of a maze and only on a `Entities.Apple`
 
 overloads:
 `measure()`: measures the entity under the drone.
