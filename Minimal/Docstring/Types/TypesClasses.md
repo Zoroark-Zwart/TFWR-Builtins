@@ -343,3 +343,7 @@ Output:
 ```
 10
 ```
+
+## compare (range_class)
+
+Ranges can only be compared to a `range`, `list`, or `tuple`. Elements of lists and tuples should all be `int` and have the same starting, ending, and step size.

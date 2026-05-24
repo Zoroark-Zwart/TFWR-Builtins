@@ -22,3 +22,9 @@ TestAny2: AnyTFWR = set(TestDict)
 TestAny3: AnyTFWR = set(TestList)
 
 append(TestList6, {2:2})
+
+
+pop([1, 2])
+pop([1, 2], 1)
+
+if 1.3 in list([1,2]): ...

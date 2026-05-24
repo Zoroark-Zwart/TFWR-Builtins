@@ -21,7 +21,7 @@ from builtins import (
 # Used for when the builtin type is desirable over a possible
 # redefinition using the same name
 from builtins import (
-    bool as _bool, int as _int, float as _float,
+    bool as _bool, int as _int, float as _float, range as _range,
     tuple as _tuple, list as _list, set as _set, dict as _dict
 )
 from collections.abc import Iterator as _Iterator

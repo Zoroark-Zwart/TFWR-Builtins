@@ -1,3 +1,8 @@
+# May/23 Update 1
+
+- Added `DictType`, `ListType`, `SetType` and `RangeType` as a catch-all for custom types and Python builtin types
+- Added the `contains` dunder with comparison restrictiosn to all custom types
+
 # May/21 Update 8
 
 - Made `V` type var of custom list and `K` of custom dicts be generic Any in order to be flexible enough for compatibility

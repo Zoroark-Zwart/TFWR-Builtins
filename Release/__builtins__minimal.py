@@ -203,6 +203,11 @@ included:
 
 # Comment out the `dict` builtins import above to prevent conflict errors.
 
+type DictType[k: Hashable, v: Any] = dict[k, v] | _dict[k, v]
+"""
+This type is used to represent the custom dict type that is specific to the game and the dict type provided by Python's builtins module. It is used to help you manage custom dicts and dict literals such as `{1: "One", 2: "Two", 3: "Three"]`. You cannot assign a dict literal to the custom dict type, however.
+"""
+
 class dict[K: Hashable, V: Any]():
 	"""
 	Builds an unordered collection of key-value pairs. This custom class is not assignable to `builtins.dict` from Python standard library or dict literals.
@@ -215,20 +220,17 @@ class dict[K: Hashable, V: Any]():
 	takes `1` tick to execute if no input is given.
 	"""
 
-	def __init__(self: Self, input: dict[K, V] | _dict[K, V] | None = None) -> None:
-		...
+	def __init__(self: Self, input: DictType[K, V] | None = None) -> None: ...
 
-	def __iter__(self: Self) -> _Iterator[K]:
-		...
+	def __iter__(self: Self) -> _Iterator[K]: ...
 
-	def __next__(self: Self) -> K:
-		...
+	def __next__(self: Self) -> K: ...
 
-	def __getitem__(self: Self, key: K) -> V:
-		...
+	def __getitem__(self: Self, key: K) -> V: ...
 
-	def __setitem__(self: Self, key: K, object: V) -> None:
-		...
+	def __setitem__(self: Self, key: K, object: V) -> None: ...
+
+	def __contains__(self, compare_object: K) -> _bool: ...
 
 	def len(self: Self) -> _int:
 		"""
@@ -287,6 +289,11 @@ class dict[K: Hashable, V: Any]():
 
 # Comment out the `list` builtins import above to prevent conflict errors.
 
+type ListType[V: Any] = list[V] | _list[V]
+"""
+This type is used to represent the custom list type that is specific to the game and the list type provided by Python's builtins module. It is used to help you manage custom lists and list literals such as `[1, 2, 3]`. You cannot assign a list literal to the custom list type, however.
+"""
+
 class list[V: Any]():
 	"""
 	Builds an ordered sequence of values. This custom class is not assignable to `builtins.list` from Python standard library or list literals.
@@ -303,38 +310,29 @@ class list[V: Any]():
 	takes `1` tick to execute if no input is given.
 	"""
 
-	def __init__(self: Self, input: Iterable[V] | None = None) -> None:
-		...
+	def __init__(self: Self, input: Iterable[V] | None = None) -> None: ...
 
-	def __iter__(self: Self) -> _Iterator[V]:
-		...
+	def __iter__(self: Self) -> _Iterator[V]: ...
 
-	def __next__(self: Self) -> V:
-		...
+	def __next__(self: Self) -> V: ...
 
-	def __getitem__(self: Self, index: _float) -> V:
-		...
+	def __getitem__(self: Self, index: _float) -> V: ...
 
-	def __setitem__(self: Self, index: _float, object: V) -> None:
-		...
+	def __setitem__(self: Self, index: _float, object: V) -> None: ...
 
-	def __le__(self: Self, compare_list: tuple[V] | list[V] | _list[V]) -> _bool:
-		...
+	def __le__(self: Self, compare_list: tuple[V] | ListType[V]) -> _bool: ...
 
-	def __lt__(self: Self, compare_list: tuple[V] | list[V] | _list[V]) -> _bool:
-		...
+	def __lt__(self: Self, compare_list: tuple[V] | ListType[V]) -> _bool: ...
 
-	def __ge__(self: Self, compare_list: tuple[V] | list[V] | _list[V]) -> _bool:
-		...
+	def __ge__(self: Self, compare_list: tuple[V] | ListType[V]) -> _bool: ...
 
-	def __gt__(self: Self, compare_list: tuple[V] | list[V] | _list[V]) -> _bool:
-		...
+	def __gt__(self: Self, compare_list: tuple[V] | ListType[V]) -> _bool: ...
 
-	def __iadd__(self: Self, compare_list: list[V] | _list[V]) -> list[V]:
-		...
+	def __iadd__(self: Self, compare_list: ListType[V]) -> list[V]: ...
 
-	def __add__(self: Self, compare_list: list[V] | _list[V]) -> list[V]:
-		...
+	def __add__(self: Self, compare_list: ListType[V]) -> list[V]: ...
+
+	def __contains__(self, compare_object: V) -> _bool: ...
 
 	def append(self: Self, object: V) -> None:
 		"""
@@ -460,6 +458,11 @@ class list[V: Any]():
 
 # Comment out the `set` builtins import above to prevent conflict errors.
 
+type SetType[K: Hashable] = set[k] | _set[K]
+"""
+This type is used to represent the custom set type that is specific to the game and the set type provided by Python's builtins module. It is used to help you manage custom lists and set literals such as `{1, 2, 3}`. You cannot assign a set literal to the custom set type, however.
+"""
+
 class set[K: Hashable]():
 	"""
 	Builds an unordered collection of elements. This custom class is not assignable to `builtins.set` from Python standard library or set literals.
@@ -476,14 +479,13 @@ class set[K: Hashable]():
 	takes `1` tick to execute if no input is given.
 	"""
 
-	def __init__(self: Self, input: Iterable[K] | None = None) -> None:
-		...
+	def __init__(self: Self, input: Iterable[K] | None = None) -> None: ...
 
-	def __iter__(self: Self) -> _Iterator[K]:
-		...
+	def __iter__(self: Self) -> _Iterator[K]: ...
 
-	def __next__(self: Self) -> K:
-		...
+	def __next__(self: Self) -> K: ...
+
+	def __contains__(self, compare_object: K) -> _bool: ...
 
 	def add(self: Self, object: K) -> None:
 		"""
@@ -559,31 +561,47 @@ class set[K: Hashable]():
 
 # Comment out the `range_class` builtins import above to prevent conflict errors.
 
+type RangeType = range_class | _range
+"""
+This type is used to represent the custom range type that is specific to the game and the range type provided by Python's builtins module. You cannot assign a range literal to the custom range type, however.
+"""
+
 class range_class():
 	"""
 	A range of values produced by the `range` function. See the `range` function for further details on ranges. This custom class is not assignable to `builtins.range` from Python standard library.
 	"""
 
-	def __iter__(self: Self) -> _Iterator[_int]:
-		...
+	def __iter__(self: Self) -> _Iterator[_int]: ...
 
-	def __next__(self: Self) -> _int:
-		...
+	def __next__(self: Self) -> _int: ...
 
-	def __getitem__(self: Self, index: _float) -> _int:
-		...
+	def __getitem__(self: Self, index: _float) -> _int: ...
 
 	def __le__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
+		"""
+		Ranges can only be compared to a `range`, `list`, or `tuple`. Elements of lists and tuples should all be `int` and have the same starting, ending, and step size.
+		"""
 		...
 
 	def __lt__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
+		"""
+		Ranges can only be compared to a `range`, `list`, or `tuple`. Elements of lists and tuples should all be `int` and have the same starting, ending, and step size.
+		"""
 		...
 
 	def __ge__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
+		"""
+		Ranges can only be compared to a `range`, `list`, or `tuple`. Elements of lists and tuples should all be `int` and have the same starting, ending, and step size.
+		"""
 		...
 
 	def __gt__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int]) -> _bool:
+		"""
+		Ranges can only be compared to a `range`, `list`, or `tuple`. Elements of lists and tuples should all be `int` and have the same starting, ending, and step size.
+		"""
 		...
+
+	def __contains__(self, compare_value: _int) -> _bool: ...
 
 	def len(self: Self) -> _int:
 		"""
@@ -718,7 +736,7 @@ print(last_number)
 """
 
 # --------------------------------------------------
-def add[K: Hashable](given_set: set[K], object: K) -> None:
+def add[K: Hashable](given_set: set[K] | _set[K], object: K) -> None:
 	"""
 	Add the `object` to a `given_set`.
 	
@@ -741,7 +759,7 @@ def add[K: Hashable](given_set: set[K], object: K) -> None:
 	...
 
 # --------------------------------------------------
-def append[V: Any](given_list: list[V], object: V) -> None:
+def append[V: Any](given_list: list[V] | _list[V], object: V) -> None:
 	"""
 	Add `object` to the end of a list provided as `given_list`.
 	
@@ -764,7 +782,7 @@ def append[V: Any](given_list: list[V], object: V) -> None:
 	...
 
 # --------------------------------------------------
-def insert[V: Any](given_list: list[V], index: _float, object: V) -> None:
+def insert[V: Any](given_list: list[V] | _list[V], index: _float, object: V) -> None:
 	"""
 	Add a `object` to the specified `index` to a list provided as `given_list`.
 	
@@ -787,7 +805,7 @@ def insert[V: Any](given_list: list[V], index: _float, object: V) -> None:
 	...
 
 # --------------------------------------------------
-def len[K: Hashable, V: Any](object : string | dict[K, V] | list[V] | set[K] | tuple[V] | range_class) -> _int:
+def len[K: Hashable, V: Any](object : string | dict[K, V] | _dict[K, V] | list[V] | _list[V] | set[K] | _set[K] | tuple[V] | range_class) -> _int:
 	"""
 	Returns the number of items in the dict, list, set or str provided as `collection`.
 	
@@ -813,7 +831,7 @@ def len[K: Hashable, V: Any](object : string | dict[K, V] | list[V] | set[K] | t
 
 # --------------------------------------------------
 @overload
-def pop[K: Hashable, V: Any](collection: dict[K, V], key: K) -> V: # type: ignore
+def pop[K: Hashable, V: Any](collection: dict[K, V] | _dict[K, V], key: K) -> V: # type: ignore
 	"""
 	Remove the key-value pair corresponding to the `key` in the dict
 	
@@ -839,7 +857,7 @@ def pop[K: Hashable, V: Any](collection: dict[K, V], key: K) -> V: # type: ignor
 	...
 
 @overload
-def pop[V: Any](collection: list[V], index: _float) -> V:  # type: ignore
+def pop[V: Any](collection: list[V] | _list[V], index: _float) -> V:  # type: ignore
 	"""
 	Remove the element corresponding to the `index` in the list. If no index is specified removes the last element in the list.
 	
@@ -866,7 +884,7 @@ def pop[V: Any](collection: list[V], index: _float) -> V:  # type: ignore
 	...
 
 # --------------------------------------------------
-def remove[K: Hashable, V: Any](collection: list[V] | set[K], object: V) -> None:
+def remove[K: Hashable, V: Any](collection: list[V] | _list[V] | set[K] | _set[K], object: V) -> None:
 	"""
 	Remove the element corresponding to the `object` in a list or set provided as `collection`.
 	

@@ -85,3 +85,8 @@ Other code
 	_list[AnyTFWR] | _set[AnyTFWR] | _dict[Hashable, AnyTFWR] |		# Python builtins
     list[AnyTFWR] | set[AnyTFWR] | dict[Hashable, AnyTFWR]			# game builtins
 )`
+
+Old stuff to maybe add back for `__builtins__`:
+
+`_Hashable_ = TypeVar("_Hashable_", Hashable, Hashable, covariant = True)`
+`_Any_ = TypeVar("_Any_", AnyTFWR, AnyTFWR, covariant = True)`
