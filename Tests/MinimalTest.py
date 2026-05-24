@@ -65,3 +65,10 @@ def Test(a:int|float) -> int | float:
 
 
 TestCost: Cost = get_cost(Entities.Bush)
+
+
+TestDict: DictTFWR[int, int] = dict()
+TestDict = {1:1}
+
+
+TestCollection: Collection[]

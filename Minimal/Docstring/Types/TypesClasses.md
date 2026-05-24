@@ -75,6 +75,24 @@ dict(dictionary[keys, values]) -> new dictionary initialized from an existing `d
 takes `1 + len(keys) + len(values)` ticks to execute if a dictionary is given.
 takes `1` tick to execute if no input is given.
 
+Consider using `DictTFWR` to help with type hints involving dicts.
+
+## dict (type)
+
+This type is used to represent the custom dict type that is specific to the game and the dict type provided by Python's builtins module. It is used to help you manage custom dicts and dict literals such as `{1: "One", 2: "Two", 3: "Three"]`. You cannot assign a dict literal to the custom dict type, however.
+
+When using the `dict` custom type below you should type hint your variables using `DictTFWR` as this will let you catch both this custom type and Python builtin type while also staying compatible with TFWR.
+
+example:
+```
+custom_dict: DictTFWR[int, string] = dict()
+python_dict: DictTFWR[int, string] = {1:"One", 1:"Two", 3:"Three"}
+```
+Makes this possible:
+```
+custom_dict = python_dict
+```
+
 ## len (dict)
 
 Returns the number of items in the dictionary.
@@ -134,6 +152,24 @@ list(game_enum) -> new list from the values of an in-game enum `game_enum`
 
 takes `1 + len(collection)` where `collection` is one of the above if an input is given.
 takes `1` tick to execute if no input is given.
+
+Consider using `ListTFWR` to help with type hints involving lists.
+
+# list (type)
+
+This type is used to represent the custom list type that is specific to the game and the list type provided by Python's builtins module. It is used to help you manage custom lists and list literals such as `[1, 2, 3]`. You cannot assign a list literal to the custom list type, however.
+
+When using the `list` custom type below you should type hint your variables using `ListTFWR` as this will let you catch both this custom type and Python builtin type while also staying compatible with TFWR.
+
+example:
+```
+custom_list: ListTFWR[int] = list()
+python_list: ListTFWR[int] = [1, 1, 3]
+```
+Makes this possible:
+```
+custom_list = python_list
+```
 
 ## append
 
@@ -256,6 +292,24 @@ set(game_enum) -> new set from the values of an in-game enum `game_enum`
 takes `1 + len(collection)` where `collection` is one of the above if an input is given.
 takes `1` tick to execute if no input is given.
 
+Consider using `SetTFWR` to help with type hints involving sets.
+
+## set (type)
+
+This type is used to represent the custom set type that is specific to the game and the set type provided by Python's builtins module. It is used to help you manage custom sets and set literals such as `{1, 2, 3}`. You cannot assign a set literal to the custom set type, however.
+
+When using the `set` custom type below you should type hint your variables using `SetTFWR` as this will let you catch both this custom type and Python builtin type while also staying compatible with TFWR.
+
+example:
+```
+custom_set: SetTFWR[int] = set()
+python_set: SetTFWR[int] = {1, 1, 3}
+```
+Makes this possible:
+```
+custom_set = python_set
+```
+
 ## add
 
 Add the `object` to the set.
@@ -321,6 +375,28 @@ Output:
 # range_class
 
 A range of values produced by the `range` function. See the `range` function for further details on ranges. This custom class is not assignable to `builtins.range` from Python standard library.
+
+Consider using `RangeTFWR` to help with type hints involving ranges.
+
+## range (type)
+
+This type is used to represent the custom range type that is specific to the game and the range type provided by Python's builtins module. You cannot assign a range literal to the custom range type, however.
+
+The range function will return `range_class` and the builtin `range` is aliased as `range_class` above. So the function version will return whichever has been defined most recently.
+
+When using the `range` custom type below you should type hint your variables using `RangeTFWR` as this will let you catch both this custom type and Python builtin type while also staying compatible with TFWR.
+
+example:
+```
+custom_range: RangeTFWR = range(10)
+
+from builtins import range
+python_range: RangeTFWR = range(10)
+```
+Makes this possible:
+```
+custom_range = python_range
+```
 
 ## len (range_class)
 

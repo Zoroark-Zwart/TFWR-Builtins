@@ -1,8 +1,10 @@
+# type: ignore
+
 import BuiltinsBuilder
 
 import Minimal
 
-BuiltinsManager: BuiltinsBuilder.Manager = Minimal.BuiltinsManager # type: ignore
+BuiltinsManager: BuiltinsBuilder.Manager = Minimal.BuiltinsManager
 BuiltinsManager.SetName("__builtins__descriptive")
 BuiltinsManager.SetVersion("Descriptive")
 

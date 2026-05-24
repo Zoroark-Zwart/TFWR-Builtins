@@ -1,3 +1,8 @@
+# May/24 Update 1
+
+- Added better documentation for custom types catch-alls
+- Added `_range` as a valid type in all appropriate places taking the place of `builtins.range` when `range_class` is defined as a custom type
+
 # May/23 Update 5
 
 - Removed `TypeVar` import

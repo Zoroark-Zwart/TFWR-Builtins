@@ -80,7 +80,7 @@ type _AnyCollection = (
 )
 
 type AnyTFWR = (
-    Primitive |	range_class |				# Python builtin    - basic types
+    Primitive |	range_class | _range |		# Python builtin    - basic types
 
 	Callable[..., AnyTFWR] | ModuleType |	# Python builtin    - functions / modules
 
@@ -94,7 +94,7 @@ type AnyTFWR = (
 
 # --------------------------------------------------
 type AnyIterable = (
-	string | range_class | _AnyCollection |
+	string | range_class | _range | _AnyCollection |
 	Entities | Grounds | Hats | Items | Leaderboards | Unlocks
 )
 # Docstring: AnyIterable
@@ -106,9 +106,7 @@ type AnyIterable = (
 # Comment out the `dict` builtins import above to prevent conflict errors.
 
 type DictTFWR[K: Hashable, V: Any] = dict[K, V] | _dict[K, V]
-"""
-This type is used to represent the custom dict type that is specific to the game and the dict type provided by Python's builtins module. It is used to help you manage custom dicts and dict literals such as `{1: "One", 2: "Two", 3: "Three"]`. You cannot assign a dict literal to the custom dict type, however.
-"""
+# Docstring: dict (type)
 class dict[K: Hashable, V: Any]():
 	# Docstring: dict
 	def __init__(self: _Self, input: DictTFWR[K, V] | None = None, /) -> None: ...
@@ -132,9 +130,7 @@ class dict[K: Hashable, V: Any]():
 # Comment out the `list` builtins import above to prevent conflict errors.
 
 type ListTFWR[V: Any] = list[V] | _list[V]
-"""
-This type is used to represent the custom list type that is specific to the game and the list type provided by Python's builtins module. It is used to help you manage custom lists and list literals such as `[1, 2, 3]`. You cannot assign a list literal to the custom list type, however.
-"""
+# Docstring: list (type)
 class list[V: Any]():
 	# Docstring: list
 	def __init__(self: _Self, input: Iterable[V] | None = None, /) -> None: ...
@@ -174,9 +170,7 @@ class list[V: Any]():
 # Comment out the `set` builtins import above to prevent conflict errors.
 
 type SetTFWR[K: Hashable] = set[K] | _set[K]
-"""
-This type is used to represent the custom set type that is specific to the game and the set type provided by Python's builtins module. It is used to help you manage custom sets and set literals such as `{1, 2, 3}`. You cannot assign a set literal to the custom set type, however.
-"""
+# Docstring: set (type)
 class set[K: Hashable]():
 	# Docstring: set
 	def __init__(self: _Self, input: Iterable[K] | None = None, /) -> None: ...
@@ -200,10 +194,7 @@ class set[K: Hashable]():
 # Comment out the `range_class` builtins import above to prevent conflict errors.
 
 type RangeTFWR = range_class | _range
-"""
-This type is used to represent the custom range type that is specific to the game and the range type provided by Python's builtins module. You cannot assign a range literal to the custom range type, however.
-"""
-
+# Docstring: range (type)
 class range_class():
 	# Docstring: range_class
 	def __iter__(self: _Self, /) -> Iterator[_int]: ...
