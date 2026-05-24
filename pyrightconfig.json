@@ -6,14 +6,15 @@
 		"**/.*",
 
 		// Project
-		"Minimal/Code",
-		"Descriptive/Code",
-		"Complex/Code",
+		"Minimal",
+		"Descriptive",
+		"Complex",
+		"Tests",
 		"WIP" // Hidden working folder and excluded through .gitignore
 	],
 
-	// "typeCheckingMode": "strict",
-	"typeCheckingMode": "standard"
+	"typeCheckingMode": "strict",
+	// "typeCheckingMode": "standard"
 	// "typeCheckingMode": "basic",
 	// "typeCheckingMode": "off",
 }
