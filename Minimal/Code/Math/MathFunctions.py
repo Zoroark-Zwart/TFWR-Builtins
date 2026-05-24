@@ -6,6 +6,11 @@ def random() -> _float:
 
 # --------------------------------------------------
 @overload
+def min(sequence: range_class, /) -> _int: # type: ignore
+	# Docstring: min (sequence)
+	...
+
+@overload
 def min(sequence: Iterable[_float], /) -> _float: # type: ignore
 	# Docstring: min (sequence)
 	...
@@ -13,6 +18,11 @@ def min(sequence: Iterable[_float], /) -> _float: # type: ignore
 @overload
 def min(sequence: Iterable[string], /) -> string: # type: ignore
 	# Docstring: min (sequence)
+	...
+
+@overload
+def min(*args: range_class) -> range_class: # type: ignore
+	# Docstring: min (literal)
 	...
 
 @overload
@@ -38,6 +48,11 @@ def min(*args: Iterable[string]) -> Iterable[string]: # type: ignore
 
 # --------------------------------------------------
 @overload
+def max(sequence: range_class, /) -> _int: # type: ignore
+	# Docstring: max (sequence)
+	...
+
+@overload
 def max(sequence: Iterable[_float], /) -> _float: # type: ignore
 	# Docstring: max (sequence)
 	...
@@ -45,6 +60,11 @@ def max(sequence: Iterable[_float], /) -> _float: # type: ignore
 @overload
 def max(sequence: Iterable[string], /) -> string: # type: ignore
 	# Docstring: max (sequence)
+	...
+
+@overload
+def max(*args: range_class) -> range_class: # type: ignore
+	# Docstring: max (literal)
 	...
 
 @overload

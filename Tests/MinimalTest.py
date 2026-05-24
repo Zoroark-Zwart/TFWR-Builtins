@@ -48,3 +48,17 @@ max(1, "Hello")
 
 min([1, 1])
 max(1, 2, 3.3)
+min(range(10))
+
+TestMeasure: int = measure(North)
+
+@overload
+def Test(a:int) -> int: ...
+@overload
+def Test(a:float) -> float: ...
+
+def Test(a:int|float) -> int | float:
+    """
+    hjsjdhsjhd
+    """
+    ...

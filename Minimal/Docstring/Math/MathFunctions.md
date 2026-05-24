@@ -16,13 +16,15 @@ def random_elem(list):
 
 # min (sequence)
 
-Gets the minimum of a sequence of elements. Elements can be `float` or `str`
+Gets the minimum of a sequence of elements. Elements can be `float` or `str` unless a `range` is given then elements will be `int`.
 
-`sequence`: Any `tuple`, `list`, `dict` or `set`
+`sequence`: Any `tuple`, `list`, `range`, `dict`, or `set`
 
 `min(sequence)`: Returns the minimum of all values in a sequence.
 
-returns the minimum value from the arguments.
+returns the minimum from the arguments:
+- If `tuple`, `list` or `range` is given will return minimum value
+- If `dict` or `set` is given will return the minimum key.
 
 takes `num_comparison` ticks to execute.
 
@@ -34,11 +36,13 @@ smallest_from_list = min([3, 6, 34, 16])
 
 # min (literal)
 
-Gets the minimum of several passed arguments. Can be used on `float` or `str`
+Gets the minimum of several passed arguments. Can be used on `float` or `str` unless a `range` is given then elements will be `int`.
 
 `min(a,b,c)`: Returns the minimum of `a`, `b` and `c`.
 
-returns the minimum value from the arguments.
+returns the collection that has the minimum total:
+- If `tuple`, `list` or `range` is given will return minimum argument based onvalue
+- If `dict` or `set` is given will return the minimum argument based on key.
 
 takes `num_comparison` ticks to execute.
 
@@ -50,13 +54,15 @@ smallest = min(1, 5, 3, 2)
 
 # max (sequence)
 
-Gets the maximum of a sequence of elements. Elements can be `float` or `str`
+Gets the maximum of a sequence of elements. Elements can be `float` or `str` unless a `range` is given then elements will be `int`.
 
-`sequence`: Any `tuple`, `list`, `dict` or `set`
+`sequence`: Any `tuple`, `list`, `range`, `dict`, or `set`
 
 `max(sequence)`: Returns the maximum of all values in a sequence.
 
-returns the maximum value from the arguments.
+returns the maximum from the arguments:
+- If `tuple`, `list` or `range` is given will return maximum value
+- If `dict` or `set` is given will return the maximum key.
 
 takes `num_comparison` ticks to execute.
 
@@ -68,11 +74,13 @@ smallest_from_list = max([3, 6, 34, 16])
 
 # max (literal)
 
-Gets the maximum of several passed arguments. Can be used on `float` or `str`.
+Gets the maximum of several passed arguments. Can be used on `float` or `str` unless a `range` is given then elements will be `int`.
 
 `max(a,b,c)`: Returns the maximum of `a`, `b` and `c`.
 
-returns the maximum value from the arguments.
+returns the collection that has the maximum total:
+- If `tuple`, `list` or `range` is given will return maximum argument based onvalue
+- If `dict` or `set` is given will return the maximum argument based on key.
 
 takes `num_comparison` ticks to execute.
 
