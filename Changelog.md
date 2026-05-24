@@ -3,6 +3,7 @@
 - Removed `TypeVar` import
 - Changed `DictType`, `ListType`, `SetType`, and `RangeType` to `SomethingTFWR`
 - Moved `Self` to private import
+- Minimized vertical spacing for custom types
 
 # May/23 Update 4
 

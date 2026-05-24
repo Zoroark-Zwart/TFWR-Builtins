@@ -109,31 +109,21 @@ type DictTFWR[k: Hashable, v: Any] = dict[k, v] | _dict[k, v]
 """
 This type is used to represent the custom dict type that is specific to the game and the dict type provided by Python's builtins module. It is used to help you manage custom dicts and dict literals such as `{1: "One", 2: "Two", 3: "Three"]`. You cannot assign a dict literal to the custom dict type, however.
 """
-
 class dict[K: Hashable, V: Any]():
 	# Docstring: dict
-
 	def __init__(self: _Self, input: DictTFWR[K, V] | None = None, /) -> None: ...
-
 	def __iter__(self: _Self, /) -> Iterator[K]: ...
-
 	def __next__(self: _Self, /) -> K: ...
-
 	def __getitem__(self: _Self, key: K, /) -> V: ...
-
 	def __setitem__(self: _Self, key: K, object: V, /) -> None: ...
-
 	def __contains__(self, compare_object: K, /) -> _bool: ...
-
 	def len(self: _Self, /) -> _int:
 		# Docstring: len (dict)
 		...
-
 	def pop(self: _Self, key: K, /) -> V:
 		# Docstring: pop (dict)
 		...
 	...
-
 
 # --------------------------------------------------
 # Uncomment this class if you want additional game-specific type hints and docstrings for `list` methods
@@ -145,50 +135,32 @@ type ListTFWR[V: Any] = list[V] | _list[V]
 """
 This type is used to represent the custom list type that is specific to the game and the list type provided by Python's builtins module. It is used to help you manage custom lists and list literals such as `[1, 2, 3]`. You cannot assign a list literal to the custom list type, however.
 """
-
 class list[V: Any]():
 	# Docstring: list
-
 	def __init__(self: _Self, input: Iterable[V] | None = None, /) -> None: ...
-
 	def __iter__(self: _Self, /) -> Iterator[V]: ...
-
 	def __next__(self: _Self, /) -> V: ...
-
 	def __getitem__(self: _Self, index: _float, /) -> V: ...
-
 	def __setitem__(self: _Self, index: _float, object: V, /) -> None: ...
-
 	def __le__(self: _Self, compare_list: tuple[V] | ListTFWR[V], /) -> _bool: ...
-
 	def __lt__(self: _Self, compare_list: tuple[V] | ListTFWR[V], /) -> _bool: ...
-
 	def __ge__(self: _Self, compare_list: tuple[V] | ListTFWR[V], /) -> _bool: ...
-
 	def __gt__(self: _Self, compare_list: tuple[V] | ListTFWR[V], /) -> _bool: ...
-
 	def __iadd__(self: _Self, compare_list: ListTFWR[V], /) -> list[V]: ...
-
 	def __add__(self: _Self, compare_list: ListTFWR[V], /) -> list[V]: ...
-
 	def __contains__(self, compare_object: V, /) -> _bool: ...
-
 	def append(self: _Self, object: V, /) -> None:
 		# Docstring: append
 		...
-
 	def insert(self: _Self, index: _float, object: V, /) -> None: # type: ignore
 		# Docstring: insert
 		...
-
 	def len(self: _Self, /) -> _int:
 		# Docstring: len (list)
 		...
-
 	def pop(self: _Self, index: _float = -1, /) -> V: # type: ignore
 		# Docstring: pop (list)
 		...
-
 	def remove(self: _Self, object: V, /) -> None:
 		# Docstring: remove (list)
 		...
@@ -205,26 +177,18 @@ type SetTFWR[K: Hashable] = set[k] | _set[K]
 """
 This type is used to represent the custom set type that is specific to the game and the set type provided by Python's builtins module. It is used to help you manage custom sets and set literals such as `{1, 2, 3}`. You cannot assign a set literal to the custom set type, however.
 """
-
 class set[K: Hashable]():
 	# Docstring: set
-
 	def __init__(self: _Self, input: Iterable[K] | None = None, /) -> None: ...
-
 	def __iter__(self: _Self, /) -> Iterator[K]: ...
-
 	def __next__(self: _Self, /) -> K: ...
-
 	def __contains__(self, compare_object: K, /) -> _bool: ...
-
 	def add(self: _Self, object: K, /) -> None:
 		# Docstring: add
 		...
-
 	def len(self: _Self, /) -> _int:
 		# Docstring: len (set)
 		...
-
 	def remove(self: _Self, object: K, /) -> None:
 		# Docstring: remove (set)
 		...
@@ -242,31 +206,22 @@ This type is used to represent the custom range type that is specific to the gam
 
 class range_class():
 	# Docstring: range_class
-
 	def __iter__(self: _Self, /) -> Iterator[_int]: ...
-
 	def __next__(self: _Self, /) -> _int: ...
-
 	def __getitem__(self: _Self, index: _float, /) -> _int: ...
-
 	def __le__(self: _Self, compare: range_class | list[_int] | _list[_int] | tuple[_int], /) -> _bool:
 		# Docstring: compare (range_class)
 		...
-
 	def __lt__(self: _Self, compare: range_class | list[_int] | _list[_int] | tuple[_int], /) -> _bool:
 		# Docstring: compare (range_class)
 		...
-
 	def __ge__(self: _Self, compare: range_class | list[_int] | _list[_int] | tuple[_int], /) -> _bool:
 		# Docstring: compare (range_class)
 		...
-
 	def __gt__(self: _Self, compare: range_class | list[_int] | _list[_int] | tuple[_int], /) -> _bool:
 		# Docstring: compare (range_class)
 		...
-
 	def __contains__(self, compare_value: _int, /) -> _bool: ...
-
 	def len(self: _Self, /) -> _int:
 		# Docstring: len (range_class)
 		...
