@@ -31,7 +31,7 @@ def min(*args: string) -> string: # type: ignore
 	...
 
 @overload
-def min(*args: Iterable[string]) -> Iterable[srting]: # type: ignore
+def min(*args: Iterable[string]) -> Iterable[string]: # type: ignore
 	# Docstring: min (literal)
 	...
 
@@ -63,7 +63,7 @@ def max(*args: string) -> string: # type: ignore
 	...
 
 @overload
-def max(*args: Iterable[string]) -> Iterable[srting]: # type: ignore
+def max(*args: Iterable[string]) -> Iterable[string]: # type: ignore
 	# Docstring: max (literal)
 	...
 

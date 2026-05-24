@@ -2486,7 +2486,7 @@ def min(*args: string) -> string: # type: ignore
 	...
 
 @overload
-def min(*args: Iterable[string]) -> Iterable[srting]: # type: ignore
+def min(*args: Iterable[string]) -> Iterable[string]: # type: ignore
 	"""
 	Gets the minimum of several passed arguments. Can be used on `float` or `str`
 	
@@ -2606,7 +2606,7 @@ def max(*args: string) -> string: # type: ignore
 	...
 
 @overload
-def max(*args: Iterable[string]) -> Iterable[srting]: # type: ignore
+def max(*args: Iterable[string]) -> Iterable[string]: # type: ignore
 	"""
 	Gets the maximum of several passed arguments. Can be used on `float` or `str`.
 	
