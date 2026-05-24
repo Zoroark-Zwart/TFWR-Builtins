@@ -1,3 +1,9 @@
+# May/24 Update 2
+
+- Reverted `_AnyCollection_` to the less specific version and settled it not being a true Any but instead a "these are all types that TFWR can support match one of them"
+- Made `list` `V` more specific as AnyTFWR
+- Made `dict` `K` more general as Any
+
 # May/24 Update 1
 
 - Added better documentation for custom types catch-alls

@@ -71,4 +71,12 @@ TestDict: DictTFWR[int, int] = dict()
 TestDict = {1:1}
 
 
-TestCollection: Collection[]
+TestAny1: AnyTFWR = TestDict
+
+TestAny2: Any = TestDict
+TestAny2[1] = "Hello"
+
+TestList1: ListTFWR[int] = list()
+
+TestAny3: AnyTFWR = TestList1
+TestAn4: Any = TestList1
