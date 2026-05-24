@@ -90,3 +90,54 @@ Old stuff to maybe add back for `__builtins__`:
 
 `_Hashable_ = TypeVar("_Hashable_", Hashable, Hashable, covariant = True)`
 `_Any_ = TypeVar("_Any_", AnyTFWR, AnyTFWR, covariant = True)`
+
+
+
+Maybe:
+
+```
+class str: # now, this is a problem. how do i limit methods while accepting string literals? there's no typing.Str to help me like with the others
+    """\
+returns a string representation of object.
+
+takes 1 ticks to execute.
+
+example:
+string = str(1000)"""
+
+    def __init__(self, object: _Optional[_Any] = None) -> None: ...
+    def __iter__(self) -> _Iterator[Str]: ...
+    def __len__(self) -> int: ... # still annoying
+
+    def __eq__(self, value: object) -> bool: ...
+    def __lt__(self, other: Str) -> bool: ...
+    def __gt__(self, other: Str) -> bool: ...
+    def __le__(self, other: Str) -> bool: ...
+    def __ge__(self, other: Str) -> bool: ...
+
+    def __add__(self, other: Str) -> Str: ...
+    def __iadd__(self, other: str) -> Str: ...
+
+    def print(self, *args: _Any) -> None: # just for the sake of it, if someone wants
+        """\
+        Prints all args into the air above the drone using smoke. This action is not affected by speed upgrades.
+        Multiple values can be printed at once.
+
+        returns None
+
+        takes 1s to execute.
+
+        example:
+        print("ground:", get_ground_type())"""
+
+    def quick_print(self, *args: _Any) -> None:
+        """\
+        Prints a value just like print(*args) but it doesn't stop to write it into the air so it can only be found on the output page.
+
+        returns None
+
+        takes 0 ticks to execute.
+
+        example:
+        quick_print("hi mom")"""
+```
