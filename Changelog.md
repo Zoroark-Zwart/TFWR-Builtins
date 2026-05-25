@@ -1,3 +1,14 @@
+# May/25 Update 1
+
+- Exposed more commonly useful types to make them available
+- Reverted some private types to public
+- Added more import explanations
+- Organized imports
+- Added credit for @Rat
+- Added additional comment on how `spawn_drone` passes arguments
+- Removed unneeded enum method from enum classes
+- Added `WorldSizes` literals to return of `get_world_size`
+
 # May/24 Update 2
 
 - Reverted `_AnyCollection_` to the less specific version and settled it not being a true Any but instead a "these are all types that TFWR can support match one of them"

@@ -1,6 +1,6 @@
 # spawn_drone
 
-Spawns a new drone in the same position as the drone that ran `spawn_drone(task, *args)`. The new drone then begins executing the provided `task` function. After it is done, it will disappear automatically.
+Spawns a new drone in the same position as the drone that ran `spawn_drone(task, *args)`. The new drone then begins executing the provided `task` function. The rest of the arguments are copied and passed into the specified `task` function. After it is done, it will disappear automatically.
 
 `*P` - list of parameters that your task can can take as arguments. Must match the type of arguments you give to `spawn_drone` with the parameter types you assign of the `task` that you provide.
 `R` - the return type of your drone. Must must the return type of of the `task` you provide.

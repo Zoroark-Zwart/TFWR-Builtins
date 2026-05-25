@@ -51,6 +51,7 @@ max(1, 2, 3.3)
 min(range(10))
 
 TestMeasure: Measure = measure(North)
+TestMeasure2: tuple[int, int] = measure()
 
 @overload
 def Test(a:int) -> int: ...
@@ -59,7 +60,7 @@ def Test(a:float) -> float: ...
 
 def Test(a:int|float) -> int | float:
     """
-    hjsjdhsjhd
+    Hello World
     """
     ...
 
@@ -80,3 +81,20 @@ TestList1: ListTFWR[int] = list()
 
 TestAny3: AnyTFWR = TestList1
 TestAn4: Any = TestList1
+
+
+@overload
+def Tester() -> float: ...
+@overload
+def Tester(dummy:None = None) -> string: ...
+
+TestValue: float = Tester()
+TestValue2: string = Tester()
+
+
+for entity in Entities:
+    print(entity)
+
+
+TestSize: int = get_world_size()
+TestSize2: WorldSizes = get_world_size()

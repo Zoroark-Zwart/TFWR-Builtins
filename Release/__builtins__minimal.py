@@ -1,18 +1,28 @@
 # This file gives Python type definitions to TFWR builtins to allow editing code with Python editors.
 # Note that the games language is not Python and these definitions are only an approximation.
 
-# Contributed by @Noon, @KlingonDragon, @dieckie, @Flekay, and @Zoroark-Zwart on the TFWR Discord server.
+# Contributed by @Noon, @KlingonDragon, @dieckie, @Flekay, @Zoroark-Zwart, and @Rat on the TFWR Discord server.
 # @SCD-3 on GitHub
 
 # Expose some useful types to allow for typing without using a typing import.
 # Typing imports would fail to run in-game as they are not ignored.
+# Ignore any type warnings as needed by your environment.
+# Some types are provided as private to the let file have control
+# over the regular defaults and are not commonly useful for typing most code
 
 # Notes on aliases because of TFWR functions:
 # - string -> builtins.str
 # - range_class -> builtins.range
 
-from typing import Literal, Final, overload
-from collections.abc import Callable, Iterator, Iterable, Sequence, Container
+from typing import (
+    Any, Literal, Final,
+    overload, Self, Never
+)
+from collections.abc import (
+    Callable, Iterator, Iterable,
+    Sequence, Container, Collection
+)
+from types import ModuleType
 
 from builtins import (
     bool, int, float, str as string,
@@ -30,9 +40,6 @@ from builtins import (
     bool as _bool, int as _int, float as _float, range as _range,
     tuple as _tuple, list as _list, set as _set, dict as _dict
 )
-
-from types import ModuleType
-from typing import Any, Self as _Self, Never as _Never
 from enum import Enum as _Enum
 
 # -------------------------------------------------------------------------------
@@ -179,13 +186,13 @@ class dict[K: Hashable, V: Any]():
 	
 	Consider using `DictTFWR` to help with type hints involving dicts.
 	"""
-	def __init__(self: _Self, input: DictTFWR[K, V] | None = None, /) -> None: ...
-	def __iter__(self: _Self, /) -> Iterator[K]: ...
-	def __next__(self: _Self, /) -> K: ...
-	def __getitem__(self: _Self, key: K, /) -> V: ...
-	def __setitem__(self: _Self, key: K, object: V, /) -> None: ...
+	def __init__(self: Self, input: DictTFWR[K, V] | None = None, /) -> None: ...
+	def __iter__(self: Self, /) -> Iterator[K]: ...
+	def __next__(self: Self, /) -> K: ...
+	def __getitem__(self: Self, key: K, /) -> V: ...
+	def __setitem__(self: Self, key: K, object: V, /) -> None: ...
 	def __contains__(self, compare_object: K, /) -> _bool: ...
-	def len(self: _Self, /) -> _int:
+	def len(self: Self, /) -> _int:
 		"""
 		Returns the number of items in the dictionary.
 		
@@ -208,7 +215,7 @@ class dict[K: Hashable, V: Any]():
 		```
 		"""
 		...
-	def pop(self: _Self, key: K, /) -> V:
+	def pop(self: Self, key: K, /) -> V:
 		"""
 		Remove the key-value pair corresponding to the `key` in the dict
 		
@@ -273,19 +280,19 @@ class list[V: AnyTFWR]():
 	
 	Consider using `ListTFWR` to help with type hints involving lists.
 	"""
-	def __init__(self: _Self, input: Iterable[V] | None = None, /) -> None: ...
-	def __iter__(self: _Self, /) -> Iterator[V]: ...
-	def __next__(self: _Self, /) -> V: ...
-	def __getitem__(self: _Self, index: _float, /) -> V: ...
-	def __setitem__(self: _Self, index: _float, object: V, /) -> None: ...
-	def __le__(self: _Self, compare_list: tuple[V] | ListTFWR[V], /) -> _bool: ...
-	def __lt__(self: _Self, compare_list: tuple[V] | ListTFWR[V], /) -> _bool: ...
-	def __ge__(self: _Self, compare_list: tuple[V] | ListTFWR[V], /) -> _bool: ...
-	def __gt__(self: _Self, compare_list: tuple[V] | ListTFWR[V], /) -> _bool: ...
-	def __iadd__(self: _Self, compare_list: ListTFWR[V], /) -> list[V]: ...
-	def __add__(self: _Self, compare_list: ListTFWR[V], /) -> list[V]: ...
+	def __init__(self: Self, input: Iterable[V] | None = None, /) -> None: ...
+	def __iter__(self: Self, /) -> Iterator[V]: ...
+	def __next__(self: Self, /) -> V: ...
+	def __getitem__(self: Self, index: _float, /) -> V: ...
+	def __setitem__(self: Self, index: _float, object: V, /) -> None: ...
+	def __le__(self: Self, compare_list: tuple[V] | ListTFWR[V], /) -> _bool: ...
+	def __lt__(self: Self, compare_list: tuple[V] | ListTFWR[V], /) -> _bool: ...
+	def __ge__(self: Self, compare_list: tuple[V] | ListTFWR[V], /) -> _bool: ...
+	def __gt__(self: Self, compare_list: tuple[V] | ListTFWR[V], /) -> _bool: ...
+	def __iadd__(self: Self, compare_list: ListTFWR[V], /) -> list[V]: ...
+	def __add__(self: Self, compare_list: ListTFWR[V], /) -> list[V]: ...
 	def __contains__(self, compare_object: V, /) -> _bool: ...
-	def append(self: _Self, object: V, /) -> None:
+	def append(self: Self, object: V, /) -> None:
 		"""
 		Add `object` to the end of a list provided as `given_list`.
 		
@@ -306,7 +313,7 @@ class list[V: AnyTFWR]():
 		```
 		"""
 		...
-	def insert(self: _Self, index: _float, object: V, /) -> None: # type: ignore
+	def insert(self: Self, index: _float, object: V, /) -> None: # type: ignore
 		"""
 		Add a `object` to the specified `index` to a list provided as `given_list`.
 		
@@ -327,7 +334,7 @@ class list[V: AnyTFWR]():
 		```
 		"""
 		...
-	def len(self: _Self, /) -> _int:
+	def len(self: Self, /) -> _int:
 		"""
 		Returns the number of items in the list.
 		
@@ -350,7 +357,7 @@ class list[V: AnyTFWR]():
 		```
 		"""
 		...
-	def pop(self: _Self, index: _float = -1, /) -> V: # type: ignore
+	def pop(self: Self, index: _float = -1, /) -> V: # type: ignore
 		"""
 		Remove the element corresponding to the `index` in the list. If no index is specified removes the last element in the list.
 		
@@ -375,7 +382,7 @@ class list[V: AnyTFWR]():
 		```
 		"""
 		...
-	def remove(self: _Self, object: V, /) -> None:
+	def remove(self: Self, object: V, /) -> None:
 		"""
 		Remove the element corresponding to the `object` in the list.
 		
@@ -438,11 +445,11 @@ class set[K: Hashable]():
 	
 	Consider using `SetTFWR` to help with type hints involving sets.
 	"""
-	def __init__(self: _Self, input: Iterable[K] | None = None, /) -> None: ...
-	def __iter__(self: _Self, /) -> Iterator[K]: ...
-	def __next__(self: _Self, /) -> K: ...
+	def __init__(self: Self, input: Iterable[K] | None = None, /) -> None: ...
+	def __iter__(self: Self, /) -> Iterator[K]: ...
+	def __next__(self: Self, /) -> K: ...
 	def __contains__(self, compare_object: K, /) -> _bool: ...
-	def add(self: _Self, object: K, /) -> None:
+	def add(self: Self, object: K, /) -> None:
 		"""
 		Add the `object` to a `given_set`.
 		
@@ -463,7 +470,7 @@ class set[K: Hashable]():
 		```
 		"""
 		...
-	def len(self: _Self, /) -> _int:
+	def len(self: Self, /) -> _int:
 		"""
 		Returns the number of items in the set.
 		
@@ -486,7 +493,7 @@ class set[K: Hashable]():
 		```
 		"""
 		...
-	def remove(self: _Self, object: K, /) -> None:
+	def remove(self: Self, object: K, /) -> None:
 		"""
 		Remove the `object` from the set.
 		
@@ -540,31 +547,31 @@ class range_class():
 	
 	Consider using `RangeTFWR` to help with type hints involving ranges.
 	"""
-	def __iter__(self: _Self, /) -> Iterator[_int]: ...
-	def __next__(self: _Self, /) -> _int: ...
-	def __getitem__(self: _Self, index: _float, /) -> _int: ...
-	def __le__(self: _Self, compare: range_class | list[_int] | _list[_int] | tuple[_int], /) -> _bool:
+	def __iter__(self: Self, /) -> Iterator[_int]: ...
+	def __next__(self: Self, /) -> _int: ...
+	def __getitem__(self: Self, index: _float, /) -> _int: ...
+	def __le__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int], /) -> _bool:
 		"""
 		Ranges can only be compared to a `range`, `list`, or `tuple`. Elements of lists and tuples should all be `int` and have the same starting, ending, and step size.
 		"""
 		...
-	def __lt__(self: _Self, compare: range_class | list[_int] | _list[_int] | tuple[_int], /) -> _bool:
+	def __lt__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int], /) -> _bool:
 		"""
 		Ranges can only be compared to a `range`, `list`, or `tuple`. Elements of lists and tuples should all be `int` and have the same starting, ending, and step size.
 		"""
 		...
-	def __ge__(self: _Self, compare: range_class | list[_int] | _list[_int] | tuple[_int], /) -> _bool:
+	def __ge__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int], /) -> _bool:
 		"""
 		Ranges can only be compared to a `range`, `list`, or `tuple`. Elements of lists and tuples should all be `int` and have the same starting, ending, and step size.
 		"""
 		...
-	def __gt__(self: _Self, compare: range_class | list[_int] | _list[_int] | tuple[_int], /) -> _bool:
+	def __gt__(self: Self, compare: range_class | list[_int] | _list[_int] | tuple[_int], /) -> _bool:
 		"""
 		Ranges can only be compared to a `range`, `list`, or `tuple`. Elements of lists and tuples should all be `int` and have the same starting, ending, and step size.
 		"""
 		...
 	def __contains__(self, compare_value: _int, /) -> _bool: ...
-	def len(self: _Self, /) -> _int:
+	def len(self: Self, /) -> _int:
 		"""
 		Returns the number of items in the range
 		
@@ -941,10 +948,6 @@ class Entity:
 
 # --------------------------------------------------
 class Entities(_Enum):
-	@staticmethod
-	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[AnyTFWR]) -> Entity:
-		...
-
 	Apple: Entity
 	"""
 	Dinosaurs love them apparently.
@@ -1044,10 +1047,6 @@ class Ground:
 
 # --------------------------------------------------
 class Grounds(_Enum):
-	@staticmethod
-	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[AnyTFWR]) -> Ground:
-		...
-
 	Grassland: Ground
 	"""
 	The default ground. Grass will automatically grow on it.
@@ -1069,10 +1068,6 @@ class Hat:
 
 # --------------------------------------------------
 class Hats(_Enum):
-	@staticmethod
-	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[AnyTFWR]) -> Hat:
-		...
-
 	Brown_Hat: Hat
 	"""
 	A brown hat.
@@ -1214,10 +1209,6 @@ class Item:
 
 # --------------------------------------------------
 class Items(_Enum):
-    @staticmethod
-    def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[AnyTFWR]) -> Item:
-        ...
-
     Bone: Item
     """
     The bones of an ancient creature.
@@ -1289,10 +1280,6 @@ class Leaderboard:
 
 # --------------------------------------------------
 class Leaderboards(_Enum):
-	@staticmethod
-	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[AnyTFWR]) -> Leaderboard:
-		...
-
 	Cactus: Leaderboard
 	"""
 	Farm 33_554_432 cacti with multiple drones.
@@ -1384,10 +1371,6 @@ class Unlock:
 
 # --------------------------------------------------
 class Unlocks(_Enum):
-	@staticmethod
-	def _generate_next_value_(name: string, start: _int, count: _int, last_values: _list[AnyTFWR]) -> Unlock:
-		...
-
 	Auto_Unlock: Unlock
 	"""
 	Automatically unlock things.
@@ -1813,7 +1796,14 @@ def get_pos_y() -> _int:
 
 
 # --------------------------------------------------
-def get_world_size() -> _int:
+type WorldSizes = Literal[
+	3, 4, 5, 6, 7, 8, 9, 10,
+	11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+	21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+	31, 32,
+]
+
+def get_world_size() -> WorldSizes:
 	"""
 	Get the current size of the farm.
 	
@@ -1992,7 +1982,7 @@ class Drone[R: Any]:
 # -------------------------------------------------------------------------------
 def spawn_drone[*P, R: Any](task: Callable[[*P], R], /, *args: *P) -> Drone[R] | None:
 	"""
-	Spawns a new drone in the same position as the drone that ran `spawn_drone(task, *args)`. The new drone then begins executing the provided `task` function. After it is done, it will disappear automatically.
+	Spawns a new drone in the same position as the drone that ran `spawn_drone(task, *args)`. The new drone then begins executing the provided `task` function. The rest of the arguments are copied and passed into the specified `task` function. After it is done, it will disappear automatically.
 	
 	`*P` - list of parameters that your task can can take as arguments. Must match the type of arguments you give to `spawn_drone` with the parameter types you assign of the `task` that you provide.
 	`R` - the return type of your drone. Must must the return type of of the `task` you provide.
@@ -2182,13 +2172,6 @@ def set_execution_speed(speed: _float, /) -> None:
 
 
 # --------------------------------------------------
-type WorldSizes = Literal[
-	3, 4, 5, 6, 7, 8, 9, 10,
-	11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-	21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-	31, 32,
-]
-
 def set_world_size(size: WorldSizes, /) -> None:
 	"""
 	Limits the size of the farm to better see what's happening.
@@ -2269,12 +2252,12 @@ def simulate(
 # -------------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------------
-type Cost = dict[Item, _int] | _dict[Item, _int] | dict[_Never, _Never]
+type Cost = dict[Item, _int] | _dict[Item, _int] | dict[Never, Never]
 """
 Special type that helps with type hinting the return of the `get_cost` function.
 """
 
-def get_cost(thing: Entity | Entities | Unlock | Unlocks, level: _int = 0, /) -> dict[Item, _int] | _dict[Item, _int] | dict[_Never, _Never]:
+def get_cost(thing: Entity | Entities | Unlock | Unlocks, level: _int = 0, /) -> dict[Item, _int] | _dict[Item, _int] | dict[Never, Never]:
 	"""
 	Gets the cost of a `thing`
 	
@@ -2442,7 +2425,7 @@ def min(*args: range_class) -> range_class: # type: ignore
 	`min(a,b,c)`: Returns the minimum of `a`, `b` and `c`.
 	
 	returns the collection that has the minimum total:
-	- If `tuple`, `list` or `range` is given will return minimum argument based onvalue
+	- If `tuple`, `list` or `range` is given will return minimum argument based on value
 	- If `dict` or `set` is given will return the minimum argument based on key.
 	
 	takes `num_comparison` ticks to execute.
@@ -2463,7 +2446,7 @@ def min(*args: _float) -> _float: # type: ignore
 	`min(a,b,c)`: Returns the minimum of `a`, `b` and `c`.
 	
 	returns the collection that has the minimum total:
-	- If `tuple`, `list` or `range` is given will return minimum argument based onvalue
+	- If `tuple`, `list` or `range` is given will return minimum argument based on value
 	- If `dict` or `set` is given will return the minimum argument based on key.
 	
 	takes `num_comparison` ticks to execute.
@@ -2484,7 +2467,7 @@ def min(*args: Iterable[_float]) -> Iterable[_float]: # type: ignore
 	`min(a,b,c)`: Returns the minimum of `a`, `b` and `c`.
 	
 	returns the collection that has the minimum total:
-	- If `tuple`, `list` or `range` is given will return minimum argument based onvalue
+	- If `tuple`, `list` or `range` is given will return minimum argument based on value
 	- If `dict` or `set` is given will return the minimum argument based on key.
 	
 	takes `num_comparison` ticks to execute.
@@ -2505,7 +2488,7 @@ def min(*args: string) -> string: # type: ignore
 	`min(a,b,c)`: Returns the minimum of `a`, `b` and `c`.
 	
 	returns the collection that has the minimum total:
-	- If `tuple`, `list` or `range` is given will return minimum argument based onvalue
+	- If `tuple`, `list` or `range` is given will return minimum argument based on value
 	- If `dict` or `set` is given will return the minimum argument based on key.
 	
 	takes `num_comparison` ticks to execute.
@@ -2526,7 +2509,7 @@ def min(*args: Iterable[string]) -> Iterable[string]: # type: ignore
 	`min(a,b,c)`: Returns the minimum of `a`, `b` and `c`.
 	
 	returns the collection that has the minimum total:
-	- If `tuple`, `list` or `range` is given will return minimum argument based onvalue
+	- If `tuple`, `list` or `range` is given will return minimum argument based on value
 	- If `dict` or `set` is given will return the minimum argument based on key.
 	
 	takes `num_comparison` ticks to execute.
@@ -2618,7 +2601,7 @@ def max(*args: range_class) -> range_class: # type: ignore
 	`max(a,b,c)`: Returns the maximum of `a`, `b` and `c`.
 	
 	returns the collection that has the maximum total:
-	- If `tuple`, `list` or `range` is given will return maximum argument based onvalue
+	- If `tuple`, `list` or `range` is given will return maximum argument based on value
 	- If `dict` or `set` is given will return the maximum argument based on key.
 	
 	takes `num_comparison` ticks to execute.
@@ -2639,7 +2622,7 @@ def max(*args: _float) -> _float: # type: ignore
 	`max(a,b,c)`: Returns the maximum of `a`, `b` and `c`.
 	
 	returns the collection that has the maximum total:
-	- If `tuple`, `list` or `range` is given will return maximum argument based onvalue
+	- If `tuple`, `list` or `range` is given will return maximum argument based on value
 	- If `dict` or `set` is given will return the maximum argument based on key.
 	
 	takes `num_comparison` ticks to execute.
@@ -2660,7 +2643,7 @@ def max(*args: Iterable[_float]) -> Iterable[_float]: # type: ignore
 	`max(a,b,c)`: Returns the maximum of `a`, `b` and `c`.
 	
 	returns the collection that has the maximum total:
-	- If `tuple`, `list` or `range` is given will return maximum argument based onvalue
+	- If `tuple`, `list` or `range` is given will return maximum argument based on value
 	- If `dict` or `set` is given will return the maximum argument based on key.
 	
 	takes `num_comparison` ticks to execute.
@@ -2681,7 +2664,7 @@ def max(*args: string) -> string: # type: ignore
 	`max(a,b,c)`: Returns the maximum of `a`, `b` and `c`.
 	
 	returns the collection that has the maximum total:
-	- If `tuple`, `list` or `range` is given will return maximum argument based onvalue
+	- If `tuple`, `list` or `range` is given will return maximum argument based on value
 	- If `dict` or `set` is given will return the maximum argument based on key.
 	
 	takes `num_comparison` ticks to execute.
@@ -2702,7 +2685,7 @@ def max(*args: Iterable[string]) -> Iterable[string]: # type: ignore
 	`max(a,b,c)`: Returns the maximum of `a`, `b` and `c`.
 	
 	returns the collection that has the maximum total:
-	- If `tuple`, `list` or `range` is given will return maximum argument based onvalue
+	- If `tuple`, `list` or `range` is given will return maximum argument based on value
 	- If `dict` or `set` is given will return the maximum argument based on key.
 	
 	takes `num_comparison` ticks to execute.
