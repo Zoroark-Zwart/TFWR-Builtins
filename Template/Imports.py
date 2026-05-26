@@ -8,6 +8,13 @@
 # - string -> builtins.str
 # - range_class -> builtins.range
 
+# Note: `None` is not type hinted to reduce typing complexity due to lack of type casts when in functions that could return an optional `None`: This affects these functions:
+# - `measure`
+# - `get_companion`
+# - `get_cost`
+# - `spawn_drone`
+# Documentation for `None` return type is available for when running the code in-game
+
 from typing import (
     Any, Literal, Final,
     overload, Self, Never

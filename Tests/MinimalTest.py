@@ -98,3 +98,18 @@ for entity in Entities:
 
 TestSize: int = get_world_size()
 TestSize2: WorldSizes = get_world_size()
+
+def DroneNoParam() -> ListTFWR[int] | float:
+    if random():
+        return [1]
+    else:
+        return 1.3
+
+MyDroneNoParam: Drone[ListTFWR[int] | float] = spawn_drone(DroneNoParam)
+
+if has_finished(MyDroneNoParam):
+    pass
+
+MyDroneNoParamValue: ListTFWR[int] | float = wait_for(MyDroneNoParam)
+
+MyList32: list[int] = list((1, 2, 3))

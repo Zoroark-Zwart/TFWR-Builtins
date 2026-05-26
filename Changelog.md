@@ -1,3 +1,9 @@
+# May/26 Update 1
+
+- Generalized `V` in `list` custom type to `Any` since it still causes typing errors
+- Allowed `list` custom type constructor to accept tuples of any size
+- Removed `None` as a return type from all functions that return it from type hints  to reduce complexity in type hints due to lack of type casts. Added notes about this lack of type hint where applicable.
+
 # May/25 Update 1
 
 - Exposed more commonly useful types to make them available

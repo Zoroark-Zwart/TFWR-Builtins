@@ -3,6 +3,7 @@
 Find out what kind of entity is under the drone.
 
 returns `None` if the tile is empty, otherwise returns the type of the entity under the drone.
+Note: `None` is not type hinted to reduce complexity when using variables with functions that accept a `Entity`.
 
 takes `1` tick to execute.
 
@@ -94,6 +95,7 @@ Maze: returns the position of the current treasure from anywhere in the maze.
 Cactus: returns the size.
 Dinosaur: returns the number corresponding to the type.
 All other entities: returns `None`.
+Note: `None` is not type hinted to reduce complexity when using variables with functions that accept either of the other return types.
 
 takes `1` tick to execute.
 

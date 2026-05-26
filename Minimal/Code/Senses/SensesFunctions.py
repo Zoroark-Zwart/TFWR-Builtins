@@ -1,5 +1,5 @@
 # -------------------------------------------------------------------------------
-def get_entity_type() -> Entity | None:
+def get_entity_type() -> Entity:
 	# Docstring: get_entity_type
 	...
 
@@ -23,18 +23,18 @@ def num_items(item: Item | Items, /) -> _float:
 
 
 # --------------------------------------------------
-type Companion = _tuple[Entity, _tuple[_int, _int]] | None
+type Companion = _tuple[Entity, _tuple[_int, _int]]
 # Docstring: get_companion (type)
 
-def get_companion() -> _tuple[Entity, _tuple[_int, _int]] | None:
+def get_companion() -> _tuple[Entity, _tuple[_int, _int]]:
 	# Docstring: get_companion
 	...
 
 
 # --------------------------------------------------
-type Measure = _int | _tuple[_int, _int] | None
+type Measure = _int | _tuple[_int, _int]
 # Docstring: measure (type)
 
-def measure(direction: Direction | None = None, /) -> _int | _tuple[_int, _int] | None:
+def measure(direction: Direction | None = None, /) -> _int | _tuple[_int, _int]:
 	# Docstring: measure
 	...

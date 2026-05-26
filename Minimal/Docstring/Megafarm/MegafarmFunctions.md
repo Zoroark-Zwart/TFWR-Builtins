@@ -8,6 +8,7 @@ Spawns a new drone in the same position as the drone that ran `spawn_drone(task,
 Passes the `*args` to the provided `task` when that drone runs.
 
 returns a `Drone[R]` object for the new drone or `None` if all drones are already spawned.
+Note: `None` is not type hinted to reduce complexity when using variables with functions that accept a `Drone`.
 
 takes `200` ticks to execute if a drone was spawned, `1` otherwise.
 
