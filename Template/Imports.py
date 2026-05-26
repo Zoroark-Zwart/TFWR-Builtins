@@ -11,7 +11,6 @@
 # Note: `None` is not type hinted in optional return types to reduce typing complexity due to lack of type casts. This affects these functions:
 # - `measure`
 # - `get_companion`
-# - `get_cost`
 # - `spawn_drone`
 # Documentation for `None` return type is available for when running the code in-game
 

@@ -2,6 +2,7 @@
 
 - Added updated `spawn_drone` example documentation
 - `None` note clarifications
+- Added `get_companion` `None` note
 
 # May/26 Update 1
 

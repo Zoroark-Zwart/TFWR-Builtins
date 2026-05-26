@@ -65,6 +65,7 @@ if num_items(Items.Fertilizer) > 0:
 Get the companion preference of the plant under the drone.
 
 returns a tuple of the form `(companion_type, (companion_x_position, companion_y_position))` or `None` if there is no companion.
+Note: `None` is not type hinted to reduce complexity when using variables with functions that accept companion tuple.
 
 takes `1` tick to execute.
 
