@@ -79,10 +79,15 @@ Starts a simulation for the leaderboard using the specified `file_name` as a sta
 `sim_unlocks`: A sequence containing the starting unlocks. These unlocks can be one of these:
 
 - `dict[Unlock, int]` - Example: `{Unlocks.Expand: 2, Unlocks.Cactus: 1}`
-- `tuple[tuple[Unlock, int]]` - Example: `((Unlocks.Expand, 2), (Unlocks.Cactus, 1))`
+
+- `tuple[tuple[Unlock, int],...]` - Example: `((Unlocks.Expand, 2), (Unlocks.Cactus, 1))`
+
 - `list[tuple[Unlock, int]]` - Example: `[(Unlocks.Expand, 2), (Unlocks.Cactus, 1)]`
-- `tuple[Unlock]` - Captures your current unlock level of specific unlocks from your main farm. Example: `(Unlocks.Expand, Unlocks.Cactus)`
+
+- `tuple[Unlock,...]` - Captures your current unlock level of specific unlocks from your main farm. Example: `(Unlocks.Expand, Unlocks.Cactus)`
+
 - `list[Unlock]` - Captures your current unlock level of specific unlocks from your main farm. Example: `[Unlocks.Expand, Unlocks.Cactus]`
+
 - `Unlocks` - Captures all of your current unlock levels from your main farm.
 
 `sim_items`: A dict mapping items to amounts. The simulation starts with these items.
@@ -108,3 +113,27 @@ seed = 0
 speedup = 64
 run_time = simulate(filename, sim_unlocks, sim_items, sim_globals, seed, speedup)
 ```
+
+## simulate (unlocks)
+
+A sequence containing the starting unlocks. These unlocks can be one of these:
+
+- `dict[Unlock, int]` - Example: `{Unlocks.Expand: 2, Unlocks.Cactus: 1}`
+
+- `tuple[tuple[Unlock, int],...]` - Example: `((Unlocks.Expand, 2), (Unlocks.Cactus, 1))`
+
+- `list[tuple[Unlock, int]]` - Example: `[(Unlocks.Expand, 2), (Unlocks.Cactus, 1)]`
+
+- `tuple[Unlock,...]` - Captures your current unlock level of specific unlocks from your main farm. Example: `(Unlocks.Expand, Unlocks.Cactus)`
+
+- `list[Unlock]` - Captures your current unlock level of specific unlocks from your main farm. Example: `[Unlocks.Expand, Unlocks.Cactus]`
+
+- `Unlocks` - Captures all of your current unlock levels from your main farm.
+
+## simulate (items)
+
+Special type that helps with type hinting the `sim_items` parameter of the `simulate` function.
+
+## simulate (globals)
+
+Special type that helps with type hinting the `sim_globals` parameter of the `simulate` function.

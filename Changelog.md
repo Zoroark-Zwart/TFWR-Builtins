@@ -1,3 +1,11 @@
+# May/26 Update 3
+
+- Improved documentation and typing for `simulate`
+- Added general tuple type hints
+- Added `_SimulateUnlocksPair` as a helper type
+- Added types for both custom and Python dict and list types
+- Added helper types `SimulateItems` and `SimulateGlobals` for function `simulate`
+
 # May/26 Update 2
 
 - Added updated `spawn_drone` example documentation

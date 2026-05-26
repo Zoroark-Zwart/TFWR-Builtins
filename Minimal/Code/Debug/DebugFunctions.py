@@ -23,13 +23,31 @@ def set_world_size(size: WorldSizes, /) -> None:
 
 
 # --------------------------------------------------
-type SimulateUnlocks = _dict[Unlock, _int] | _tuple[_tuple[Unlock, _int]] | _list[_tuple[Unlock, _int]] | _tuple[Unlock] | _list[Unlock] | Unlocks
+type _SimulateUnlocksPair = _tuple[Unlock, _int]
+
+type SimulateUnlocks = (
+	dict[Unlock, _int] | _dict[Unlock, _int] |					# (Unlock, int) pairings
+	list[_SimulateUnlocksPair] | _list[_SimulateUnlocksPair] |
+	_tuple[_SimulateUnlocksPair,...] |
+
+	_tuple[Unlock,...] |										# Sequence of unlocks
+	_list[Unlock] |
+
+	Unlocks														# All unlocks
+)
+# Docstring: simulate (unlocks)
+
+type SimulateItems = dict[Item, _float] | _dict[Item, _float]
+# Docstring: simulate (items)
+
+type SimulateGlobals = dict[string, AnyTFWR] | _dict[string, AnyTFWR]
+# Docstring: simulate (globals)
 
 def simulate(
 		filename: string,
 		sim_unlocks: SimulateUnlocks,
-		sim_items: _dict[Item, _float],
-		sim_globals: _dict[string, AnyTFWR],
+		sim_items: dict[Item, _float] | _dict[Item, _float],
+		sim_globals: dict[string, AnyTFWR] | _dict[string, AnyTFWR],
 		seed: _float, speedup: _float,
 		/
 	) -> _float:
