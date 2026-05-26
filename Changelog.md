@@ -1,6 +1,7 @@
 # May/26 Update 2
 
 - Added updated `spawn_drone` example documentation
+- `None` note clarifications
 
 # May/26 Update 1
 
