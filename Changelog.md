@@ -1,3 +1,7 @@
+# May/26 Update 2
+
+- Added updated `spawn_drone` example documentation
+
 # May/26 Update 1
 
 - Generalized `V` in `list` custom type to `Any` since it still causes typing errors
