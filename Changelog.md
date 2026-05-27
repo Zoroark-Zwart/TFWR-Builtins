@@ -1,5 +1,9 @@
 # May/26 Update 3
 
+- Removed empty dict return for `get_cost`
+
+# May/26 Update 3
+
 - Improved documentation and typing for `simulate`
 - Added general tuple type hints
 - Added `_SimulateUnlocksPair` as a helper type

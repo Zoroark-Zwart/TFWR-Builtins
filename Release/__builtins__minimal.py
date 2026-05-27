@@ -2307,12 +2307,12 @@ def simulate(
 # -------------------------------------------------------------------------------
 
 # -------------------------------------------------------------------------------
-type Cost = dict[Item, _int] | _dict[Item, _int] | dict[Never, Never]
+type Cost = dict[Item, _int] | _dict[Item, _int]
 """
 Special type that helps with type hinting the return of the `get_cost` function.
 """
 
-def get_cost(thing: Entity | Entities | Unlock | Unlocks, level: _int = 0, /) -> dict[Item, _int] | _dict[Item, _int] | dict[Never, Never]:
+def get_cost(thing: Entity | Entities | Unlock | Unlocks, level: _int = 0, /) -> dict[Item, _int] | _dict[Item, _int]:
 	"""
 	Gets the cost of a `thing`
 	
